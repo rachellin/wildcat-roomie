@@ -1,0 +1,27 @@
+body {
+  background: #fafafa;
+  font-size: 15px;
+  font-family: 'Karla', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  transition: 0.4s linear;
+}
+
+/*-- scrollbar --*/
+::-webkit-scrollbar-thumb:vertical {
+  background-color: #eee; /*slider color*/
+  height: 50px; 
+}
+::-webkit-scrollbar {
+  height: 0px;
+  width: 2px; 
+  background-color: #fafafa; /*scrollbar bg color*/
+}

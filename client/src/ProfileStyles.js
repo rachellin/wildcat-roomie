@@ -1,0 +1,141 @@
+import styled from 'styled-components';
+import "./animations.css";
+
+// export const StyledProfile = styled.div`
+// `
+
+export const StyledContainer = styled.div`
+    width: 65vw;
+    margin: auto;
+`
+
+export const StyledProfileCont = styled.div`
+    position:relative;
+    display:grid;
+    padding:0 10px 10vh 10px;
+    grid-gap:70px;
+    grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
+    justify-content:center;
+    justify-items:center;
+`
+
+export const StyledCard = styled.div`
+    //position: relative;
+    background: #fff;
+    padding: 2rem;
+    width: 250px; /* temp */
+    height: 250px;
+
+    margin: 2rem;
+    border-radius: 2rem;
+    box-shadow: 1px 1px 30px 3px #eaeaea;
+    text-align: center;
+
+    :hover {
+        cursor: pointer;
+    }
+
+    img {
+        border-radius: 50%;
+        display: block;
+        margin: auto;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+`
+
+export const StyledProfile = styled.div`
+    position: fixed;
+    width: 65vw;
+    //height: 62vh;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 2rem;
+    opacity: ${props => props.opacity};
+    animation: ${props => props.opacity == 1 ? "fadeIn" : "fadeOut"} 1s;
+    z-index: 99999;
+
+    .close {
+        i {
+            float: right;
+            font-size: 1.5rem;
+        }
+        
+        :hover {
+            cursor: pointer;
+        }
+    }
+
+    img {
+        object-fit: cover;
+        border-radius: 2rem;
+        width: 125px;
+        height: 125px;
+    }
+
+    .side {
+        float: left;
+        width: 200px;
+        margin-right: 2rem;
+
+        .basics, .social-media {
+            span {
+                display: block;
+            }
+        }
+
+        .basics {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .bio-filters {
+        span {
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            background: #a2d3cb;
+            margin-right: 1rem;
+        }
+
+        margin: 1rem 0 0 200px;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #eee;
+        width: calc(65vw - 200px - 4rem);
+    }
+
+    .bio {
+        display: flex;
+
+        .looking-for, .about {
+            width: 50%;
+        }
+
+        .about {
+            padding: 0 1.5rem 0 0;
+        }
+
+        .looking-for {
+            padding: 0 1.25rem;
+        }
+
+        h1 {
+            font-size: 1.3rem;
+        }
+       
+    }
+`
+
+export const Overlay = styled.div`
+    background: rgb(0, 0, 0, ${props => props.opacity});
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+`
