@@ -4,35 +4,17 @@ import { StyledProfileCont } from './ProfileStyles';
 import { FilterContainer } from './FilterContainer';
 import {Animated} from "react-animated-css";
 
-/* ALL FILTERS
-
-one or the other:
-- sleep: morning person, night person, both/neither
-- campus preference: north, south, both/neither
-- dorm preference: [dorm], none (maybe this shouldn't be a filter)
-- personality 
-- location (region)
-
-has filter or doesn't have filter:
-- QB/low-income
-- international 
-
-multiple: (optional)
-- dorm preference: [dorm...]
-
-scale 0 to 5: (can filter multiple)
-- cleanliness
-- partying 
-
-*/
 // dropdown for filter sections?
 const filters = [
     "morning", "night",
+    "McCormick", "Weinberg",
     "north", "south",
     "INTP", "ISTJ", "ENTP", "ESFP", "ESTJ", "ESTP", "INFP", "INTJ", "ENFJ", "INFJ", "ISFJ", "ISFP", "ISTP",
     "West", "Midwest", "South", "Mid-Atlantic", "Northeast", "International",
     "Questbridge",
     "Willard",
+    "cleanliness: 5",
+    "partying: 1"
 ];
 
 export class ProfileContainer extends React.Component {
@@ -40,7 +22,7 @@ export class ProfileContainer extends React.Component {
         super(props);
         this.state = {
             filterNames: filters,
-            filters: new Array(filters.length).fill(false),
+            filters: new Array(filters.length).fill(false), // length should be at least 8 then changes bc multiple schools/dorms
             onFilters: [],
             // showCard: new Array(cardInfo.length).fill(true),
             // cardInfo: [...cardInfo],
