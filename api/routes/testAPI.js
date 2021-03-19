@@ -52,7 +52,31 @@ let cardInfo = [
             snap: "lechar.mai",
             phone: "917 392 1992"
         }
-    }
+    },
+    {
+        name: "lila bard",
+        img: "https://i.imgur.com/8d3uzkw.png",
+        filters: [
+            "night",
+            "north",
+            "INFJ",
+            "West Coast",
+            //"International",
+            "cleanliness: 3",
+            "partying: 1"
+        ],
+        bio: {
+            about: lorem,
+            looking: lorem2,
+            major: "psychology",
+            location: "NYC",
+        },
+        social: {
+            ig: "dklarachel",
+            snap: "lechar.mai",
+            phone: "917 392 1992"
+        }
+    },
 ];
 
 router.get("/", function(req, res, next) {

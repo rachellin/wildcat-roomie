@@ -4,16 +4,47 @@ import { StyledProfileCont } from './ProfileStyles';
 import { FilterContainer } from './FilterContainer';
 import {Animated} from "react-animated-css";
 
+/* ALL FILTERS
+
+one or the other:
+- sleep: morning person, night person, both/neither
+- campus preference: north, south, both/neither
+- dorm preference: [dorm], none (maybe this shouldn't be a filter)
+- personality 
+- location (region)
+
+has filter or doesn't have filter:
+- QB/low-income
+- international 
+
+multiple: (optional)
+- dorm preference: [dorm...]
+
+scale 0 to 5: (can filter multiple)
+- cleanliness
+- partying 
+
+*/
+// dropdown for filter sections?
+const filters = [
+    "morning", "night",
+    "north", "south",
+    "INTP", "ISTJ", "ENTP", "ESFP", "ESTJ", "ESTP", "INFP", "INTJ", "ENFJ", "INFJ", "ISFJ", "ISFP", "ISTP",
+    "West", "Midwest", "South", "Mid-Atlantic", "Northeast", "International",
+    "Questbridge",
+    "Willard",
+];
+
 export class ProfileContainer extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            filterNames: ["morning", "night", "STEM"],
-            filters: [false, false, false],
+            filterNames: filters,
+            filters: new Array(filters.length).fill(false),
             onFilters: [],
             // showCard: new Array(cardInfo.length).fill(true),
             // cardInfo: [...cardInfo],
-            showCard: new Array(1).fill(true), // temp length
+            showCard: new Array(1).fill(true), 
             cardInfo: [],
             loading: true,
         }
@@ -23,7 +54,7 @@ export class ProfileContainer extends React.Component {
         this.callAPI();
         this.testAPI();
         //this.state.filters.fill(false);
-        //console.log(this.state.filters);
+        console.log(this.state.filters);
         //this.state.showCard.fill(true);
     }
 
@@ -34,8 +65,9 @@ export class ProfileContainer extends React.Component {
         console.log(parsed);
         this.setState({ 
             cardInfo: [...parsed],
+            //cardInfo: [...cardInfoLocal],
             loading: false,
-            //showCard: new Array(1).fill(true),
+            showCard: new Array(parsed.length).fill(true),
         });
     }
 
@@ -105,7 +137,6 @@ export class ProfileContainer extends React.Component {
             // } else {
             //     card = <Card name={info[i].name} img={info[i].img} filters={info[i].filters}/>
             // }
-            console.log("render");
             card = (
                 <Card 
                     key={info[i].name}
@@ -119,6 +150,7 @@ export class ProfileContainer extends React.Component {
             )
             arr.push(card);
         }
+        console.log(arr);
         return(arr);
     }
 
