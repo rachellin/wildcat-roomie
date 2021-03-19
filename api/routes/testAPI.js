@@ -22,11 +22,25 @@ router.get("/", function(req, res, next) {
     res.json({
         name: "helene aquilla",
         img: "/pfp.jpg",
-        filters: ["morning"],
+        filters: [
+            "morning",
+            "both/neither",
+            "INFJ",
+            "Mid-Atlantic",
+            "Questbridge",
+            "cleanliness: 5",
+            "partying: 1"
+        ],
         bio: {
             about: lorem,
             looking: lorem2,
-            location: "NYC"
+            major: "computer science",
+            location: "NYC",
+        },
+        social: {
+            ig: "dklarachel",
+            snap: "lechar.mai",
+            phone: "917 392 1992"
         }
     });
 });

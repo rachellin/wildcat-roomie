@@ -7,20 +7,24 @@ import {Animated} from "react-animated-css";
 export class ProfileContainer extends React.Component {
     constructor (props) {
         super(props);
+        let data = JSON.parse(props.apiResponse);
+        let cardInfo = [data];
+        console.log(cardInfo);
+        //console.log(cardInfo[0].bio.about);
         this.state = {
             filterNames: ["morning", "night", "STEM"],
             filters: [false, false, false],
             onFilters: [],
+            // showCard: new Array(cardInfo.length).fill(true),
+            // cardInfo: [...cardInfo],
             showCard: new Array(cardInfo.length).fill(true),
             cardInfo: [...cardInfo],
-            // showCard: new Array(0).fill(true),
-            // cardInfo: [''],
         }
     }
 
     componentDidMount () {
         //this.state.filters.fill(false);
-        console.log(this.state.filters);
+        //console.log(this.state.filters);
         //this.state.showCard.fill(true);
         // const data = JSON.parse(this.props.apiResponse);
         // let cardInfo = [data];
@@ -110,7 +114,8 @@ export class ProfileContainer extends React.Component {
                     img={info[i].img} 
                     filters={info[i].filters} 
                     display={this.state.showCard[i]}
-                    bio={info[i].bio.about}
+                    bio={info[i].bio}
+                    social={info[i].social}
                     />
             )
             arr.push(card);
@@ -119,11 +124,12 @@ export class ProfileContainer extends React.Component {
     }
 
     render () {
-        const data = JSON.parse(this.props.apiResponse);
+        // const data = JSON.parse(this.props.apiResponse);
+        // let dataArr = [data];
+        // console.log(dataArr);
         //let cardInfo = [data];
         return (
             <>
-            {data}
             <FilterContainer 
                 onClick={(i) => this.handleClick(this.state.filters[i], this.state.filterNames[i], i, this.state.cardInfo)}
                 filterNames={this.state.filterNames} 
@@ -135,7 +141,7 @@ export class ProfileContainer extends React.Component {
                 <Card name="maven calore" img="https://i.imgur.com/8NOcnwx.png" filters={["STEM"]}/>
                 <Card name="lila bard" img="https://i.imgur.com/8d3uzkw.png" filters={["morning", "STEM"]}/>
                 <Card name="inej ghafa" img="https://i.imgur.com/qTiWjPw.png"/> */}
-                {this.renderCards(cardInfo)}
+                {this.renderCards(this.state.cardInfo)}
             </StyledProfileCont>
             </>
         )
@@ -155,7 +161,7 @@ let social = {
     snap: "lechar.mai",
     phone: "917 392 1992"
 }
-let cardInfo = [
+let cardInfoLocal = [
     {
         name: "helene aquilla",
         img: "/pfp.jpg",

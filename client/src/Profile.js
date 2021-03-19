@@ -14,10 +14,10 @@ export class Profile extends React.Component {
                     <h1>{this.props.name}</h1>
 
                     <div className="basics">
-                        <span><i className="ri-settings-3-line"></i> {this.props.basics.school}</span> 
-                        <span><i class="ri-pencil-line"></i> {this.props.basics.major}</span>
-                        <span><i className="ri-star-line"></i> {this.props.basics.personality}</span>
-                        <span><i className="ri-map-pin-line"></i> {this.props.basics.location}</span>
+                        <span><i className="ri-settings-3-line"></i> McCormick</span> 
+                        <span><i class="ri-pencil-line"></i> {this.props.bio.major}</span>
+                        <span><i className="ri-star-line"></i> INFJ</span>
+                        <span><i className="ri-map-pin-line"></i> {this.props.bio.location}</span>
                     </div>
 
                     <div className="social-media">
@@ -47,6 +47,5 @@ export class Profile extends React.Component {
     }
 }
 
-// have to map bio filters
-
 // school/major icon should depend on their input 
+// take school from filters 
