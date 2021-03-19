@@ -32,14 +32,14 @@ export class FilterDropdown extends React.Component {
 
     render () {
         return (
-            // <StyledFilters>
-            //     {this.renderFilters(this.props.filterNames)}
-            // </StyledFilters>
             <StyledDropdown onClick={() => this.handleClick()} overflow={this.state.overflow}>
-                <span>dropdown</span>
-                <span>filter 1</span>
-                <span>filter 2</span>
+                <span>{this.props.title}</span>
+                {this.renderFilters(this.props.filterNames)}
             </StyledDropdown>
         )
     }
 }
+
+// TODO: change color when opened
+// each section has its own arr and the arrs are .concat() together 
+// how does the filter arr (true, true, false, etc.) work then - maybe i can combine the arrays in FilterContainer ?

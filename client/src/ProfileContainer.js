@@ -2,30 +2,18 @@ import React from 'react';
 import { Card } from './Card';
 import { StyledProfileCont } from './ProfileStyles';
 import { FilterContainer } from './FilterContainer';
-import {Animated} from "react-animated-css";
+//import {Animated} from "react-animated-css";
 
-// dropdown for filter sections?
-const filters = [
-    "morning", "night",
-    "McCormick", "Weinberg",
-    "north", "south",
-    "INTP", "ISTJ", "ENTP", "ESFP", "ESTJ", "ESTP", "INFP", "INTJ", "ENFJ", "INFJ", "ISFJ", "ISFP", "ISTP",
-    "West", "Midwest", "South", "Mid-Atlantic", "Northeast", "International",
-    "Questbridge",
-    "Willard",
-    "cleanliness: 5",
-    "partying: 1"
-];
+import { filters, filterArr } from './FilterData';
+//const filters = ["morning", "STEM"];
 
 export class ProfileContainer extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            filterNames: filters,
-            filters: new Array(filters.length).fill(false), // length should be at least 8 then changes bc multiple schools/dorms
-            onFilters: [],
-            // showCard: new Array(cardInfo.length).fill(true),
-            // cardInfo: [...cardInfo],
+            filterNames: filterArr, // do i just put the long array of filters here 
+            filters: new Array(filterArr.length).fill(false), // length: 23 + # of dorms + # of schools 
+            onFilters: [], // what the hell is this for 
             showCard: new Array(1).fill(true), 
             cardInfo: [],
             loading: true,
@@ -34,10 +22,14 @@ export class ProfileContainer extends React.Component {
 
     componentDidMount () {
         this.callAPI();
-        this.testAPI();
+        //this.testAPI();
         //this.state.filters.fill(false);
-        console.log(this.state.filters);
+        //console.log(this.state.filters);
         //this.state.showCard.fill(true);
+    }
+
+    componentDidUpdate () {
+        console.log(this.state.filters);
     }
 
     callAPI = async () => {
