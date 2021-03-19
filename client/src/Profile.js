@@ -15,7 +15,7 @@ export class Profile extends React.Component {
 
                     <div className="basics">
                         <span><i className="ri-settings-3-line"></i> McCormick</span> 
-                        <span><i class="ri-pencil-line"></i> {this.props.bio.major}</span>
+                        <span><i className="ri-pencil-line"></i> {this.props.bio.major}</span>
                         <span><i className="ri-star-line"></i> INFJ</span>
                         <span><i className="ri-map-pin-line"></i> {this.props.bio.location}</span>
                     </div>

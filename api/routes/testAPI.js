@@ -8,23 +8,9 @@ let cardInfo = [
     {
         name: "helene aquilla",
         img: "/pfp.jpg",
-        filters: ["morning"],
-        bio: {
-            about: lorem,
-            looking: lorem2,
-            location: "NYC"
-        }
-    },
-];
-
-router.get("/", function(req, res, next) {
-    //res.send("API is working properly");
-    res.json({
-        name: "helene aquilla",
-        img: "/pfp.jpg",
         filters: [
             "morning",
-            "both/neither",
+            "no campus preference",
             "INFJ",
             "Mid-Atlantic",
             "Questbridge",
@@ -42,7 +28,46 @@ router.get("/", function(req, res, next) {
             snap: "lechar.mai",
             phone: "917 392 1992"
         }
-    });
+    },
+    {
+        name: "maven calore",
+        img: "https://i.imgur.com/8NOcnwx.png",
+        filters: [
+            "night",
+            "south",
+            "INFJ",
+            "Mid-Atlantic",
+            "International",
+            "cleanliness: 5",
+            "partying: 3"
+        ],
+        bio: {
+            about: lorem,
+            looking: lorem2,
+            major: "psychology",
+            location: "NYC",
+        },
+        social: {
+            ig: "dklarachel",
+            snap: "lechar.mai",
+            phone: "917 392 1992"
+        }
+    }
+];
+
+router.get("/", function(req, res, next) {
+    //res.send("API is working properly");
+    const myJSON = JSON.stringify(cardInfo);
+    res.json(myJSON);
 });
+
+router.get("/test", function(req, res, next) {
+    const arr = [
+        {name: "obj 1"},
+        {name: "obj 2"}
+    ];
+    const myJSON = JSON.stringify(arr);
+    res.json(myJSON);
+})
 
 module.exports = router;

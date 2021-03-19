@@ -100,11 +100,12 @@ export const StyledProfile = styled.div`
             padding: 0.5rem 1rem;
             border-radius: 1rem;
             background: #a2d3cb;
-            margin-right: 1rem;
+            margin: 0 1rem 1rem 0;
+            display: inline-block;
         }
 
         margin: 1rem 0 0 200px;
-        padding-bottom: 2rem;
+        padding-bottom: 1rem;
         border-bottom: 1px solid #eee;
         width: calc(65vw - 200px - 4rem);
     }

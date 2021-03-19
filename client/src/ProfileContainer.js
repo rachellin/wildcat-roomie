@@ -7,44 +7,42 @@ import {Animated} from "react-animated-css";
 export class ProfileContainer extends React.Component {
     constructor (props) {
         super(props);
-        let data = JSON.parse(props.apiResponse);
-        let cardInfo = [data];
-        console.log(cardInfo);
-        //console.log(cardInfo[0].bio.about);
         this.state = {
             filterNames: ["morning", "night", "STEM"],
             filters: [false, false, false],
             onFilters: [],
             // showCard: new Array(cardInfo.length).fill(true),
             // cardInfo: [...cardInfo],
-            showCard: new Array(cardInfo.length).fill(true),
-            cardInfo: [...cardInfo],
+            showCard: new Array(1).fill(true), // temp length
+            cardInfo: [],
+            loading: true,
         }
     }
 
     componentDidMount () {
+        this.callAPI();
+        this.testAPI();
         //this.state.filters.fill(false);
         //console.log(this.state.filters);
         //this.state.showCard.fill(true);
-        // const data = JSON.parse(this.props.apiResponse);
-        // let cardInfo = [data];
-        // console.log(data);
-        // this.setState({
-        //     showCard: new Array(cardInfo.length).fill(true),
-        //     cardInfo: [...cardInfo] 
-        // });
     }
 
-    componentDidUpdate (prevState) {
-        // if (prevState.onFilters !== this.state.onFilters) {
-        //     for (let i = 0; i < cardInfo.length; i++) {
-        //         if (!this.includesFilter(this.state.onFilters, cardInfo[i].filters)) {
-        //             this.state.showCard[i] = false;
-        //         } else {
-        //             this.state.showCard[i] = true;
-        //         }
-        //     }
-        // }
+    callAPI = async () => {
+        const res = await fetch(`http://localhost:9000/testAPI`);
+        const resjson = await res.json();
+        const parsed = JSON.parse(resjson);
+        console.log(parsed);
+        this.setState({ 
+            cardInfo: [...parsed],
+            loading: false,
+            //showCard: new Array(1).fill(true),
+        });
+    }
+
+    testAPI = async () => {
+        const res = await fetch(`http://localhost:9000/testAPI/test`);
+        const resjson = await res.json();
+        //console.log(resjson);
     }
 
     addFilter (f) {
@@ -107,6 +105,7 @@ export class ProfileContainer extends React.Component {
             // } else {
             //     card = <Card name={info[i].name} img={info[i].img} filters={info[i].filters}/>
             // }
+            console.log("render");
             card = (
                 <Card 
                     key={info[i].name}
@@ -128,6 +127,8 @@ export class ProfileContainer extends React.Component {
         // let dataArr = [data];
         // console.log(dataArr);
         //let cardInfo = [data];
+        if (this.state.loading) return <h1>loading...</h1>;
+
         return (
             <>
             <FilterContainer 
@@ -137,10 +138,6 @@ export class ProfileContainer extends React.Component {
                 colors={this.state.filterColors}
             />  
             <StyledProfileCont>
-                {/* <Card name="helene aquilla" img="/pfp.jpg" filters={["morning"]}/>
-                <Card name="maven calore" img="https://i.imgur.com/8NOcnwx.png" filters={["STEM"]}/>
-                <Card name="lila bard" img="https://i.imgur.com/8d3uzkw.png" filters={["morning", "STEM"]}/>
-                <Card name="inej ghafa" img="https://i.imgur.com/qTiWjPw.png"/> */}
                 {this.renderCards(this.state.cardInfo)}
             </StyledProfileCont>
             </>
