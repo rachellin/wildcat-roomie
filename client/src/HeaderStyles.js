@@ -24,6 +24,7 @@ export const StyledFilters = styled.div`
 
         :hover {
             cursor: pointer;
+            background: #b3a2d3;
         }
     }
 `

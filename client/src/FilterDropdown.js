@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { Filter } from './Filter';
-import { StyledDropdown } from './HeaderStyles';
+import { StyledDropdown, StyledFilters } from './HeaderStyles';
+import { filterArr } from './FilterData';
 
 export class FilterDropdown extends React.Component {
     constructor (props) {
@@ -11,12 +12,21 @@ export class FilterDropdown extends React.Component {
         }
     }
 
+    getFilterIndex (filter) {
+        for (let i = 0; i < filterArr.length; i++) {
+            if (filterArr[i] === filter) return i;
+        }
+    }
+
     renderFilters (filterNames) {
         let arr = [];
-        let filter;
+        let filter, filterIndex;
         for (let i = 0; i < filterNames.length; i++) {
+            filterIndex = this.getFilterIndex(filterNames[i]);
             filter = <Filter 
-                onClick={() => this.props.onClick(i)}
+                className="filter"
+                filterIndex={filterIndex}
+                onClick={() => this.props.onClick(i)} // filterIndex or i?
                 name={filterNames[i]} 
                 color={this.props.filters[i] ? "#b3a2d3" : "#dad2ea"}/>
             arr.push(filter);
@@ -34,7 +44,9 @@ export class FilterDropdown extends React.Component {
         return (
             <StyledDropdown onClick={() => this.handleClick()} overflow={this.state.overflow}>
                 <span>{this.props.title}</span>
-                {this.renderFilters(this.props.filterNames)}
+                <StyledFilters>
+                    {this.renderFilters(this.props.filterNames)}
+                </StyledFilters>
             </StyledDropdown>
         )
     }

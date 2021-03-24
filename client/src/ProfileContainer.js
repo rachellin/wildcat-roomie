@@ -128,6 +128,22 @@ export class ProfileContainer extends React.Component {
         return(arr);
     }
 
+    getFilterIndex (filterIndex, dropdownIndex) {
+        let keys = Object.keys(filters);
+        let filter = filters[keys[dropdownIndex]][filterIndex];
+        //console.log(filter)
+        for (let i = 0; i < filterArr.length; i++) {
+          if (filterArr[i] == filter) return i;
+        }
+        return null;
+    }
+
+    filterClick (filterIndex, dropdownIndex) {
+        let i = this.getFilterIndex(filterIndex, dropdownIndex);
+        console.log(i);
+        this.handleClick(this.state.filters[i], this.state.filterNames[i], i, this.state.cardInfo);
+    }
+
     render () {
         // const data = JSON.parse(this.props.apiResponse);
         // let dataArr = [data];
@@ -138,7 +154,8 @@ export class ProfileContainer extends React.Component {
         return (
             <>
             <FilterContainer 
-                onClick={(i) => this.handleClick(this.state.filters[i], this.state.filterNames[i], i, this.state.cardInfo)}
+                //onClick={(i) => this.handleClick(this.state.filters[i], this.state.filterNames[i], i, this.state.cardInfo)}
+                onClick={(filterIndex, dropdownIndex) => this.filterClick(filterIndex, dropdownIndex)}
                 filterNames={this.state.filterNames} 
                 filters={this.state.filters} 
                 colors={this.state.filterColors}

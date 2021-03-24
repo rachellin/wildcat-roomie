@@ -22,21 +22,32 @@ export class FilterContainer extends React.Component {
     //     return arr;
     // }
 
+    getFilterIndex (filter) {
+        for (let i = 0; i < filterArr; i++) {
+            if (filterArr[i] == filter) return i;
+        }
+    }
+
     renderDropdowns () {
         let arr = [];
         let dropdown;
         for (let i = 0; i < Object.values(filters).length; i++) {
+            //console.log("filterIndex: " + this.props.filterIndex);
             dropdown = <FilterDropdown
                             title={Object.keys(filters)[i]}
-                            filterNames={Object.values(filters)[i]}
+                            filterNames={Object.values(filters)[i]} // ??? 
                             filters={this.props.filters}
-                            onClick={(i) => this.props.onClick(i)}
+                            //onClick={() => this.handleClick()}
+                            onClick={(filterIndex) => this.props.onClick(filterIndex, i)} // i = dropDown index
                         />
             arr.push(dropdown);
         }
         return arr;
     }
     // make it so that for (most)some of them, user can only choose one filter from dropdown
+    // once you click on one of the filters of the dropdown, the other filters are "unclicked"
+    // the clicking doesn't work properly 
+    // get index of filter in the filterArr
 
     render () {
         return (
