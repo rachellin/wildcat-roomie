@@ -18,6 +18,12 @@ export class FilterDropdown extends React.Component {
         }
     }
 
+    handleColor (filterName) {
+        let index = this.getFilterIndex(filterName);
+        console.log(index)
+        return (this.props.filters[index] ? "#b3a2d3" : "#dad2ea");
+    }
+
     renderFilters (filterNames) {
         let arr = [];
         let filter, filterIndex;
@@ -26,9 +32,9 @@ export class FilterDropdown extends React.Component {
             filter = <Filter 
                 className="filter"
                 filterIndex={filterIndex}
-                onClick={() => this.props.onClick(i)} // filterIndex or i?
+                onClick={() => this.props.onClick(i)} 
                 name={filterNames[i]} 
-                color={this.props.filters[i] ? "#b3a2d3" : "#dad2ea"}/>
+                color={this.props.filters[filterIndex] ? "#b3a2d3" : "#dad2ea"}/>
             arr.push(filter);
         }
         return arr;

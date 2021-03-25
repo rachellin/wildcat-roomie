@@ -131,7 +131,6 @@ export class ProfileContainer extends React.Component {
     getFilterIndex (filterIndex, dropdownIndex) {
         let keys = Object.keys(filters);
         let filter = filters[keys[dropdownIndex]][filterIndex];
-        //console.log(filter)
         for (let i = 0; i < filterArr.length; i++) {
           if (filterArr[i] == filter) return i;
         }
@@ -140,7 +139,6 @@ export class ProfileContainer extends React.Component {
 
     filterClick (filterIndex, dropdownIndex) {
         let i = this.getFilterIndex(filterIndex, dropdownIndex);
-        console.log(i);
         this.handleClick(this.state.filters[i], this.state.filterNames[i], i, this.state.cardInfo);
     }
 

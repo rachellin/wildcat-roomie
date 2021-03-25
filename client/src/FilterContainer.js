@@ -32,12 +32,11 @@ export class FilterContainer extends React.Component {
         let arr = [];
         let dropdown;
         for (let i = 0; i < Object.values(filters).length; i++) {
-            //console.log("filterIndex: " + this.props.filterIndex);
             dropdown = <FilterDropdown
                             title={Object.keys(filters)[i]}
                             filterNames={Object.values(filters)[i]} // ??? 
                             filters={this.props.filters}
-                            //onClick={() => this.handleClick()}
+                            dropdownIndex={i}
                             onClick={(filterIndex) => this.props.onClick(filterIndex, i)} // i = dropDown index
                         />
             arr.push(dropdown);
