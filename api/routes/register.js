@@ -21,11 +21,13 @@ router.post('/', (req, res) => {
                 const exists = email;
                 if (exists) {
                     res.status(500).json({ error: "account with this email already exists" }); // check that these error status are correct
-                    console.log("error registering");
+                    console.log("error registering - exists");
+                    return email;
                 } else {
                     getHashedPassword(password, req); // hash password and store data in db
                     res.status(200).json({ message: "welcome!!" });
                     console.log("registered");
+                    return email;
                     //res.redirect('/login');
                 }
             });

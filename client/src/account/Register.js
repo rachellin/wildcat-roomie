@@ -9,7 +9,8 @@ export class Register extends React.Component {
           email: "",
           password: "",
           confirmPassword: "",
-          error: ""
+          error: "",
+          message: ""
         };
     }
 
@@ -38,19 +39,25 @@ export class Register extends React.Component {
           }
         })
         .then(res => {
+          console.log(res.status)
           if (res.status === 200) {
             console.log("registered")
-            this.setState({ error: res.message });
+            return res.json();
             //this.props.history.push('/');
           } else {
-            const error = new Error(res.error);
-            this.setState({ error: res.error });
-            throw error;
+            console.log("error")
+            return res.json();
           }
         })
+        .then(data => {
+          console.log("here")
+          console.log(data);
+          if (data.error) this.setState({ message: data.error });
+          else if (data.message) this.setState({ message: data.message });
+        })
         .catch(err => {
-          console.error(err);
-          //this.setState({ error: err.json() });
+          console.log("catch")
+          console.log(err);
         });
       }
 
@@ -100,8 +107,9 @@ export class Register extends React.Component {
                         required
                     />
                     <input type="submit" value="submit"/>
-                    {this.state.error}
                 </form>
+                {this.state.error}
+                {this.state.message}
             </div>
         );
     }
