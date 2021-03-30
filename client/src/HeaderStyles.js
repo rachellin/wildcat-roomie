@@ -37,6 +37,8 @@ export const StyledDropdown = styled.div`
     display: inline-block;
     height: 2rem;
     overflow: ${props => props.overflow};
+    text-align: center;
+    width: 7.5rem;
 
     :hover {
         cursor: pointer;

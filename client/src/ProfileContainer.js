@@ -33,7 +33,7 @@ export class ProfileContainer extends React.Component {
     }
 
     callAPI = async () => {
-        const res = await fetch(`http://localhost:9000/testAPI`);
+        const res = await fetch(`http://localhost:9000/api/profiles`);
         const resjson = await res.json();
         const parsed = JSON.parse(resjson);
         console.log(parsed);

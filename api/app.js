@@ -3,11 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var testAPIRouter = require('./routes/testAPI');
+var profilesRouter = require('./routes/profiles');
+var registerRouter = require('./routes/register');
+var loginRouter = require('./routes/login');
+var logoutRouter = require('./routes/logout');
 
 var app = express();
 
@@ -21,10 +25,39 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  key: 'user_sid',
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      maxAge: 30 * 24 * 60 * 60 * 1000
+  }
+}));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/testAPI', testAPIRouter);
+// my own methods and middlewares
+var tokenChecker = require('./methods/middlewares').tokenChecker;
+console.log(tokenChecker)
+var getHashedPassword = require('./methods/methods').getHashedPassword;
+var user = require('./methods/methods').users;
+
+// verify token: check if there is valid token saved to browser cookies (server.js)
+app.get('/checkToken', tokenChecker, function(req, res) {
+  res.sendStatus(200);
+});
+
+//app.use('/', indexRouter);
+//app.use('/users', usersRouter);
+app.use('/api/profiles', profilesRouter);
+app.all('/', tokenChecker, indexRouter);
+app.use('/api/register', registerRouter); // temp removed tokenChoker
+app.use('/api/login', tokenChecker, loginRouter);
+//app.use('/dashboard', dashboardRouter);
+app.use('/api/logout', logoutRouter);
+
+// TEST DB CONNECTION
+const User = require('./db/user');  
+app.get('/psql', User.exists);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

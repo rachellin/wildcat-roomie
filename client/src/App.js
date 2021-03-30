@@ -1,7 +1,9 @@
 import logo from './logo.svg';
-import './App.css';
-import './animations.css';
+import './css/App.css';
+import './css/animations.css';
 import Container from './Container'; 
+import Entry from './Entry';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import React from 'react';
 
 // import React, { Component } from 'react';
@@ -18,38 +20,22 @@ import React from 'react';
 //   );
 // }
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { apiResponse: {} };
-}
-
-  //callAPI() {
-    // fetch("http://localhost:9000/testAPI")
-    //   //.then(res => res.text())
-    //   .then(res => await res.json())
-    //   .then(res => this.setState({ apiResponse: res }));
-  //}
-
-  callAPI = async () => {
-    const res = await fetch(`http://localhost:9000/testAPI`);
-    const resjson = await res.json();
-    this.setState({ apiResponse: resjson });
-  }
-
-  componentWillMount() {
-    this.callAPI();
-  }
-
+export default class App extends React.Component {
   render () {
-    const data = JSON.stringify(this.state.apiResponse);
-
     return (
-      <div className="App">
-        <Container apiResponse={data}/>
-     </div>
-    )
+      <Router>
+        <div>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/entry">Secret</Link></li>
+          </ul>
+          <Switch>
+            <Route path="/" exact component={Container} />
+            <Route path="/entry" component={Entry} />
+          </Switch>
+        </div>
+      </Router>
+    );
   }
 }
 
-export default App;

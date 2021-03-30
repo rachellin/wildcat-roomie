@@ -1,12 +1,28 @@
 import styled from 'styled-components';
-import "./animations.css";
+//import "./animations.css";
 
 // export const StyledProfile = styled.div`
 // `
 
+// should this be moved to headerstyles
 export const StyledContainer = styled.div`
     width: 65vw;
     margin: auto;
+    //text-align: center;
+
+    .header {
+        display: block;
+        margin-bottom: 1.5rem;
+
+        button {
+            margin-right: 1.5rem;
+            background: transparent;
+        }
+    }
+
+    .authenticate {
+        display: flex;
+    }
 `
 
 export const StyledProfileCont = styled.div`

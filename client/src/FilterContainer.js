@@ -50,13 +50,9 @@ export class FilterContainer extends React.Component {
 
     render () {
         return (
-            <>
-            {/* <FilterDropdown filterNames={Object.values(filters)[0]} filters={this.props.filters}/> */}
-            {this.renderDropdowns()}
-            {/* <StyledFilters>
-                {this.renderFilters(this.props.filterNames)}
-            </StyledFilters> */}
-            </>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+                {this.renderDropdowns()}
+            </div>
         )
     }
 }
