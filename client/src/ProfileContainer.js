@@ -237,7 +237,7 @@ let cardInfoLocal = [
 one or the other:
 - sleep: morning person, night person, both/neither
 - campus preference: north, south, both/neither
-- dorm preference: [dorm], none
+- dorm preference: [dorm], none (or just "none"  in list of dorms)
 - personality 
 - location (region)
 

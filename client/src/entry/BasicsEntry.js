@@ -1,6 +1,5 @@
 import React from 'react';
 import 'remixicon/fonts/remixicon.css'
-//import DropdownButton from 'react-bootstrap/DropdownButton';
 
 export class BasicsEntry extends React.Component {
     render() {

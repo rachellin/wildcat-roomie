@@ -55,4 +55,27 @@ export const EntryForm = styled.form`
     .bio {
         //display: flex;
     }
+
+    .group{
+        border: 1px solid #eee;
+        width: 50%;
+        padding: 0.5rem;
+
+        label, input {
+            display: inline-block;
+            margin: 0;
+        }
+
+        .option {
+            display: block;
+        }
+
+        :hover {
+            cursor: pointer;
+        }
+    }
+`
+export const StyledFilterEntry = styled.div`
+    display: flex;
+    flex-wrap: wrap;
 `

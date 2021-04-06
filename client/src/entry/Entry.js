@@ -19,25 +19,8 @@ export default class Entry extends React.Component {
     constructor() {
       super();
       this.state = {
-        message: 'Loading...',
-        status: 0,
-        //loggedIn: this.props.loggedIn,
         currentTab: 0
       }
-    }
-
-    componentDidMount() {
-      this.callAPI();
-    }
-
-    callAPI = async () => {
-        const res = await fetch(`http://localhost:9000/api/login`);
-        const text = await res.text();
-        const status = await res.status;
-        this.setState({ 
-            message: text,
-            status: status
-        });
     }
 
     renderTab(i) {
@@ -75,11 +58,11 @@ export default class Entry extends React.Component {
             <button onClick={(e) => this.changeTab(0, e)}>basics</button>
             <button onClick={(e) => this.changeTab(1, e)}>filters</button>
             <button onClick={(e) => this.changeTab(2, e)}>bio</button>
-            <button>save</button>
           </div>
 
           <EntryForm>
             {this.renderTab(this.state.currentTab)}
+            <input type="submit" value="save"/>
           </EntryForm>
 
         </EntryContainer>
@@ -87,6 +70,7 @@ export default class Entry extends React.Component {
     }
   }
 
+  // when save is clicked, the values are saved in the state. when the submit button is clicked, db is updated 
 
 
 
