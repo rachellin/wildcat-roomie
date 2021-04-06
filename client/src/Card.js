@@ -1,6 +1,6 @@
 import React from 'react';
 //import FlipMove from 'react-flip-move';
-import { StyledCard } from './ProfileStyles';
+import { StyledCard } from './style/ProfileStyles';
 import { Profile } from './Profile';
 
 export class Card extends React.Component {

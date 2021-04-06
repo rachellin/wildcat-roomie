@@ -15,10 +15,12 @@ module.exports = {
         const token = req.cookies.token;
         if (!token) {
             res.status(401).send('Unauthorized: No token provided');
+            console.log("no token")
         } else {
             jwt.verify(token, secret, function(err, decoded) {
             if (err) {
                 res.status(401).send('Unauthorized: Invalid token');
+                console.log("invalid token")
             } else {
                 req.email = decoded.email;
                 next();

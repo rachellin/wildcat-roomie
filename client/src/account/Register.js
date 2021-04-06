@@ -9,8 +9,8 @@ export class Register extends React.Component {
           email: "",
           password: "",
           confirmPassword: "",
-          error: "",
-          message: ""
+          message: "",
+          registered: false
         };
     }
 
@@ -41,29 +41,35 @@ export class Register extends React.Component {
         .then(res => {
           console.log(res.status)
           if (res.status === 200) {
-            console.log("registered")
+            console.log("registered");
             return res.json();
-            //this.props.history.push('/');
           } else {
             console.log("error")
             return res.json();
           }
         })
         .then(data => {
-          console.log("here")
-          console.log(data);
+          console.log("display message")
           if (data.error) this.setState({ message: data.error });
-          else if (data.message) this.setState({ message: data.message });
+          else if (data.message) {
+            this.setState({
+              message: data.message,
+              registered: true
+            });
+            console.log("display msg")
+            this.props.history.push("/entry");
+            console.log("pushed")
+          }
         })
         .catch(err => {
-          console.log("catch")
-          console.log(err);
+          console.error(err);
+          this.setState({ message: "an unknown error has occured" });
         });
       }
 
     render () {
         return (
-            <div>
+            <div loggedIn={this.state.registered}>
                 <form onSubmit={this.onSubmit}>
                     <h1>Register</h1>
                     <input 

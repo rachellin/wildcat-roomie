@@ -1,6 +1,7 @@
 var express = require('express');
 const User = require('../db/user');
 var router = express.Router();
+const jwt = require('jsonwebtoken');
 
 var getHashedPassword = require('../methods/methods').getHashedPassword;
 
@@ -25,8 +26,16 @@ router.post('/', (req, res) => {
                     return email;
                 } else {
                     getHashedPassword(password, req); // hash password and store data in db
-                    res.status(200).json({ message: "welcome!!" });
+                    //res.status(200).json({ message: "welcome!!" });
                     console.log("registered");
+                    // Issue token
+                    const secret = 'mysecretsshhh';
+                    const token = jwt.sign({email}, secret, {
+                        expiresIn: '1h'
+                    });
+                    res.cookie('token', token, { httpOnly: true })
+                        .status(200).json({ message: "welcome!" });
+                          
                     return email;
                     //res.redirect('/login');
                 }

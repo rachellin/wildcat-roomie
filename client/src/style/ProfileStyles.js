@@ -23,6 +23,7 @@ export const StyledContainer = styled.div`
     .authenticate {
         display: flex;
     }
+
 `
 
 export const StyledProfileCont = styled.div`

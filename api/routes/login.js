@@ -1,6 +1,7 @@
 var express = require('express');
 const User = require('../db/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 var router = express.Router();
 
 // router.get('/', (req, res) => {
@@ -20,17 +21,19 @@ async function checkPassword (email, password, req, res) {
           //req.session.user = req.body; // track user session
 
           // Issue token
-          const payload = { email };
-          const token = jwt.sign(payload, secret, {
+          //const payload = email;
+          const secret = 'mysecretsshhh';
+          const token = jwt.sign({email}, secret, {
             expiresIn: '1h'
           });
           res.cookie('token', token, { httpOnly: true })
             .sendStatus(200);
-
+          console.log("token issued")
 
           //res.redirect('/testAPI'); // redirect to dashboard
         } else if (result == false) {
             res.status(401).json({ error: "invalid email or password" });
+            console.log("invalid login");
         //   res.render('login', {
         //       message: 'Invalid username or password',
         //       messageClass: 'alert-danger'
@@ -38,7 +41,8 @@ async function checkPassword (email, password, req, res) {
         }
       });
     } catch (error) {
-        return error;
+        console.error(error);
+        throw error;
     }
 }
 async function login (email, password, req, res) {
@@ -51,7 +55,9 @@ async function login (email, password, req, res) {
                 //     messageClass: 'alert-danger'
                 // });
             } else {
+                console.log("gonna check pw")
                 checkPassword(email, password, req, res);
+                console.log("checked password")
             }
     } catch (error) {
         return error;

@@ -37,13 +37,12 @@ app.use(session({
 
 // my own methods and middlewares
 var tokenChecker = require('./methods/middlewares').tokenChecker;
-console.log(tokenChecker)
 var getHashedPassword = require('./methods/methods').getHashedPassword;
 var user = require('./methods/methods').users;
 
 // verify token: check if there is valid token saved to browser cookies (server.js)
-app.get('/checkToken', tokenChecker, function(req, res) {
-  res.sendStatus(200);
+app.get('/api/checkToken', tokenChecker, function(req, res) {
+  res.status(200).send(user);
 });
 
 //app.use('/', indexRouter);
@@ -51,7 +50,7 @@ app.get('/checkToken', tokenChecker, function(req, res) {
 app.use('/api/profiles', profilesRouter);
 app.all('/', tokenChecker, indexRouter);
 app.use('/api/register', registerRouter); // temp removed tokenChoker
-app.use('/api/login', tokenChecker, loginRouter);
+app.use('/api/login', loginRouter);
 //app.use('/dashboard', dashboardRouter);
 app.use('/api/logout', logoutRouter);
 

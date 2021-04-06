@@ -7,6 +7,7 @@ let lorem2 = lorem + lorem;
 let cardInfo = [
     {
         name: "helene aquilla",
+        // pronouns
         img: "/pfp.jpg",
         filters: [
             "morning",

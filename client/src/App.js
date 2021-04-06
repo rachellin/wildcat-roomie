@@ -1,10 +1,13 @@
-import logo from './logo.svg';
 import './css/App.css';
 import './css/animations.css';
-import Container from './Container'; 
-import Entry from './Entry';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+
+import { BrowserRouter as Router, Link, Route, Switch, withRouter } from 'react-router-dom';
 import React from 'react';
+import withAuth from './account/withAuth';
+
+import Container from './Container'; 
+import Entry from './entry/Entry';
+import Authenticate from './account/Authenticate';
 
 // import React, { Component } from 'react';
 // import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -20,10 +23,10 @@ import React from 'react';
 //   );
 // }
 
-export default class App extends React.Component {
+class App extends React.Component {
   render () {
     return (
-      <Router>
+      //<Router>
         <div>
           <ul>
             <li><Link to="/">Home</Link></li>
@@ -31,11 +34,15 @@ export default class App extends React.Component {
           </ul>
           <Switch>
             <Route path="/" exact component={Container} />
-            <Route path="/entry" component={Entry} />
+            {/* <Route path="/entry" component={withAuth(Entry)} /> */}
+            <Route path="/entry" component={Entry}/>
+            <Route path="/auth" component={Authenticate} />
           </Switch>
         </div>
-      </Router>
+      //</Router>
     );
   }
 }
+
+export default withRouter(App);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProfileContainer } from './ProfileContainer';
-import { StyledContainer } from './ProfileStyles';
+import { StyledContainer } from './style/ProfileStyles';
 import { FilterContainer } from './FilterContainer';
 
 function Container (props) {

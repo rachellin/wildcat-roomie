@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from './Card';
-import { StyledProfileCont } from './ProfileStyles';
+import { StyledProfileCont } from './style/ProfileStyles';
 import { FilterContainer } from './FilterContainer';
 //import {Animated} from "react-animated-css";
 

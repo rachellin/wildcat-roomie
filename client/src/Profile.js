@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledProfile, Overlay } from './ProfileStyles';
+import { StyledProfile, Overlay } from './style/ProfileStyles';
 import 'remixicon/fonts/remixicon.css';
 
 export class Profile extends React.Component {
