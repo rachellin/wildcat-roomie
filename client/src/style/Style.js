@@ -40,6 +40,18 @@ export const EntryForm = styled.form`
             display: block;
             width: 100%;
         }
+
+    }
+
+    .section-2 {
+        display: inline-block;
+        .form-group {
+            display: block;
+        }
+
+        label, input {
+            width: 50%;
+        }
     }
 
     textarea {
