@@ -45,6 +45,7 @@ input {
   margin: 1rem;
   padding: 1rem;
   border-radius: 2rem;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 label {
@@ -61,5 +62,7 @@ textarea {
   border: none;
   outline: none;
   font-size: 15px;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 1rem;
+  border-radius: 2rem;
 }

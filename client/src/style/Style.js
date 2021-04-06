@@ -43,24 +43,16 @@ export const EntryForm = styled.form`
 
     }
 
-    .section-2 {
-        display: inline-block;
-        .form-group {
-            display: block;
-        }
-
-        label, input {
-            width: 50%;
-        }
-    }
-
     textarea {
-        width: 50%;
+        width: 100%;
         margin: 1rem;
-        height: 5rem;
+        height: 200px;
+        max-height: 200px;
+        overflow-y: scroll;
+        resize: none;
     }
 
     .bio {
-        display: flex;
+        //display: flex;
     }
 `

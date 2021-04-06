@@ -75,6 +75,7 @@ export default class Entry extends React.Component {
             <button onClick={(e) => this.changeTab(0, e)}>basics</button>
             <button onClick={(e) => this.changeTab(1, e)}>filters</button>
             <button onClick={(e) => this.changeTab(2, e)}>bio</button>
+            <button>save</button>
           </div>
 
           <EntryForm>
