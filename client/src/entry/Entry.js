@@ -20,17 +20,15 @@ export default class Entry extends React.Component {
       super();
       this.state = {
         currentTab: 0,
-        looking: "",
-        about: {
-          bio: "",
-          looking: ""
-        }
+        about: {},
+        basics: {},
+        filters: []
       }
     }
 
     renderTab(i) {
       if (i == 0) {
-        return <BasicsEntry/>;
+        return <BasicsEntry updateData={this.updateData}/>;
       } else if (i == 1) {
         return <FilterEntry/>;
       } else {
@@ -56,7 +54,6 @@ export default class Entry extends React.Component {
 
     handleSubmit = (e) => {
       e.preventDefault();
-      console.log(this.state.bio)
     }
     
     render() {
