@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // export const StyledProfile = styled.div`
 // `
 
-export const EntryContainer = styled.form`
+export const EntryContainer = styled.div`
 
     .nav {
         position: fixed;
@@ -57,7 +57,6 @@ export const EntryForm = styled.form`
     }
 
     .group{
-        border: 1px solid #eee;
         width: 50%;
         padding: 0.5rem;
 

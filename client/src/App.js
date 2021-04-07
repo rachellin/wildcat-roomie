@@ -7,6 +7,7 @@ import withAuth from './account/withAuth';
 
 import Container from './Container'; 
 import Entry from './entry/Entry';
+import {Login } from './account/Login';
 import Authenticate from './account/Authenticate';
 
 // import React, { Component } from 'react';

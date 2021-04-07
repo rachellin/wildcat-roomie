@@ -11,7 +11,7 @@ export class FilterEntry extends React.Component {
         for (let i = 0; i < filters[category].length; i++) {
             option = (
                 <div class="option">
-                    <input type={type} id={filters[category][i]} name={category} value={filters[category][i]}/>
+                    <input type={type} id={filters[category][i]} name={category} value={filters[category][i]} required/>
                     <label for={filters[category][i]}>{filters[category][i]}</label>
                 </div>
             );
@@ -19,7 +19,7 @@ export class FilterEntry extends React.Component {
         }
         return (
             <div className="group">   
-                <b>{category}</b>
+                <b className="required">{category}</b>
                 {arr}
             </div>
         )

@@ -20,11 +20,9 @@ export default class Entry extends React.Component {
       super();
       this.state = {
         currentTab: 0,
+        about: "",
         looking: "",
-        about: {
-          bio: "",
-          looking: ""
-        }
+        test: ""
       }
     }
 
@@ -55,8 +53,9 @@ export default class Entry extends React.Component {
     }
 
     handleSubmit = (e) => {
+      alert("submitted")
       e.preventDefault();
-      console.log(this.state.bio)
+      console.log(this.state.about)
     }
     
     render() {
