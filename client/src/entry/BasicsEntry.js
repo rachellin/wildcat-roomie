@@ -6,10 +6,10 @@ export class BasicsEntry extends React.Component {
         super(props);
     }
 
-    updateData(target, value) {
+    updateData(category, target, value) {
         this.setState({ [target]: value }, () => {
             let data = this.state;
-            this.props.updateData("basics", data);
+            this.props.updateData(category, data);
         });
     }
 
@@ -21,14 +21,16 @@ export class BasicsEntry extends React.Component {
                         <label for="first-name" className="required">first name</label>
                         <input 
                             type="name" name="first-name" placeholder="Jane" 
-                            onChange={e => this.updateData("firstName", e.target.value)}
+                            onChange={e => this.updateData("basics", "firstName", e.target.value)}
+                            value={this.props.basics.firstName}
                             required/>
                     </div>
                     <div class="form-group">
                         <label for="last-name" className="required">last name</label>
                         <input 
                             type="name" name="last-name" placeholder="Doe" 
-                            onChange={e => this.updateData("lastName", e.target.value)}
+                            onChange={e => this.updateData("basics", "lastName", e.target.value)}
+                            value={this.props.basics.lastName}
                             required/>
                     </div>
                 </div>
@@ -38,14 +40,16 @@ export class BasicsEntry extends React.Component {
                         <label for="pronouns" className="required">pronouns</label>
                         <input 
                             type="text" name="pronouns" placeholder="she/her" 
-                            onChange={e => this.updateData("pronouns", e.target.value)}
+                            onChange={e => this.updateData("basics", "pronouns", e.target.value)}
+                            value={this.props.basics.pronouns}
                             required/>
                     </div>
                     <div class="form-group">
-                        <label for="mbti">personality</label>
+                        <label for="mbti">MBTI</label>
                         <input 
                             type="text" name="mbti" placeholder="INFJ"
-                            onChange={e => this.updateData("mbti", e.target.value)}/>
+                            onChange={e => this.updateData("basics", "mbti", e.target.value)}
+                            value={this.props.basics.mbti}/>
                     </div>
               </div>
 
@@ -54,13 +58,14 @@ export class BasicsEntry extends React.Component {
                         <label for="location" className="required">location</label>
                         <input 
                             type="text" name="location" placeholder="NYC"
-                            onChange={e => this.updateData("location", e.target.value)}/>
+                            onChange={e => this.updateData("basics", "location", e.target.value)}/>
                     </div>
                     <div class="form-group">
                         <label for="major" className="required">major</label>
                         <input 
                             type="text" name="major" placeholder="computer science"
-                            onChange={e => this.updateData("major", e.target.value)}/>
+                            onChange={e => this.updateData("basics", "major", e.target.value)}
+                            value={this.props.basics.major}/>
                     </div>
 
                 </div>
@@ -70,19 +75,22 @@ export class BasicsEntry extends React.Component {
                     <label for="phone">phone</label>
                     <input 
                         type="text" name="phone" placeholder="phone number"
-                        onChange={e => this.updateData("phone", e.target.value)}/>
+                        onChange={e => this.updateData("social", "phone", e.target.value)}
+                        value={this.props.social.phone}/>
                 </div>
                 <div class="form-group">
                     <label for="instagram">instagram</label>
                     <input 
                         type="text" name="instagram" placeholder="username only, no @"
-                        onChange={e => this.updateData("instagram", e.target.value)}/>
+                        onChange={e => this.updateData("social", "instagram", e.target.value)}
+                        value={this.props.social.instagram}/>
                 </div>
                 <div class="form-group">
                     <label for="snapchat">snapchat</label>
                     <input 
                         type="text" name="snapchat" placeholder="username only, no @"
-                        onChange={e => this.updateData("snapchat", e.target.value)}/>
+                        onChange={e => this.updateData("social", "snapchat", e.target.value)}
+                        value={this.props.social.snapchat}/>
                 </div>
               </div>
             </>

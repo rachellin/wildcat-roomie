@@ -25,11 +25,13 @@ export class BioEntry extends React.Component {
                     name="about" 
                     placeholder="write about yourself..." 
                     onChange={e => this.updateData("bio", e.target.value)} 
+                    value={this.props.about.bio}
                     required/>
                 <textarea 
                     name="looking-for" 
                     placeholder="what are you looking for in a roommate?" 
                     onChange={e => this.updateData("looking", e.target.value)} 
+                    value={this.props.about.looking}
                     required/> 
             </div>
         )

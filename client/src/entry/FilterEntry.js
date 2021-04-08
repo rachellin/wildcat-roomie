@@ -14,11 +14,23 @@ export class FilterEntry extends React.Component {
         }
     }
 
+    /*
+    let data = this.state;
+                let filterArr = [].concat.apply([], Object.values(data));
+                this.props.updateData("filters", filterArr);
+                */
+
     updateData(type, target, value) {
         if (type == "radio") {
-            this.setState({ [target]: value });
+            this.setState({ [target]: value }, () => {
+                let data = this.state;
+                let filterArr = [].concat.apply([], Object.values(data));
+                this.props.updateData("filters", filterArr);
+            });
         } else if (type == "checkbox") {
-            let arrCopy = this.state[target];
+            let arrCopy = this.state[target].slice(); // do i need them in individual arrays?
+            // let filterArr = [].concat.apply([], Object.values(this.props.filters)); 
+            // let arrCopy = filterArr.slice();
             if (!arrCopy.includes(value)) {
                 arrCopy.push(value);
             } else {
@@ -26,9 +38,21 @@ export class FilterEntry extends React.Component {
                     return val != value;
                 });
             }
-            this.setState({ [target]: arrCopy });
+            this.setState({ [target]: arrCopy }, () => {
+                let data = this.state;
+                let filterArr = [].concat.apply([], Object.values(data));
+                this.props.updateData("filters", filterArr);
+            });
         }
     }
+
+    isChecked(val) {
+        let filterArr = [].concat.apply([], Object.values(this.props.filters));
+        console.log(filterArr);
+        if (filterArr.includes(val)) return true;
+        return false;
+    }
+    // after clicking diff tab and returning, when you select item in any group, the prev gropu clears?
 
     renderGroup(category, type) {
         let arr = [];

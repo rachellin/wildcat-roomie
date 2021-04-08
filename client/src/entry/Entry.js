@@ -22,17 +22,18 @@ export default class Entry extends React.Component {
         currentTab: 0,
         about: {},
         basics: {},
+        social: {},
         filters: []
       }
     }
 
     renderTab(i) {
       if (i == 0) {
-        return <BasicsEntry updateData={this.updateData}/>;
+        return <BasicsEntry basics={this.state.basics} social={this.state.social} updateData={this.updateData}/>;
       } else if (i == 1) {
-        return <FilterEntry/>;
+        return <FilterEntry filters={this.state.filters} updateData={this.updateData}/>;
       } else {
-        return <BioEntry updateData={this.updateData}/>;
+        return <BioEntry about={this.state.about} updateData={this.updateData}/>;
       }
     }
 
@@ -76,6 +77,7 @@ export default class Entry extends React.Component {
             <button onClick={(e) => this.changeTab(0, e)}>basics</button>
             <button onClick={(e) => this.changeTab(1, e)}>filters</button>
             <button onClick={(e) => this.changeTab(2, e)}>bio</button>
+            <button>submit</button>
           </div>
 
           <EntryForm onSubmit={this.handleSubmit}>
