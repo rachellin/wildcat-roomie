@@ -13,6 +13,9 @@ enter info
 submit 
 call api to insert data into database if user not present
 but user account????
+
+click save --> save to db
+post --> post to app
 */
 
 export default class Entry extends React.Component {
@@ -55,6 +58,7 @@ export default class Entry extends React.Component {
 
     handleSubmit = (e) => {
       e.preventDefault();
+      console.log(this.state);
     }
     
     render() {

@@ -4,11 +4,18 @@ import 'remixicon/fonts/remixicon.css'
 export class BasicsEntry extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            basics: {},
+            social: {}
+        }
     }
 
     updateData(category, target, value) {
-        this.setState({ [target]: value }, () => {
-            let data = this.state;
+        let copy = this.state[category];
+        copy[target] = value;
+        this.setState({ [category]: copy }, () => {
+            let data = this.state[category];
+            console.log(data)
             this.props.updateData(category, data);
         });
     }
