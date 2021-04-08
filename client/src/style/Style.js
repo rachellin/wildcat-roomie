@@ -4,6 +4,12 @@ import styled from 'styled-components';
 // `
 
 export const EntryContainer = styled.div`
+    .enter-email {
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
     .nav {
         position: fixed;

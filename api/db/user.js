@@ -18,7 +18,9 @@ const User = {
         const values = Object.values(data);
         console.log(values);
         const readAllQuery = 
-        'INSERT INTO user_account (first_name, last_name, email, password) VALUES ($1, $2, $3, $4) RETURNING *';
+        `INSERT INTO user_account (email, last_login) 
+        VALUES ($1, NOW()) 
+        RETURNING *`;
         const { rows } = await database.insert(readAllQuery, values);
         //console.log(rows);
         //return res.send(rows);
@@ -64,9 +66,10 @@ const User = {
     try {
       const values = Object.values(data);
       console.log(values);
+      //find user id where 
       const readAllQuery = 
-      `INSERT INTO user_profile (first_name, last_name, email, basics, social, filters, bio) 
-      VALUES ($1, $2, $3, $4) 
+      `INSERT INTO user_profile (${userid}, about, basics, filters, social) 
+      VALUES ($1, $2, $3, $4, $5) 
       RETURNING *`;
       const { rows } = await database.insert(readAllQuery, values);
       //console.log(rows);

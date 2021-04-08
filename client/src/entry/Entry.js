@@ -23,11 +23,69 @@ export default class Entry extends React.Component {
       super();
       this.state = {
         currentTab: 0,
+        emailChecked: false, // for entering email to check but also creating new 
+        emailMsg: "",
+        email: "",
         about: {},
         basics: {},
         social: {},
         filters: []
       }
+    }
+
+    checkEmail = (e) => {
+      e.preventDefault();
+      const data = {};
+      data.email = this.state.email;
+
+      fetch('http://localhost:9000/api/profiles/addUser', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+      })
+      .then(res => {
+        console.log(res.status)
+        if (res.status === 200) {
+          console.log("user added");
+          return res.json();
+        } else {
+          console.log("error")
+          return res.json();
+        }
+      })
+      .then(data => {
+        console.log("display message")
+        if (data.error) this.setState({ emailMsg: data.error });
+        else if (data.message) {
+          this.setState({
+            emailMsg: data.message,
+            emailChecked: true
+          });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ emailMsg: "an unknown error has occured" });
+      });
+
+      // api to check that email does not exist 
+      // const exists = false;
+      // if (!exists) {
+      //   this.setState({ emailChecked: true })
+      // } else {
+      //   this.setState({ emailMsg: "This email is already associated with a profile. [Please choose to edit entry instead.]" });
+      // }
+      // get user id and save in state 
+
+      // EDITING ENTRIES
+      // const dbemail = "rachlin232@gmail.com";
+      // if (this.state.email == dbemail) {
+      //   this.setState({ emailChecked: true });
+      // } else {
+      //   this.setState({ emailMsg: "This email does not exist. Please try again." });
+      // }
     }
 
     renderTab(i) {
@@ -69,11 +127,27 @@ export default class Entry extends React.Component {
       contact info
 
       filters
-      roommate tagline/prompt
+      roommate tagline/prompt TODO ?? 
 
       about me
       looking for 
       */
+
+      if (!this.state.emailChecked) {
+        return (
+          <EntryContainer>
+            <form className="enter-email" onSubmit={this.checkEmail}>
+              <label className="required" for="email">email</label>
+              <input 
+                type="email" name="email" value={this.state.email} 
+                onChange={this.handleChange} required/>
+              <input type="submit" value="submit"/>
+              {this.state.emailMsg}
+              {/* <button onClick={() => {this.setState({ emailCheck: true })}}>submit</button> */}
+            </form>
+          </EntryContainer>
+        )
+      }
 
       return (
         <EntryContainer>
