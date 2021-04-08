@@ -3,13 +3,14 @@ import styled from 'styled-components';
 // export const StyledProfile = styled.div`
 // `
 
+export const EmailEntry = styled.div`
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+`
+
 export const EntryContainer = styled.div`
-    .enter-email {
-        position: fixed;
-        top: 20%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
 
     .nav {
         position: fixed;

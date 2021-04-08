@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch, withRouter } from 'react-router-dom';
 
-import { EntryForm, EntryContainer } from '../style/Style';
+import { EmailEntry, EntryForm, EntryContainer } from '../style/Style';
 import { FilterEntry } from './FilterEntry';
 import { BioEntry } from './BioEntry';
 import { BasicsEntry } from './BasicsEntry';
@@ -19,10 +19,11 @@ post --> post to app
 */
 
 export default class Entry extends React.Component {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       this.state = {
         currentTab: 0,
+        newEntry: this.props.newEntry,
         emailChecked: false, // for entering email to check but also creating new 
         emailMsg: "",
         email: "",
@@ -56,9 +57,9 @@ export default class Entry extends React.Component {
         }
       })
       .then(data => {
-        console.log("display message")
         if (data.error) this.setState({ emailMsg: data.error });
         else if (data.message) {
+          // TODO: get user id and save in state 
           this.setState({
             emailMsg: data.message,
             emailChecked: true
@@ -70,14 +71,6 @@ export default class Entry extends React.Component {
         this.setState({ emailMsg: "an unknown error has occured" });
       });
 
-      // api to check that email does not exist 
-      // const exists = false;
-      // if (!exists) {
-      //   this.setState({ emailChecked: true })
-      // } else {
-      //   this.setState({ emailMsg: "This email is already associated with a profile. [Please choose to edit entry instead.]" });
-      // }
-      // get user id and save in state 
 
       // EDITING ENTRIES
       // const dbemail = "rachlin232@gmail.com";
@@ -135,17 +128,16 @@ export default class Entry extends React.Component {
 
       if (!this.state.emailChecked) {
         return (
-          <EntryContainer>
-            <form className="enter-email" onSubmit={this.checkEmail}>
-              <label className="required" for="email">email</label>
+          <EmailEntry>
+            <form onSubmit={this.checkEmail}>
+              <label for="email">new entry</label>
               <input 
                 type="email" name="email" value={this.state.email} 
-                onChange={this.handleChange} required/>
+                onChange={this.handleChange} placeholder="email" required/>
               <input type="submit" value="submit"/>
               {this.state.emailMsg}
-              {/* <button onClick={() => {this.setState({ emailCheck: true })}}>submit</button> */}
             </form>
-          </EntryContainer>
+          </EmailEntry>
         )
       }
 
@@ -166,6 +158,10 @@ export default class Entry extends React.Component {
         </EntryContainer>
       );
     }
+  }
+
+  Entry.defaultProps = {
+    newEntry: true
   }
 
   const formStyle = {
