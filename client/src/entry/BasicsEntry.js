@@ -28,7 +28,7 @@ export class BasicsEntry extends React.Component {
                         <label for="first-name" className="required">first name</label>
                         <input 
                             type="name" name="first-name" placeholder="Jane" 
-                            onChange={e => this.updateData("basics", "firstName", e.target.value)}
+                            onChange={e => this.props.updateData("firstName", e.target.value)}
                             value={this.props.basics.firstName}
                             required/>
                     </div>
@@ -36,13 +36,10 @@ export class BasicsEntry extends React.Component {
                         <label for="last-name" className="required">last name</label>
                         <input 
                             type="name" name="last-name" placeholder="Doe" 
-                            onChange={e => this.updateData("basics", "lastName", e.target.value)}
+                            onChange={e => this.props.updateData("lastName", e.target.value)}
                             value={this.props.basics.lastName}
                             required/>
                     </div>
-                </div>
-
-                <div class="section">
                     <div class="form-group">
                         <label for="pronouns" className="required">pronouns</label>
                         <input 
@@ -51,14 +48,7 @@ export class BasicsEntry extends React.Component {
                             value={this.props.basics.pronouns}
                             required/>
                     </div>
-                    <div class="form-group">
-                        <label for="mbti">MBTI</label>
-                        <input 
-                            type="text" name="mbti" placeholder="INFJ"
-                            onChange={e => this.updateData("basics", "mbti", e.target.value)}
-                            value={this.props.basics.mbti}/>
-                    </div>
-              </div>
+                </div>
 
               <div class="section">
                     <div class="form-group">
@@ -89,14 +79,14 @@ export class BasicsEntry extends React.Component {
                     <label for="instagram">instagram</label>
                     <input 
                         type="text" name="instagram" placeholder="username only, no @"
-                        onChange={e => this.updateData("social", "instagram", e.target.value)}
+                        onChange={e => this.updateData("social", "ig", e.target.value)}
                         value={this.props.social.instagram}/>
                 </div>
                 <div class="form-group">
                     <label for="snapchat">snapchat</label>
                     <input 
                         type="text" name="snapchat" placeholder="username only, no @"
-                        onChange={e => this.updateData("social", "snapchat", e.target.value)}
+                        onChange={e => this.updateData("social", "snap", e.target.value)}
                         value={this.props.social.snapchat}/>
                 </div>
               </div>

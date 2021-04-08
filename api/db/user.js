@@ -58,7 +58,25 @@ const User = {
     } catch (error) {
       return error;
     }
+  },
+  // TODO 
+  async addProfile () {
+    try {
+      const values = Object.values(data);
+      console.log(values);
+      const readAllQuery = 
+      `INSERT INTO user_profile (first_name, last_name, email, basics, social, filters, bio) 
+      VALUES ($1, $2, $3, $4) 
+      RETURNING *`;
+      const { rows } = await database.insert(readAllQuery, values);
+      //console.log(rows);
+      //return res.send(rows);
+      return rows;
+    } catch (error) {
+      return error;
+    }
   }
 };
+
 
 module.exports = User;

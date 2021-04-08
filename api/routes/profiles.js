@@ -95,4 +95,35 @@ router.get("/test", function(req, res, next) {
     res.json(myJSON);
 })
 
+// router.post("/make", function(req, res, next) {
+    
+// })
+
+const account = {
+    firstName: "",
+    lastName: "",
+    email: ""
+}
+
+const profile = {
+    about: {
+      bio: "",
+      looking: ""
+    },
+    basics: {
+      location: "",
+      major: "",
+      mbti: "",
+      pronouns: ""
+    },
+    filters: [],
+    social: {
+      instagram: "",
+      phone: "", // or int? 
+      snapchat: ""
+    }
+  }
+
+//router.post("/submit")
+
 module.exports = router;
