@@ -103,28 +103,37 @@ router.post("/addUser", function(req, res, next) {
         .then(email => {
             const exists = email;
             if (exists) {
-                res.status(500).json({ error: "account with this email already exists" }); // check that these error status are correct
+                res.status(500).json({ error: "A profile with this email already exists. Maybe you meant to edit your profile?" }); // check that these error status are correct
                 console.log("error registering - exists");
                 return email;
             } else {
                 User.add(req.body)
-                    .then(data => {
-                        res.status(200).json({ message: "welcome!" });
+                    .then(userid => {
+                        res.status(200).json({ message: "Welcome!", userid: userid });
                         console.log("user added!");
-                        return data;
+                        return userid;
                     });
-                return email;
             }
         })
         .catch(err => {
             console.log(err);
-            //throw err;
+            throw err;
         })
 })
 
-// router.post("/make", function(req, res, next) {
-    
-// })
+router.post("/update", function(req, res, next) {
+    const { col, userid, data } = req.body;
+    User.addProfile(col, userid, data)
+        .then(data => {
+            res.status(200).json({ message: "info saved!" });
+            console.log("info added!");
+            return data;
+        })
+        .catch(err => {
+            console.log(err);
+            throw err;
+        })
+})
 
 const account = {
     firstName: "",

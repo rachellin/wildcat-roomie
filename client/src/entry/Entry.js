@@ -27,6 +27,7 @@ export default class Entry extends React.Component {
         emailChecked: false, // for entering email to check but also creating new 
         emailMsg: "",
         email: "",
+        userid: 0,
         about: {},
         basics: {},
         social: {},
@@ -61,6 +62,7 @@ export default class Entry extends React.Component {
         else if (data.message) {
           // TODO: get user id and save in state 
           this.setState({
+            userid: data.userid,
             emailMsg: data.message,
             emailChecked: true
           });

@@ -26,7 +26,7 @@ const User = {
         let userid = {};
         userid[userid] = rows[0].user_id;
         this.createProfile(userid);
-        return rows;
+        return rows[0].user_id;
     } catch (error) {
         console.error(error);
         return error;
@@ -38,14 +38,12 @@ const User = {
       const values = Object.values(data);
       console.log(values);
       const readAllQuery = 
-      `INSERT INTO user_profile (user_id) 
-      VALUES ($1) 
-      RETURNING *`;
+      `INSERT INTO user_profile (user_id) VALUES ($1) RETURNING *`;
       const { rows } = await database.insert(readAllQuery, values);
       return rows;
     } catch (error) {
-        console.error(error);
-        return error;
+      console.error(error);
+      return error;
     }
   },
   // check if email exists in user_account
@@ -71,19 +69,14 @@ const User = {
     }
   },
   // add data for specific section of profile
-  async addProfile (section) {
+  async addProfile (col, userid, data) {
     try {
       const values = Object.values(data);
       console.log(values);
-      //find user id where 
       //about, basics, filters, social
       const readAllQuery = 
-      `INSERT INTO user_profile (user_id, ${section}) 
-      VALUES (${userid}, $2) 
-      RETURNING *`;
+      `UPDATE user_profile ${col}=$1 WHERE user_id=${userid} RETURNING *`;
       const { rows } = await database.insert(readAllQuery, values);
-      //console.log(rows);
-      //return res.send(rows);
       return rows;
     } catch (error) {
       return error;
