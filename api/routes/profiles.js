@@ -122,8 +122,13 @@ router.post("/addUser", function(req, res, next) {
 })
 
 router.post("/update", function(req, res, next) {
-    const { col, userid, data } = req.body;
-    User.addProfile(col, userid, data)
+    const { userid, data } = req.body;
+    // User.testUpdate(userid)
+    //     .then(data => {
+    //         console.log(data);
+    //         return data;
+    //     })
+    User.updateProfile(userid, data)
         .then(data => {
             res.status(200).json({ message: "info saved!" });
             console.log("info added!");

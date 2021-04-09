@@ -26,6 +26,7 @@ export default class Entry extends React.Component {
         newEntry: this.props.newEntry,
         emailChecked: false, // for entering email to check but also creating new 
         emailMsg: "",
+        entryMsg: "",
         email: "",
         userid: 0,
         about: {},
@@ -84,9 +85,9 @@ export default class Entry extends React.Component {
     }
 
     renderTab(i) {
-      if (i == 0) {
+      if (i == "basics") {
         return <BasicsEntry basics={this.state.basics} social={this.state.social} updateData={this.updateData}/>;
-      } else if (i == 1) {
+      } else if (i == "filters") {
         return <FilterEntry filters={this.state.filters} updateData={this.updateData}/>;
       } else {
         return <BioEntry about={this.state.about} updateData={this.updateData}/>;
@@ -111,7 +112,58 @@ export default class Entry extends React.Component {
 
     handleSubmit = (e) => {
       e.preventDefault();
-      console.log(this.state);
+      console.log("handling submit")
+
+      let info;
+      if (this.state.currentTab == "basics") {
+        info = {
+          firstName: this.state.firstName, 
+          lastName: this.state.lastName,
+          basics: this.state.basics,
+          social: this.state.social
+        }
+      } else {
+        let tab = this.state.currentTab;
+        info = { [tab]: this.state[tab]};
+        console.log(info);
+      }
+
+      const data = {
+        userid: this.state.userid,
+        data: info
+        // but on basics page i have data that goe in multiple sections... 
+        // data should be a parameter that is an object of what data im sending 
+      }
+
+      fetch('http://localhost:9000/api/profiles/update', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+      })
+      .then(res => {
+        console.log(res.status)
+        if (res.status === 200) {
+          console.log("info added");
+          return res.json();
+        } else {
+          console.log("error")
+          return res.json();
+        }
+      })
+      .then(data => {
+        if (data.error) this.setState({ entryMsg: data.error });
+        else if (data.message) {
+          this.setState({
+            entryMsg: data.message,
+          });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ entryMsg: "an unknown error has occured" });
+      });
     }
     
     render() {
@@ -146,15 +198,16 @@ export default class Entry extends React.Component {
       return (
         <EntryContainer>
           <div className="nav">
-            <button onClick={(e) => this.changeTab(0, e)}>basics</button>
-            <button onClick={(e) => this.changeTab(1, e)}>filters</button>
-            <button onClick={(e) => this.changeTab(2, e)}>bio</button>
+            <button onClick={(e) => this.changeTab("basics", e)}>basics</button>
+            <button onClick={(e) => this.changeTab("filters", e)}>filters</button>
+            <button onClick={(e) => this.changeTab("about", e)}>about</button>
             <button>submit</button>
           </div>
 
           <EntryForm onSubmit={this.handleSubmit}>
             {this.renderTab(this.state.currentTab)}
             <input type="submit" value="save"/>
+            {this.state.entryMsg}
           </EntryForm>
 
         </EntryContainer>
