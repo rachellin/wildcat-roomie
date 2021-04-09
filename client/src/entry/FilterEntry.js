@@ -54,6 +54,18 @@ export class FilterEntry extends React.Component {
     }
     // after clicking diff tab and returning, when you select item in any group, the prev gropu clears?
 
+    // check if at least one option in checkbox group is checked
+    checkboxRequired(category) {
+        console.log("hi")
+        // if this.state.category.length == 0, then it's not checked
+        if (this.state[category].length == 0) {
+            return true;
+            //this.props.message = `You must select at least one option from ${category}.`;
+        }
+        // update message 
+        return false;
+    }
+
     renderGroup(category, type) {
         let arr = [];
         let option;
@@ -63,7 +75,7 @@ export class FilterEntry extends React.Component {
                     <input 
                         type={type} id={filters[category][i]} name={category} value={filters[category][i]} 
                         onChange={e => this.updateData(type, category, e.target.value)} 
-                        required/>
+                        required={type == "radio" ? true : this.checkboxRequired(category)}/>
                     <label for={filters[category][i]}>{filters[category][i]}</label>
                 </div>
             );
