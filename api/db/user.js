@@ -65,6 +65,7 @@ const User = {
     try {
       const readAllQuery = `SELECT * FROM ${table} WHERE user_id = '${userid}'`;
       const { rows } = await database.select(readAllQuery);
+      console.log(rows[0]);
       return rows[0];
     } catch (error) {
       return error;

@@ -27,6 +27,7 @@ export default class Entry extends React.Component {
         emailChecked: false, // for entering email to check but also creating new 
         emailMsg: "",
         entryMsg: "",
+        submitted: false,
         email: "",
         userid: 0,
         about: {},
@@ -96,7 +97,7 @@ export default class Entry extends React.Component {
 
     changeTab(i, e) {
       e.preventDefault();
-      this.setState({ currentTab: i });
+      this.setState({ currentTab: i, entryMsg: "" });
     }
 
     updateData = (target, value) => {
@@ -157,7 +158,38 @@ export default class Entry extends React.Component {
         else if (data.message) {
           this.setState({
             entryMsg: data.message,
+            submitted: true
           });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ entryMsg: "an unknown error has occured" });
+      });
+    }
+
+    getData() {
+      fetch('http://localhost:9000/api/profiles/', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+      })
+      .then(res => {
+        console.log(res.status)
+        if (res.status === 200) {
+          console.log("got info");
+          return res.json();
+        } else {
+          console.log("error")
+          return res.json();
+        }
+      })
+      .then(data => {
+        if (data.error) this.setState({ entryMsg: data.error }); // need to fix this 
+        else {
+          // display data 
+          console.log(data);
         }
       })
       .catch(err => {

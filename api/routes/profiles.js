@@ -82,12 +82,14 @@ let cardInfo = [
     },
 ];
 
-router.get("/", function(req, res, next) {
+// get data for all profiles 
+router.get("/all", function(req, res, next) {
     //res.send("API is working properly");
     const myJSON = JSON.stringify(cardInfo);
     res.json(myJSON);
 });
 
+// testing api
 router.get("/test", function(req, res, next) {
     const arr = [
         {name: "obj 1"},
@@ -97,6 +99,7 @@ router.get("/test", function(req, res, next) {
     res.json(myJSON);
 })
 
+// add user_account and create row in user_profile with user_id
 router.post("/addUser", function(req, res, next) {
     const { email } = req.body;
     User.exists(email)
@@ -121,6 +124,7 @@ router.post("/addUser", function(req, res, next) {
         })
 })
 
+// add or edit data in profile 
 router.post("/update", function(req, res, next) {
     const { userid, data } = req.body;
     // User.testUpdate(userid)
@@ -135,6 +139,22 @@ router.post("/update", function(req, res, next) {
             return data;
         })
         .catch(err => {
+            console.log(err);
+            throw err;
+        })
+})
+
+// get data for a specified profile
+router.get("/", function(req, res, next) {
+    const { userid } = req.body;
+    User.getData("user_profile", userid)
+        .then(data => {
+            res.status(200).json(data);
+            console.log("we got the profile data!");
+            return data;
+        })
+        .catch(err => {
+            res.status(0).json({ error: "an unknown error has occured" });
             console.log(err);
             throw err;
         })
