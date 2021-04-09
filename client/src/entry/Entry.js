@@ -27,7 +27,6 @@ export default class Entry extends React.Component {
         emailChecked: false, // for entering email to check but also creating new 
         emailMsg: "",
         entryMsg: "",
-        submitted: false,
         email: "",
         userid: 0,
         about: {},
@@ -158,8 +157,8 @@ export default class Entry extends React.Component {
         else if (data.message) {
           this.setState({
             entryMsg: data.message,
-            submitted: true
           });
+          this.getData();
         }
       })
       .catch(err => {
@@ -169,7 +168,8 @@ export default class Entry extends React.Component {
     }
 
     getData() {
-      fetch('http://localhost:9000/api/profiles/', {
+      console.log(`http://localhost:9000/api/profiles?userid=${this.state.userid}`);
+      fetch(`http://localhost:9000/api/profiles?userid=${this.state.userid}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
