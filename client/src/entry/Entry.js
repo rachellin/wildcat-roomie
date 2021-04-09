@@ -22,7 +22,7 @@ export default class Entry extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        currentTab: 0,
+        currentTab: "basics",
         newEntry: this.props.newEntry,
         emailChecked: false, // for entering email to check but also creating new 
         emailMsg: "",
