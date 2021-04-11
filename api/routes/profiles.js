@@ -149,8 +149,7 @@ router.get("/", function(req, res, next) {
     const email = req.query.email; 
     const cols = ["first_name", "last_name", "about", "basics", "filters", "social"];
     User.exists(email)
-        .then(email => {
-            const exists = email;
+        .then(exists => {
             if (exists) {
                 User.getData(cols, "user_profile", email)
                     .then(data => {

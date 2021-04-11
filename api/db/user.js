@@ -64,10 +64,9 @@ const User = {
   async getData (cols, table, email) {
     try {
       const colQuery = cols.map(col => `${col}`);
-      const readAllQuery = `SELECT ${colQuery} FROM ${table} WHERE email = ${email}`;
+      const readAllQuery = `SELECT ${colQuery} FROM ${table} INNER JOIN user_account USING (user_id) WHERE email ='${email}'`;
       console.log(readAllQuery);
       const { rows } = await database.select(readAllQuery);
-      console.log("row: ", rows[0]);
       return rows[0];
     } catch (error) {
       return error;

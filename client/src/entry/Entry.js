@@ -216,6 +216,7 @@ export default class Entry extends React.Component {
           for (let i = 0; i < keys.length; i++) {
             if (data[keys[i]] !== null) this.setState({ [snakeToCamel(keys[i])]: data[keys[i]] });
           }
+          if (!this.state.newEntry) this.setState({ emailChecked: true });
         }
       })
       .catch(err => {
