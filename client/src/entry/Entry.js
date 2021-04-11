@@ -164,7 +164,7 @@ export default class Entry extends React.Component {
           setTimeout(() => {
             this.setState({ entryMsg: data.message });
           }, 500);
-          //this.getData();
+          this.getData();
         }
       })
       .catch(err => {

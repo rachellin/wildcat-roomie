@@ -8,9 +8,10 @@ export class FilterEntry extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            school: [],
-            dorm: [],
-            other: []
+            // set to those items in the props.filters that are in the category in filters 
+            school: this.props.filters.filter(val => filters.school.includes(val)),
+            dorm: this.props.filters.filter(val => filters.dorm.includes(val)),
+            other: this.props.filters.filter(val => filters.other.includes(val))
         }
     }
 
@@ -47,9 +48,9 @@ export class FilterEntry extends React.Component {
     }
 
     isChecked(val) {
-        let filterArr = [].concat.apply([], Object.values(this.props.filters));
-        console.log(filterArr);
-        if (filterArr.includes(val)) return true;
+        //let filterArr = [].concat.apply([], Object.values(this.props.filters));
+        //console.log(filterArr);
+        if (this.props.filters.includes(val)) return true;
         return false;
     }
     // after clicking diff tab and returning, when you select item in any group, the prev gropu clears?
@@ -71,7 +72,8 @@ export class FilterEntry extends React.Component {
                     <input 
                         type={type} id={filters[category][i]} name={category} value={filters[category][i]} 
                         onChange={e => this.updateData(type, category, e.target.value)} 
-                        required={type == "radio" ? true : this.checkboxRequired(category)}/>
+                        required={type == "radio" ? true : this.checkboxRequired(category)}
+                        checked={this.isChecked(filters[category][i])}/>
                     <label for={filters[category][i]}>{filters[category][i]}</label>
                 </div>
             );
