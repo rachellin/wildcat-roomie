@@ -5,8 +5,8 @@ export class BasicsEntry extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            basics: {},
-            social: {}
+            basics: this.props.basics,
+            social: this.props.social
         }
     }
 
@@ -15,7 +15,7 @@ export class BasicsEntry extends React.Component {
         copy[target] = value;
         this.setState({ [category]: copy }, () => {
             let data = this.state[category];
-            console.log(data)
+            //console.log(data)
             this.props.updateData(category, data);
         });
     }
@@ -29,7 +29,7 @@ export class BasicsEntry extends React.Component {
                         <input 
                             type="name" name="first-name" placeholder="Jane" 
                             onChange={e => this.props.updateData("firstName", e.target.value)}
-                            value={this.props.basics.firstName}
+                            value={this.props.firstName}
                             required/>
                     </div>
                     <div class="form-group">
@@ -37,7 +37,7 @@ export class BasicsEntry extends React.Component {
                         <input 
                             type="name" name="last-name" placeholder="Doe" 
                             onChange={e => this.props.updateData("lastName", e.target.value)}
-                            value={this.props.basics.lastName}
+                            value={this.props.lastName}
                             required/>
                     </div>
                     <div class="form-group">
@@ -55,14 +55,17 @@ export class BasicsEntry extends React.Component {
                         <label for="location" className="required">location</label>
                         <input 
                             type="text" name="location" placeholder="NYC"
-                            onChange={e => this.updateData("basics", "location", e.target.value)}/>
+                            onChange={e => this.updateData("basics", "location", e.target.value)}
+                            value={this.props.basics.location}
+                            required/>
                     </div>
                     <div class="form-group">
                         <label for="major" className="required">major</label>
                         <input 
                             type="text" name="major" placeholder="computer science"
                             onChange={e => this.updateData("basics", "major", e.target.value)}
-                            value={this.props.basics.major}/>
+                            value={this.props.basics.major} 
+                            required/>
                     </div>
 
                 </div>
@@ -80,7 +83,7 @@ export class BasicsEntry extends React.Component {
                     <input 
                         type="text" name="instagram" placeholder="username only, no @"
                         onChange={e => this.updateData("social", "ig", e.target.value)}
-                        value={this.props.social.instagram}/>
+                        value={this.props.social.ig}/>
                 </div>
                 <div class="form-group">
                     <label for="snapchat">snapchat</label>

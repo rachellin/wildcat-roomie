@@ -61,9 +61,10 @@ const User = {
     }
   },
   // get [table] data with user_id userid
-  async getData (table, userid) {
+  async getData (cols, table, userid) {
     try {
-      const readAllQuery = `SELECT * FROM ${table} WHERE user_id = ${userid}`;
+      const colQuery = cols.map(col => `${col}`);
+      const readAllQuery = `SELECT ${colQuery} FROM ${table} WHERE user_id = ${userid}`;
       console.log(readAllQuery);
       const { rows } = await database.select(readAllQuery);
       console.log(rows[0]);

@@ -6,8 +6,8 @@ export class BioEntry extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            bio: "",
-            looking: ""
+            bio: this.props.about.bio,
+            looking: this.props.about.looking
         }
     }
 

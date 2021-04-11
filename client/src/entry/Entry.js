@@ -86,7 +86,11 @@ export default class Entry extends React.Component {
 
     renderTab(i) {
       if (i == "basics") {
-        return <BasicsEntry basics={this.state.basics} social={this.state.social} updateData={this.updateData}/>;
+        return <BasicsEntry 
+                basics={this.state.basics} 
+                social={this.state.social} 
+                firstName={this.state.firstName} lastName={this.state.lastName}
+                updateData={this.updateData}/>;
       } else if (i == "filters") {
         return <FilterEntry filters={this.state.filters} updateData={this.updateData}/>;
       } else {
@@ -100,6 +104,7 @@ export default class Entry extends React.Component {
     }
 
     updateData = (target, value) => {
+      console.log(target, value);
       this.setState({ [target]: value });
     };
 
@@ -155,10 +160,11 @@ export default class Entry extends React.Component {
       .then(data => {
         if (data.error) this.setState({ entryMsg: data.error });
         else if (data.message) {
-          this.setState({
-            entryMsg: data.message,
-          });
-          this.getData();
+          this.setState({ entryMsg: "" });
+          setTimeout(() => {
+            this.setState({ entryMsg: data.message });
+          }, 500);
+          //this.getData();
         }
       })
       .catch(err => {
@@ -168,7 +174,6 @@ export default class Entry extends React.Component {
     }
 
     getData() {
-      console.log(`http://localhost:9000/api/profiles?userid=${this.state.userid}`);
       fetch(`http://localhost:9000/api/profiles?userid=${this.state.userid}`, {
           method: 'GET',
           headers: {
@@ -188,8 +193,14 @@ export default class Entry extends React.Component {
       .then(data => {
         if (data.error) this.setState({ entryMsg: data.error }); // need to fix this 
         else {
-          // display data 
+          // display data in the form(s) 
+          const snakeToCamel = snakeCaseString => snakeCaseString.replace(/([-_]\w)/g, g => g[1].toUpperCase());
           console.log(data);
+          this.setState({ firstName: "", lastName: "", about: {}, basics: {}, social: {}, filters: [] });
+          let keys = Object.keys(data);
+          for (let i = 0; i < keys.length; i++) {
+            if (data[keys[i]] !== null) this.setState({ [snakeToCamel(keys[i])]: data[keys[i]] });
+          }
         }
       })
       .catch(err => {

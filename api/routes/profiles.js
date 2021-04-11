@@ -146,8 +146,9 @@ router.post("/update", function(req, res, next) {
 
 // get data for a specified profile
 router.get("/", function(req, res, next) {
-    var userid = req.query.userid;
-    User.getData("user_profile", userid)
+    const userid = req.query.userid;
+    const cols = ["first_name", "last_name", "about", "basics", "filters", "social"];
+    User.getData(cols, "user_profile", userid)
         .then(data => {
             res.status(200).json(data);
             console.log("we got the profile data!");
