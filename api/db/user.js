@@ -60,14 +60,14 @@ const User = {
       return error;
     }
   },
-  // get [table] data with user_id userid
-  async getData (cols, table, userid) {
+  // get [table] data with email
+  async getData (cols, table, email) {
     try {
       const colQuery = cols.map(col => `${col}`);
-      const readAllQuery = `SELECT ${colQuery} FROM ${table} WHERE user_id = ${userid}`;
+      const readAllQuery = `SELECT ${colQuery} FROM ${table} WHERE email = ${email}`;
       console.log(readAllQuery);
       const { rows } = await database.select(readAllQuery);
-      console.log(rows[0]);
+      console.log("row: ", rows[0]);
       return rows[0];
     } catch (error) {
       return error;

@@ -41,6 +41,25 @@ export default class Entry extends React.Component {
       const data = {};
       data.email = this.state.email;
 
+      if (this.state.newEntry) {
+        console.log("call addUser")
+        this.addUser(data);
+      } else {
+        console.log("call editUser")
+        this.editUser();
+      }
+
+
+      // EDITING ENTRIES
+      // const dbemail = "rachlin232@gmail.com";
+      // if (this.state.email == dbemail) {
+      //   this.setState({ emailChecked: true });
+      // } else {
+      //   this.setState({ emailMsg: "This email does not exist. Please try again." });
+      // }
+    }
+
+    addUser(data) {
       fetch('http://localhost:9000/api/profiles/addUser', {
           method: 'POST',
           body: JSON.stringify(data),
@@ -67,21 +86,17 @@ export default class Entry extends React.Component {
             emailMsg: data.message,
             emailChecked: true
           });
+          this.getData();
         }
       })
       .catch(err => {
         console.error(err);
         this.setState({ emailMsg: "an unknown error has occured" });
       });
+    }
 
-
-      // EDITING ENTRIES
-      // const dbemail = "rachlin232@gmail.com";
-      // if (this.state.email == dbemail) {
-      //   this.setState({ emailChecked: true });
-      // } else {
-      //   this.setState({ emailMsg: "This email does not exist. Please try again." });
-      // }
+    editUser() {
+      this.getData();
     }
 
     renderTab(i) {
@@ -174,7 +189,7 @@ export default class Entry extends React.Component {
     }
 
     getData() {
-      fetch(`http://localhost:9000/api/profiles?userid=${this.state.userid}`, {
+      fetch(`http://localhost:9000/api/profiles?email=${this.state.email}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -191,7 +206,7 @@ export default class Entry extends React.Component {
         }
       })
       .then(data => {
-        if (data.error) this.setState({ entryMsg: data.error }); // need to fix this 
+        if (data.error) this.setState({ entryMsg: data.error, emailMsg: data.error }); // need to fix this 
         else {
           // display data in the form(s) 
           const snakeToCamel = snakeCaseString => snakeCaseString.replace(/([-_]\w)/g, g => g[1].toUpperCase());
@@ -227,7 +242,7 @@ export default class Entry extends React.Component {
         return (
           <EmailEntry>
             <form onSubmit={this.checkEmail}>
-              <label for="email">new entry</label>
+              <label for="email">{this.state.newEntry ? "new entry" : "edit entry"}</label>
               <input 
                 type="email" name="email" value={this.state.email} 
                 onChange={this.handleChange} placeholder="email" required/>
@@ -259,7 +274,7 @@ export default class Entry extends React.Component {
   }
 
   Entry.defaultProps = {
-    newEntry: true
+    newEntry: false
   }
 
   const formStyle = {

@@ -8,7 +8,7 @@ export class FilterEntry extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // set to those items in the props.filters that are in the category in filters 
+            // do i need these since i have all of the categories in componentDidMount?
             school: this.props.filters.filter(val => filters.school.includes(val)),
             dorm: this.props.filters.filter(val => filters.dorm.includes(val)),
             other: this.props.filters.filter(val => filters.other.includes(val))

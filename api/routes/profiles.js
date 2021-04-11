@@ -146,13 +146,27 @@ router.post("/update", function(req, res, next) {
 
 // get data for a specified profile
 router.get("/", function(req, res, next) {
-    const userid = req.query.userid;
+    const email = req.query.email; 
     const cols = ["first_name", "last_name", "about", "basics", "filters", "social"];
-    User.getData(cols, "user_profile", userid)
-        .then(data => {
-            res.status(200).json(data);
-            console.log("we got the profile data!");
-            return data;
+    User.exists(email)
+        .then(email => {
+            const exists = email;
+            if (exists) {
+                User.getData(cols, "user_profile", email)
+                    .then(data => {
+                        res.status(200).json(data);
+                        console.log("we got the profile data!");
+                        return data;
+                    })
+                    .catch(err => {
+                        res.status(0).json({ error: "an unknown error has occured" });
+                        console.log(err);
+                        throw err;
+                    })
+            } else {
+                res.status(500).json({ error: "There is no profile associated with this email." });
+                return email;
+            }
         })
         .catch(err => {
             res.status(0).json({ error: "an unknown error has occured" });
