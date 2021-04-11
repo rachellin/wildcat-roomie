@@ -21,6 +21,10 @@ export class FilterEntry extends React.Component {
                 this.props.updateData("filters", filterArr);
                 */
 
+    componentDidMount() {
+        Object.keys(filters).map(category => this.state[category] = this.props.filters.filter(val => filters[category].includes(val)));
+    }
+
     updateData(type, target, value) {
         if (type == "radio") {
             this.setState({ [target]: value }, () => {
