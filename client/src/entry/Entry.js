@@ -44,7 +44,7 @@ export default class Entry extends React.Component {
       if (this.state.newEntry) {
         this.addUser(data);
       } else {
-        this.editUser();
+        this.getData();
       }
 
 
@@ -92,10 +92,6 @@ export default class Entry extends React.Component {
         console.error(err);
         this.setState({ emailMsg: "an unknown error has occured" });
       });
-    }
-
-    editUser() {
-      this.getData();
     }
 
     renderTab(i) {
@@ -207,7 +203,13 @@ export default class Entry extends React.Component {
         }
       })
       .then(data => {
-        if (data.error) this.setState({ entryMsg: data.error, emailMsg: data.error }); // need to fix this 
+        if (data.error) {
+          if (!this.state.newEntry) {
+            this.setState({ emailMsg: data.error });
+          } else {
+            this.setState({ entryMsg: data.error }); 
+          }
+        }
         else {
           // display data in the form(s) 
           const snakeToCamel = snakeCaseString => snakeCaseString.replace(/([-_]\w)/g, g => g[1].toUpperCase());
