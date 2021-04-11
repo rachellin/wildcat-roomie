@@ -28,7 +28,7 @@ export default class Entry extends React.Component {
         emailMsg: "",
         entryMsg: "",
         email: "",
-        userid: 0,
+        userId: 0,
         about: {},
         basics: {},
         social: {},
@@ -42,10 +42,8 @@ export default class Entry extends React.Component {
       data.email = this.state.email;
 
       if (this.state.newEntry) {
-        console.log("call addUser")
         this.addUser(data);
       } else {
-        console.log("call editUser")
         this.editUser();
       }
 
@@ -60,6 +58,7 @@ export default class Entry extends React.Component {
     }
 
     addUser(data) {
+      console.log("calling addUser")
       fetch('http://localhost:9000/api/profiles/addUser', {
           method: 'POST',
           body: JSON.stringify(data),
@@ -82,7 +81,7 @@ export default class Entry extends React.Component {
         else if (data.message) {
           // TODO: get user id and save in state 
           this.setState({
-            userid: data.userid,
+            userId: data.userId,
             emailMsg: data.message,
             emailChecked: true
           });
@@ -145,16 +144,17 @@ export default class Entry extends React.Component {
       } else {
         let tab = this.state.currentTab;
         info = { [tab]: this.state[tab]};
-        console.log(info);
       }
 
       const data = {
-        userid: this.state.userid,
+        userId: this.state.userId,
         data: info
         // but on basics page i have data that goe in multiple sections... 
         // data should be a parameter that is an object of what data im sending 
       }
+      console.log("data\n", data);
 
+      console.log("updating profile")
       fetch('http://localhost:9000/api/profiles/update', {
           method: 'POST',
           body: JSON.stringify(data),
@@ -189,6 +189,7 @@ export default class Entry extends React.Component {
     }
 
     getData() {
+      console.log("calling getData")
       fetch(`http://localhost:9000/api/profiles?email=${this.state.email}`, {
           method: 'GET',
           headers: {

@@ -25,9 +25,9 @@ const User = {
         const { rows } = await database.insert(readAllQuery, values);
         //console.log(rows[0].user_id);
         //return res.send(rows);
-        let userid = {};
-        userid[userid] = rows[0].user_id;
-        this.createProfile(userid);
+        let userId = {};
+        userId[userId] = rows[0].user_id;
+        this.createProfile(userId);
         return rows[0].user_id;
     } catch (error) {
         console.error(error);
@@ -73,14 +73,14 @@ const User = {
     }
   },
   // add data for specific section of profile
-  async updateProfile (userid, data) {
+  async updateProfile (userId, data) {
     try {
       const values = Object.values(data);
-      console.log(values);
+      console.log("values\n", values);
       //about, basics, filters, social
       const cols = Object.keys(data);
       const colQuery = cols.map((key, index) => `${camelToSnake(key)}=($${index+1})`);
-      const readAllQuery = `UPDATE user_profile SET ${colQuery} WHERE user_id=${userid} RETURNING *`;
+      const readAllQuery = `UPDATE user_profile SET ${colQuery} WHERE user_id=${userId} RETURNING *`;
       console.log(readAllQuery);
       const { rows } = await database.insert(readAllQuery, values); // need an update one??
       console.log("insert") // never makes it here for some reason? but then how does it go on to the next part..
@@ -89,11 +89,11 @@ const User = {
       return error;
     }
   },
-  async testUpdate(userid) {
+  async testUpdate(userId) {
     try {
       console.log("hello??")
       const values = ["first", "last"];
-      const readAllQuery = `UPDATE user_profile SET firstName='first', lastName='last' WHERE user_id=${userid} RETURNING *`;
+      const readAllQuery = `UPDATE user_profile SET firstName='first', lastName='last' WHERE user_id=${userId} RETURNING *`;
       console.log("query made")
       const { rows } = await database.select(readAllQuery);
       console.log("yay")

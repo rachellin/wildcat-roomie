@@ -126,13 +126,13 @@ router.post("/addUser", function(req, res, next) {
 
 // add or edit data in profile 
 router.post("/update", function(req, res, next) {
-    const { userid, data } = req.body;
+    const { userId, data } = req.body;
     // User.testUpdate(userid)
     //     .then(data => {
     //         console.log(data);
     //         return data;
     //     })
-    User.updateProfile(userid, data)
+    User.updateProfile(userId, data)
         .then(data => {
             res.status(200).json({ message: "info saved!" });
             console.log("info added!");
@@ -147,7 +147,7 @@ router.post("/update", function(req, res, next) {
 // get data for a specified profile
 router.get("/", function(req, res, next) {
     const email = req.query.email; 
-    const cols = ["first_name", "last_name", "about", "basics", "filters", "social"];
+    const cols = ["user_id", "first_name", "last_name", "about", "basics", "filters", "social"];
     User.exists(email)
         .then(exists => {
             if (exists) {
