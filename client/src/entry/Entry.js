@@ -304,7 +304,7 @@ export default class Entry extends React.Component {
             <button onClick={(e) => this.changeTab("basics", e)}>basics</button>
             <button onClick={(e) => this.changeTab("filters", e)}>filters</button>
             <button onClick={(e) => this.changeTab("about", e)}>about</button>
-            {this.state.newEntry ? <button onClick={() => this.handlePost()}>post</button> : null}
+            {!this.state.isPosted ? <button onClick={() => this.handlePost()}>post</button> : null}
             {this.state.entryMsg}
           </div>
 

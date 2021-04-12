@@ -175,7 +175,7 @@ router.post("/update", function(req, res, next) {
 // get data for a specified profile
 router.get("/", function(req, res, next) {
     const email = req.query.email; 
-    const cols = ["user_id", "first_name", "last_name", "about", "basics", "filters", "social"];
+    const cols = ["user_id", "first_name", "last_name", "about", "basics", "filters", "social", "is_posted"];
     User.exists(email)
         .then(exists => {
             if (exists) {

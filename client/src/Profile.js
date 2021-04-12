@@ -23,7 +23,7 @@ export class Profile extends React.Component {
                     </div>
 
                     <div className="social-media">
-                        <span><i className="ri-instagram-line"></i> <a href=""> {this.props.social.ig ? this.props.social.ig : ""}</a></span>
+                        <span><i className="ri-instagram-line"></i> <a target={this.props.social.ig ? "_blank" : null} href={this.props.social.ig ? `https://instagram.com/${this.props.social.ig}` : ""}> {this.props.social.ig ? this.props.social.ig : ""}</a></span>
                         <span><i className="ri-snapchat-line"></i> {this.props.social.snap ? this.props.social.snap : ""}</span>
                         <span><i className="ri-phone-line"></i> {this.props.social.phone ? this.props.social.phone : ""}</span>
                     </div>
