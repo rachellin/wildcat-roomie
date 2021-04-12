@@ -57,7 +57,12 @@ export class FilterContainer extends React.Component {
     // get index of filter in the filterArr
 
     openDropdown(i) {
-        let dropdownCopy = this.state.dropdowns.slice()
+        let dropdownCopy = this.state.dropdowns.slice();
+        for (let x = 0; x < dropdownCopy.length; x++) {
+            if (x !== i) {
+              dropdownCopy[x] = false;
+            }
+        }          
         if (!dropdownCopy[i]) {
             dropdownCopy[i] = true;
         } else {
