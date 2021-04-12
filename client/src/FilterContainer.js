@@ -50,7 +50,7 @@ export class FilterContainer extends React.Component {
 
     render () {
         return (
-            <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div style={{display: 'block', justifyContent: 'center'}}>
                 {this.renderDropdowns()}
             </div>
         )

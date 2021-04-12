@@ -105,7 +105,6 @@ export class ProfileContainer extends React.Component {
     renderCards (info) {
         let arr = [];
         let card;
-        console.log("info\n", info[0].about)
         for (let i = 0; i < info.length; i++) {
             // if (this.state.showCard[i] == false) {
             //     card = null;

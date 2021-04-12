@@ -82,7 +82,7 @@ let cardInfo = [
     },
 ];
 
-// get data for all profiles 
+// get data for all profiles - don't get until "submitted" is true 
 router.get("/all", function(req, res, next) {
     //res.send("API is working properly");
     // const myJSON = JSON.stringify(cardInfo);
@@ -103,7 +103,7 @@ router.get("/all", function(req, res, next) {
                   }
                 })
                 return newProfile;
-            });
+            }).filter(profile => profile.isPosted);
             res.status(200).json({data: profiles});
             console.log(profiles)
             console.log("sent all profile data!");

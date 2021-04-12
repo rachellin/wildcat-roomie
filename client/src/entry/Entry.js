@@ -32,7 +32,8 @@ export default class Entry extends React.Component {
         about: {},
         basics: {},
         social: {},
-        filters: []
+        filters: [],
+        isPosted: false
       }
     }
 
