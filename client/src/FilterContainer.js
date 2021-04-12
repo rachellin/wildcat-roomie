@@ -6,6 +6,12 @@ import { FilterDropdown } from './FilterDropdown';
 import { filters, filterArr } from './FilterData';
 
 export class FilterContainer extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            dropdowns: Array(Object.keys(filters).length).fill(false)
+        }
+    }
 
     // renderFilters (filterNames) {
     //     let arr = [];
@@ -38,6 +44,8 @@ export class FilterContainer extends React.Component {
                             filters={this.props.filters}
                             dropdownIndex={i}
                             onClick={(filterIndex) => this.props.onClick(filterIndex, i)} // i = dropDown index
+                            openDropdown={() => this.openDropdown(i)}
+                            overflow={this.state.dropdowns[i] ? "overflow" : "hidden"}
                         />
             arr.push(dropdown);
         }
@@ -48,13 +56,28 @@ export class FilterContainer extends React.Component {
     // the clicking doesn't work properly 
     // get index of filter in the filterArr
 
+    openDropdown(i) {
+        let dropdownCopy = this.state.dropdowns.slice()
+        if (!dropdownCopy[i]) {
+            dropdownCopy[i] = true;
+        } else {
+            dropdownCopy[i] = false;
+        }
+        this.setState({ dropdowns: dropdownCopy });
+    }
+
     render () {
         return (
-            <div style={{position: 'relative', display: 'flex', justifyContent: 'center', zIndex: '999999'}}>
+            <div style={{
+                position: 'relative', 
+                display: 'flex', 
+                flexWrap: 'wrap',
+                justifyContent: 'center', 
+            }}>
                 {this.renderDropdowns()}
             </div>
         )
-    }
+    } // increase zindex only when opened?
 }
 
 FilterContainer.defaultProps = {

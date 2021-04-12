@@ -148,9 +148,7 @@ export class ProfileContainer extends React.Component {
         // let dataArr = [data];
         // console.log(dataArr);
         //let cardInfo = [data];
-        if (this.state.loading) return <h1>loading...</h1>;
-
-        return (
+        if (this.state.loading) return (
             <>
             <FilterContainer 
                 //onClick={(i) => this.handleClick(this.state.filters[i], this.state.filterNames[i], i, this.state.cardInfo)}
@@ -158,7 +156,20 @@ export class ProfileContainer extends React.Component {
                 filterNames={this.state.filterNames} 
                 filters={this.state.filters} 
                 colors={this.state.filterColors}
-            />  
+            /> 
+            <h1>loading...</h1>
+            </>
+        );
+
+        return (
+            <> 
+            <FilterContainer 
+                //onClick={(i) => this.handleClick(this.state.filters[i], this.state.filterNames[i], i, this.state.cardInfo)}
+                onClick={(filterIndex, dropdownIndex) => this.filterClick(filterIndex, dropdownIndex)}
+                filterNames={this.state.filterNames} 
+                filters={this.state.filters} 
+                colors={this.state.filterColors}
+            /> 
             <StyledProfileCont>
                 {this.renderCards(this.state.cardInfo)}
             </StyledProfileCont>

@@ -20,7 +20,8 @@ import styled from 'styled-components';
 export const StyledFilters = styled.div`
     .filter {
         display: block;
-        margin-bottom: 0.5rem;
+        padding: 0.5rem 1rem;
+        min-width: 7.5rem;
 
         :hover {
             cursor: pointer;
@@ -30,15 +31,15 @@ export const StyledFilters = styled.div`
 `
 
 export const StyledDropdown = styled.div`
+    z-index: ${props => props.overflow == "hidden" ? "0" : "99999"};
     border-radius: 1rem;
     padding: 0.5rem 1rem;
     margin-right: 1rem;
+    margin-bottom: 1rem;
     background: #b3a2d3;
-    display: inline-block;
     height: 2rem;
     overflow: ${props => props.overflow};
     text-align: center;
-    width: 7.5rem;
 
     :hover {
         cursor: pointer;

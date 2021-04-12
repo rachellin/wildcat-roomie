@@ -9,6 +9,7 @@ import Container from './Container';
 import Entry from './entry/Entry';
 import {Login } from './account/Login';
 import Authenticate from './account/Authenticate';
+import { StyledContainer } from './style/ProfileStyles';
 
 // import React, { Component } from 'react';
 // import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -35,19 +36,27 @@ class App extends React.Component {
   render () {
     return (
       //<Router>
-        <div>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link onClick={() => this.setState({ newEntry: false })} to="/entry">Edit Entry</Link></li>
-            <li><Link onClick={() => this.setState({ newEntry: true })} to="/entry">New Entry</Link></li>
-          </ul>
-          <Switch>
-            <Route path="/" exact component={Container} />
-            {/* <Route path="/entry" component={withAuth(Entry)} /> */}
-            <Route path="/entry" key={`${this.state.newEntry}`} exact render={() => <Entry newEntry={this.state.newEntry}/>}/>
-            <Route path="/auth" component={Authenticate} />
-          </Switch>
-        </div>
+      <StyledContainer>
+
+        <h1>wildcat roomie</h1>
+          <div className="header">
+            <Link to="/">home</Link>
+            <Link>instructions</Link>
+            <Link onClick={() => this.setState({ newEntry: false })} to="/entry">edit profile</Link>
+            <Link onClick={() => this.setState({ newEntry: true })} to="/entry">new profile</Link>
+            <a href="">view dorms</a>
+            <a href="">housing contract</a>
+            <a href="">feedback</a>
+          </div>
+
+        <Switch>
+          <Route path="/" exact component={Container} />
+          {/* <Route path="/entry" component={withAuth(Entry)} /> */}
+          <Route path="/entry" key={`${this.state.newEntry}`} exact render={() => <Entry newEntry={this.state.newEntry}/>}/>
+          <Route path="/auth" component={Authenticate} />
+        </Switch>
+
+      </StyledContainer>
       //</Router>
     );
   }

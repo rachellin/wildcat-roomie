@@ -41,14 +41,18 @@ export class FilterDropdown extends React.Component {
     }
 
     handleClick () {
-        if (this.state.overflow == "hidden") this.setState({ overflow: "show" });
-        else this.setState({ overflow: "hidden" });
+        if (this.state.overflow == "hidden") {
+            this.setState({ overflow: "show" });
+        }
+        else {
+            this.setState({ overflow: "hidden" });
+        }
     }
     // changing overflow not the ideal way bc it moves all the other elements up/down.. i mean it's fine..
 
     render () {
         return (
-            <StyledDropdown onClick={() => this.handleClick()} overflow={this.state.overflow}>
+            <StyledDropdown onClick={() => this.props.openDropdown()} overflow={this.props.overflow}>
                 <span>{this.props.title}</span>
                 <StyledFilters>
                     {this.renderFilters(this.props.filterNames)}

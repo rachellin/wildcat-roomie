@@ -12,9 +12,9 @@ export const StyledContainer = styled.div`
 
     .header {
         display: block;
-        margin-bottom: 1.5rem;
+        margin: 1rem 0 4rem 0;
 
-        button {
+        a {
             margin-right: 1.5rem;
             background: transparent;
         }

@@ -6,12 +6,7 @@ import { FilterContainer } from './FilterContainer';
 function Container (props) {
     return (
         <StyledContainer>
-            <h1>wildcat roomie</h1>
-            <div className="header">
-                <button>instructions</button>
-                <button>new entry</button>
-                <button><a href="">view dorms</a></button>
-            </div>
+            
             <ProfileContainer/>
         </StyledContainer>
     );

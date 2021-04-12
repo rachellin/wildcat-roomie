@@ -4,10 +4,8 @@ import styled from 'styled-components';
 // `
 
 export const EmailEntry = styled.div`
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: auto;
+    width: 200px;
 `
 
 export const EntryContainer = styled.div`
