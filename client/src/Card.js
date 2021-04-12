@@ -58,6 +58,7 @@ export class Card extends React.Component {
                     filters={this.props.filters}
                     social={this.props.social}
                     basics={this.props.basics}
+                    roommate={this.props.roommate}
                     overlay={this.state.overlay}
                     opacity={this.state.opacity}/> 
                 : null

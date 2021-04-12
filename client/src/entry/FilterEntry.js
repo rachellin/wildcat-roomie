@@ -72,7 +72,7 @@ export class FilterEntry extends React.Component {
         let option;
         for (let i = 0; i < filters[category].length; i++) {
             option = (
-                <div class="option">
+                <div className="option">
                     <input 
                         type={type} id={filters[category][i]} name={category} value={filters[category][i]} 
                         onChange={e => this.updateData(type, category, e.target.value)} 

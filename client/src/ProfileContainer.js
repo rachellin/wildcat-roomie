@@ -121,6 +121,7 @@ export class ProfileContainer extends React.Component {
                     basics={info[i].basics}
                     social={info[i].social}
                     about={info[i].about}
+                    roommate={info[i].roommate}
                     />
             )
             arr.push(card);

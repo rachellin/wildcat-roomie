@@ -22,6 +22,7 @@ export default class Entry extends React.Component {
         basics: {},
         social: {},
         filters: [],
+        roommate: false,
         isPosted: false
       }
     }
@@ -80,7 +81,7 @@ export default class Entry extends React.Component {
         return <BasicsEntry 
                 basics={this.state.basics} 
                 social={this.state.social} 
-                firstName={this.state.firstName} lastName={this.state.lastName}
+                firstName={this.state.firstName} lastName={this.state.lastName} roommate={this.state.roommate}
                 updateData={this.updateData}/>;
       } else if (i == "filters") {
         return <FilterEntry filters={this.state.filters} updateData={this.updateData}/>;

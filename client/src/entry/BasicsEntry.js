@@ -93,6 +93,17 @@ export class BasicsEntry extends React.Component {
                         value={this.props.social.snapchat}/>
                 </div>
               </div>
+
+              <div className="group" style={{marginLeft: "1.5rem"}}>
+                <div className="option">
+                    <input 
+                        type="checkbox" name="roommate" id="roommate"
+                        onChange={e => this.props.updateData("roommate", !this.props.roommate)}
+                        checked={this.props.roommate}/>
+                    <label for="roommate">looking for a roommate</label>
+                </div>
+              </div>
+
             </>
         )
     }

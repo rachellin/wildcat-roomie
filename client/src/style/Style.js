@@ -39,7 +39,7 @@ export const EntryContainer = styled.div`
 export const EntryForm = styled.form`
     border: 1px solid #eee;
     width: 50vw;
-    margin: auto;
+    margin: 2rem auto;
     padding: 2rem;
     box-shadow: 1px 1px 30px 3px #eaeaea;
     background: #fff;
