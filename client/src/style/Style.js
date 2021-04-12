@@ -55,10 +55,11 @@ export const EntryForm = styled.form`
         max-height: 200px;
         overflow-y: scroll;
         resize: none;
+        white-space: pre-wrap;
     }
 
     .bio {
-        //display: flex;
+        white-space: pre-wrap;
     }
 
     .group{

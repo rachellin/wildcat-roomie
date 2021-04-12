@@ -39,7 +39,7 @@ export class Profile extends React.Component {
                 </div>
 
                 <div className="bio">
-                    <div className="about">
+                    <div className="about" style={{whiteSpace: "pre-wrap"}}>
                         <h1>about</h1>
                         {this.props.about.bio}
                     </div>
