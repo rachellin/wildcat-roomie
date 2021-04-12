@@ -27,6 +27,7 @@ export default class Entry extends React.Component {
         emailChecked: false, // for entering email to check but also creating new 
         emailMsg: "",
         entryMsg: "",
+        postMsg: "",
         email: "",
         userId: 0,
         about: {},
@@ -152,6 +153,10 @@ export default class Entry extends React.Component {
       console.log("data\n", data);
 
       console.log("updating profile")
+      this.callUpdate(data, false);
+    }
+
+    callUpdate(data, posting) {
       fetch('http://localhost:9000/api/profiles/update', {
           method: 'POST',
           body: JSON.stringify(data),
@@ -174,7 +179,11 @@ export default class Entry extends React.Component {
         else if (data.message) {
           this.setState({ entryMsg: "" });
           setTimeout(() => {
-            this.setState({ entryMsg: data.message });
+            if (posting) {
+              this.setState({ entryMsg: "Your profile has been posted! Head over to the homepage to look :)"});
+            } else {
+              this.setState({ entryMsg: data.message });
+            }
           }, 500);
           this.getData();
         }
@@ -228,6 +237,37 @@ export default class Entry extends React.Component {
         this.setState({ entryMsg: "an unknown error has occured" });
       });
     }
+
+    handlePost() {
+      // set is_posted to true 
+      // can only post when info is filled out 
+      const data = {
+        userId: this.state.userId,
+        data: { isPosted: true }
+      }
+      if (!this.isFilled()) {
+        this.setState({ entryMsg: "You must fill out all the parts to post your profile." });
+      } else {
+        this.callUpdate(data, true);
+      }
+      // how do i check if all the forms are filled out?? none of them are empty strings?
+    }
+
+    // check if all forms are filled out 
+    isFilled() {
+      const keyArr = Object.keys(this.state).filter(key => key !== "currentTab" && key !== "newEntry" && key !== "emailMsg" && key !== "entryMsg" && key !== "postMsg" && key !== "userId" && key !== "isPosted" && key !== "emailChecked");
+      for (let i = 0; i < keyArr.length; i++) {
+        let key = keyArr[i];
+        if (typeof this.state[key] == "string" && this.state[key].trim().length == 0) {
+          return false;
+        } else if (typeof this.state[key] == "object" && Object.keys(this.state[key]).length == 0) {
+          return false;
+        } else if (Array.isArray(this.state[key]) && this.state[key].length == 0) {
+          return false;
+        }
+      }
+      return true;
+    }
     
     render() {
 
@@ -264,13 +304,13 @@ export default class Entry extends React.Component {
             <button onClick={(e) => this.changeTab("basics", e)}>basics</button>
             <button onClick={(e) => this.changeTab("filters", e)}>filters</button>
             <button onClick={(e) => this.changeTab("about", e)}>about</button>
-            <button>submit</button>
+            {this.state.newEntry ? <button onClick={() => this.handlePost()}>post</button> : null}
+            {this.state.entryMsg}
           </div>
 
           <EntryForm onSubmit={this.handleSubmit}>
             {this.renderTab(this.state.currentTab)}
             <input type="submit" value="save"/>
-            {this.state.entryMsg}
           </EntryForm>
 
         </EntryContainer>
