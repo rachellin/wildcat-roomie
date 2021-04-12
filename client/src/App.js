@@ -25,18 +25,30 @@ import Authenticate from './account/Authenticate';
 // }
 
 class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      newEntry: true,
+    }
+  }
+
+  toggle() {
+    this.setState({ newEntry: !this.state.newEntry });
+  }
+
   render () {
     return (
       //<Router>
         <div>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/entry">Secret</Link></li>
+            <li><Link onClick={() => this.toggle()} to="/entry">Edit Entry</Link></li>
+            <li><Link onClick={() => this.toggle()} to="/entry">New Entry</Link></li>
           </ul>
           <Switch>
             <Route path="/" exact component={Container} />
             {/* <Route path="/entry" component={withAuth(Entry)} /> */}
-            <Route path="/entry" component={Entry}/>
+            <Route path="/entry" key={`${this.state.newEntry}`} exact render={() => <Entry newEntry={this.state.newEntry}/>}/>
             <Route path="/auth" component={Authenticate} />
           </Switch>
         </div>

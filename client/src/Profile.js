@@ -10,20 +10,20 @@ export class Profile extends React.Component {
                 <div onClick={this.props.onClick} className="close"><i className="ri-close-fill"></i></div>
 
                 <div className="side">
-                    <img src={this.props.img} alt="profile img"/>
+                    <img src={this.props.img ? this.props.img : "/pfp.jpg"} alt="profile img"/>
                     <h1>{this.props.name}</h1>
 
                     <div className="basics">
                         <span><i className="ri-settings-3-line"></i> McCormick</span> 
-                        <span><i className="ri-pencil-line"></i> {this.props.bio.major}</span>
+                        <span><i className="ri-pencil-line"></i> {this.props.basics.major}</span>
                         <span><i className="ri-star-line"></i> INFJ</span>
-                        <span><i className="ri-map-pin-line"></i> {this.props.bio.location}</span>
+                        <span><i className="ri-map-pin-line"></i> {this.props.basics.location}</span>
                     </div>
 
                     <div className="social-media">
-                        <span><i className="ri-instagram-line"></i> <a href=""> {this.props.social.ig}</a></span>
-                        <span><i className="ri-snapchat-line"></i> {this.props.social.snap}</span>
-                        <span><i className="ri-phone-line"></i> {this.props.social.phone}</span>
+                        <span><i className="ri-instagram-line"></i> <a href=""> {this.props.social.ig ? this.props.social.ig : ""}</a></span>
+                        <span><i className="ri-snapchat-line"></i> {this.props.social.snap ? this.props.social.snap : ""}</span>
+                        <span><i className="ri-phone-line"></i> {this.props.social.phone ? this.props.social.phone : ""}</span>
                     </div>
                 </div>
 
@@ -34,11 +34,11 @@ export class Profile extends React.Component {
                 <div className="bio">
                     <div className="about">
                         <h1>about</h1>
-                        {this.props.bio.about}
+                        {this.props.about.bio}
                     </div>
                     <div className="looking-for">
                         <h1>looking for</h1>
-                        {this.props.bio.looking}
+                        {this.props.about.looking}
                     </div>
                 </div>
                 </StyledProfile>

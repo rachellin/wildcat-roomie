@@ -65,7 +65,7 @@ export class Card extends React.Component {
             } 
             {this.props.display ? 
                 <StyledCard onClick={() => this.openProfile()}>
-                    <img src={this.props.img} alt="profile image"></img>
+                    <img src={this.props.img ? this.props.img : "/pfp.jpg"} alt="profile image"></img>
                     <h1>{this.props.name}</h1>
                 </StyledCard>
                 : null

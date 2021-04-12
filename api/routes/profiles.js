@@ -85,8 +85,31 @@ let cardInfo = [
 // get data for all profiles 
 router.get("/all", function(req, res, next) {
     //res.send("API is working properly");
-    const myJSON = JSON.stringify(cardInfo);
-    res.json(myJSON);
+    // const myJSON = JSON.stringify(cardInfo);
+    // res.json(myJSON);
+    const snakeToCamel = snakeCaseString => snakeCaseString.replace(/([-_]\w)/g, g => g[1].toUpperCase());
+    User.getAll("user_profile")
+        .then(data => {
+            let profiles = data.map(profile => {
+                let newProfile = {};
+                Object.keys(profile).map(key => {
+                    newProfile[snakeToCamel(key)] = profile[key] 
+                    if (profile[key] == null) {
+                    newProfile[snakeToCamel(key)] = "";
+                    }
+                })
+                return newProfile;
+            });
+            res.status(200).json({data: profiles});
+            console.log(profiles)
+            console.log("sent all profile data!");
+            return data;
+        })
+        .catch(err => {
+            console.log(err);
+            throw err;
+        })
+        // must convert everything to camelcase...
 });
 
 // testing api

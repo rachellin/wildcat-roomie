@@ -35,13 +35,13 @@ export class ProfileContainer extends React.Component {
     callAPI = async () => {
         const res = await fetch(`http://localhost:9000/api/profiles/all`);
         const resjson = await res.json();
-        const parsed = JSON.parse(resjson);
-        console.log(parsed);
+        const profiles = resjson.data;
+        console.log(profiles)
         this.setState({ 
-            cardInfo: [...parsed],
+            cardInfo: [...profiles],
             //cardInfo: [...cardInfoLocal],
             loading: false,
-            showCard: new Array(parsed.length).fill(true),
+            showCard: new Array(profiles.length).fill(true),
         });
     }
 
@@ -114,12 +114,13 @@ export class ProfileContainer extends React.Component {
             card = (
                 <Card 
                     key={info[i].name}
-                    name={info[i].name} 
+                    name={`${info[i].firstName} ${info[i].lastName}`} 
                     img={info[i].img} 
                     filters={info[i].filters} 
                     display={this.state.showCard[i]}
-                    bio={info[i].bio}
+                    basics={info[i].basics}
                     social={info[i].social}
+                    about={info[i].about}
                     />
             )
             arr.push(card);

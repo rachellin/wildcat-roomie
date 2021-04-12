@@ -72,6 +72,16 @@ const User = {
       return error;
     }
   },
+  // get array of all rows from table
+  async getAll(table) {
+    try {
+      const readAllQuery = `SELECT * FROM ${table}`;
+      const { rows } = await database.select(readAllQuery);
+      return rows;
+    } catch (error) {
+      return error;
+    }
+  },
   // add data for specific section of profile
   async updateProfile (userId, data) {
     try {
