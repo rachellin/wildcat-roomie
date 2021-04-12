@@ -117,7 +117,8 @@ export default class Entry extends React.Component {
           firstName: this.state.firstName, 
           lastName: this.state.lastName,
           basics: this.state.basics,
-          social: this.state.social
+          social: this.state.social,
+          roommate: this.state.roommate
         }
       } else {
         let tab = this.state.currentTab;

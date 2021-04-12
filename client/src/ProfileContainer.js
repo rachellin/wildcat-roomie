@@ -13,7 +13,8 @@ export class ProfileContainer extends React.Component {
         this.state = {
             filterNames: filterArr, // do i just put the long array of filters here 
             filters: new Array(filterArr.length).fill(false), // length: 23 + # of dorms + # of schools 
-            onFilters: [], // what the hell is this for 
+            roommateOnly: false,
+            onFilters: [], 
             showCard: new Array(1).fill(true), 
             cardInfo: [],
             loading: true,
@@ -22,6 +23,13 @@ export class ProfileContainer extends React.Component {
 
     componentDidMount () {
         this.callAPI();
+        // let copy = this.state.cardInfo.slice();
+        // for (let i = 0; i < copy.length; i++) {
+        //     if (copy[i].roommate) {
+        //         copy[i].filters.push("roommate");
+        //     }
+        // }
+        // this.setState({ cardInfo: copy });
         //this.testAPI();
         //this.state.filters.fill(false);
         //console.log(this.state.filters);
@@ -144,6 +152,18 @@ export class ProfileContainer extends React.Component {
         this.handleClick(this.state.filters[i], this.state.filterNames[i], i, this.state.cardInfo);
     }
 
+    toggleRoommate() {
+        let showCardCopy = this.state.showCard.slice();
+        let cards = this.state.cardInfo.slice();
+        for (let i = 0; i < cards.length; i++) {
+            if (!cards[i].roommate) {
+                showCardCopy[i] = this.state.roommateOnly; // originally set to false
+            }
+        }
+        this.setState({ showCard: showCardCopy, roommateOnly: !this.state.roommateOnly });
+        // loop through filters array and set to false if that profile roommate property is false
+    }
+
     render () {
         // const data = JSON.parse(this.props.apiResponse);
         // let dataArr = [data];
@@ -171,6 +191,14 @@ export class ProfileContainer extends React.Component {
                 filters={this.state.filters} 
                 colors={this.state.filterColors}
             /> 
+
+            <div style={{display: "flex"}}>
+                <input 
+                    type="checkbox" id="roommate"
+                    onChange={() => this.toggleRoommate()}/>
+                <label for="roommate">show only those looking for roommate</label>
+            </div>
+            
             <StyledProfileCont>
                 {this.renderCards(this.state.cardInfo)}
             </StyledProfileCont>
