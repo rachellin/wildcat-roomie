@@ -98,7 +98,7 @@ export class FilterEntry extends React.Component {
                 {this.renderGroup("campus", "radio")}
                 {this.renderGroup("region", "radio")}
                 {this.renderGroup("school", "checkbox")}
-                {this.renderGroup("personality", "radio")}
+                {this.renderGroup("mbti", "radio")}
                 {this.renderGroup("dorm", "checkbox")}
                 {this.renderGroup("other", "checkbox")}
             </StyledFilterEntry>

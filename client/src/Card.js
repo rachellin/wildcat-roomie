@@ -54,8 +54,7 @@ export class Card extends React.Component {
                     onClick={() => this.closeProfile()} 
                     img={this.props.img} 
                     name={this.props.name}
-                    bio={this.props.bio}
-                    lookingFor={this.props.lookingFor}
+                    about={this.props.about}
                     filters={this.props.filters}
                     social={this.props.social}
                     basics={this.props.basics}

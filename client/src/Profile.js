@@ -2,6 +2,8 @@ import React from 'react';
 import { StyledProfile, Overlay } from './style/ProfileStyles';
 import 'remixicon/fonts/remixicon.css';
 
+import {filters} from './FilterData';
+
 export class Profile extends React.Component {
     render () {
         return (
@@ -14,9 +16,9 @@ export class Profile extends React.Component {
                     <h1>{this.props.name}</h1>
 
                     <div className="basics">
-                        <span><i className="ri-settings-3-line"></i> McCormick</span> 
+                        <span><i className="ri-settings-3-line"></i> {this.props.filters.filter(val => filters["school"].includes(val))}</span> 
                         <span><i className="ri-pencil-line"></i> {this.props.basics.major}</span>
-                        <span><i className="ri-star-line"></i> INFJ</span>
+                        <span><i className="ri-star-line"></i> {this.props.filters.filter(val => filters["mbti"].includes(val))}</span>
                         <span><i className="ri-map-pin-line"></i> {this.props.basics.location}</span>
                     </div>
 
@@ -28,7 +30,12 @@ export class Profile extends React.Component {
                 </div>
 
                 <div className="bio-filters">
-                    {this.props.filters.map(filter => <span>{filter}</span>)}
+                    {this.props.filters.map(filter => {
+                        if (filter == "none" || filter == "both/neither") {
+                            return;
+                        } 
+                        return <span>{filter}</span>;
+                    })}
                 </div>
 
                 <div className="bio">
@@ -46,6 +53,7 @@ export class Profile extends React.Component {
         )
     }
 }
+
 
 // school/major icon should depend on their input 
 // take school from filters 

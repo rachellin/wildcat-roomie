@@ -93,10 +93,14 @@ router.get("/all", function(req, res, next) {
             let profiles = data.map(profile => {
                 let newProfile = {};
                 Object.keys(profile).map(key => {
-                    newProfile[snakeToCamel(key)] = profile[key] 
-                    if (profile[key] == null) {
-                    newProfile[snakeToCamel(key)] = "";
+                  newProfile[snakeToCamel(key)] = profile[key] 
+                  if (profile[key] == null) {
+                    if (key == "filters") {
+                      newProfile[snakeToCamel(key)] = [];
+                    } else {
+                      newProfile[snakeToCamel(key)] = "";
                     }
+                  }
                 })
                 return newProfile;
             });
