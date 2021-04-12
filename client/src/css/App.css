@@ -1,7 +1,7 @@
 body {
   background: #fafafa;
-  font-size: 15px;
-  font-family: 'Karla', sans-serif;
+  font-size: 16px;
+  font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -17,12 +17,12 @@ a {
 
 /*-- scrollbar --*/
 ::-webkit-scrollbar-thumb:vertical {
-  background-color: #eee; /*slider color*/
+  background-color: plum; /*slider color*/
   height: 50px; 
 }
 ::-webkit-scrollbar {
   height: 0px;
-  width: 2px; 
+  width: 4px; 
   background-color: #fafafa; /*scrollbar bg color*/
 }
 
@@ -37,6 +37,10 @@ button:hover {
   cursor: pointer;
 }
 
+button, h1, h2 {
+  font-family: "Karla", sans-serif;
+}
+
 /* form */
 input {
   display: block;
@@ -46,6 +50,21 @@ input {
   padding: 1rem;
   border-radius: 2rem;
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+input[type=submit] {
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0 0 0;
+}
+
+input[type="text"]:focus, input[type="name"]:focus, input[type="email"]:focus, textarea:focus {
+  box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.4); /* change color TODO */
+}
+
+input[type=submit]:hover {
+  cursor: pointer;
 }
 
 label {
@@ -59,7 +78,7 @@ label {
 }
 
 textarea {
-  border: none;
+  border: 1px solid #eee;
   outline: none;
   font-size: 15px;
   font-family: 'Source Sans Pro', sans-serif;

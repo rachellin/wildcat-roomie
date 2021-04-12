@@ -6,18 +6,6 @@ import { FilterEntry } from './FilterEntry';
 import { BioEntry } from './BioEntry';
 import { BasicsEntry } from './BasicsEntry';
 
-/*
-click on entry button
-open this component
-enter info
-submit 
-call api to insert data into database if user not present
-but user account????
-
-click save --> save to db
-post --> post to app
-*/
-
 export default class Entry extends React.Component {
     constructor(props) {
       super(props);
@@ -48,15 +36,6 @@ export default class Entry extends React.Component {
       } else {
         this.getData();
       }
-
-
-      // EDITING ENTRIES
-      // const dbemail = "rachlin232@gmail.com";
-      // if (this.state.email == dbemail) {
-      //   this.setState({ emailChecked: true });
-      // } else {
-      //   this.setState({ emailMsg: "This email does not exist. Please try again." });
-      // }
     }
 
     addUser(data) {
@@ -271,18 +250,6 @@ export default class Entry extends React.Component {
     
     render() {
 
-      /*
-      first name, last name, pronouns
-      school, major, personality, location
-      contact info
-
-      filters
-      roommate tagline/prompt TODO ?? 
-
-      about me
-      looking for 
-      */
-
       if (!this.state.emailChecked) {
         return (
           <EmailEntry>
@@ -291,7 +258,7 @@ export default class Entry extends React.Component {
               <input 
                 type="email" name="email" value={this.state.email} 
                 onChange={this.handleChange} placeholder="email" required/>
-              <input type="submit" value="submit"/>
+              <input type="submit" value="enter" style={{margin: "auto"}}/>
               {this.state.emailMsg}
             </form>
           </EmailEntry>

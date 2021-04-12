@@ -21,12 +21,15 @@ export class BioEntry extends React.Component {
     render() {
         return (
             <div class="bio">
+                <label for="about"><b>about you</b></label>
                 <textarea 
+                    style={{marginBottom: "3rem"}}
                     name="about" 
                     placeholder="write about yourself..." 
                     onChange={e => this.updateData("bio", e.target.value)} 
                     value={this.props.about.bio}
                     required/>
+                <label for="looking-for"><b>what you're looking for in a roommate</b></label>
                 <textarea 
                     name="looking-for" 
                     placeholder="what are you looking for in a roommate?" 

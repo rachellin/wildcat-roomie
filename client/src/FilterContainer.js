@@ -78,6 +78,7 @@ export class FilterContainer extends React.Component {
                 display: 'flex', 
                 flexWrap: 'wrap',
                 justifyContent: 'center', 
+                fontFamily: "'Karla', sans-serif"
             }}>
                 {this.renderDropdowns()}
             </div>

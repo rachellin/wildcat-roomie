@@ -6,21 +6,30 @@ import styled from 'styled-components';
 export const EmailEntry = styled.div`
     margin: auto;
     width: 200px;
+    text-align: center;
+
+    label {
+        font-weight: 600;
+        font-size: 1.3rem;
+        font-family: 'Karla', sans-serif;
+    }
 `
 
 export const EntryContainer = styled.div`
-
+    //border: 1px solid lightblue;
     .nav {
         position: fixed;
-        margin: 2rem;
+        top: 50%;
+        left: 8rem;
+        transform: translateY(-50%);
+        border-radius: 2rem;
 
         button {
             display: block;
             font-size: 1.5rem;
-            border-radius: 2rem;
             padding: 1.5rem;
             margin: 1rem;
-            background: lightpink;
+            background: transparent;
         }
     }
 `
@@ -30,6 +39,9 @@ export const EntryForm = styled.form`
     width: 50vw;
     margin: auto;
     padding: 2rem;
+    box-shadow: 1px 1px 30px 3px #eaeaea;
+    background: #fff;
+    border-radius: 2rem;
 
     .section {
         width: 100%;
@@ -52,8 +64,6 @@ export const EntryForm = styled.form`
         width: 100%;
         margin: 1rem;
         height: 200px;
-        max-height: 200px;
-        overflow-y: scroll;
         resize: none;
         white-space: pre-wrap;
     }
