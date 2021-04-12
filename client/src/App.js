@@ -32,18 +32,14 @@ class App extends React.Component {
     }
   }
 
-  toggle() {
-    this.setState({ newEntry: !this.state.newEntry });
-  }
-
   render () {
     return (
       //<Router>
         <div>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link onClick={() => this.toggle()} to="/entry">Edit Entry</Link></li>
-            <li><Link onClick={() => this.toggle()} to="/entry">New Entry</Link></li>
+            <li><Link onClick={() => this.setState({ newEntry: false })} to="/entry">Edit Entry</Link></li>
+            <li><Link onClick={() => this.setState({ newEntry: true })} to="/entry">New Entry</Link></li>
           </ul>
           <Switch>
             <Route path="/" exact component={Container} />
