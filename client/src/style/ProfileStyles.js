@@ -11,8 +11,11 @@ export const StyledContainer = styled.div`
     //text-align: center;
 
     .header {
+        position: relative;
+        top: 0;
         display: block;
-        margin: 1rem 0 4rem 0;
+        padding: 1rem 0 2rem 0;
+        background: #fafafa;
 
         a {
             margin-right: 1.5rem;
@@ -156,4 +159,5 @@ export const Overlay = styled.div`
     height: 100vh;
     top: 0;
     left: 0;
+    z-index: 99999;
 `

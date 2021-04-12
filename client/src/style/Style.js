@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // `
 
 export const EmailEntry = styled.div`
-    margin: auto;
+    margin: 2rem auto;
     width: 200px;
     text-align: center;
 
@@ -23,6 +23,8 @@ export const EntryContainer = styled.div`
         left: 8rem;
         transform: translateY(-50%);
         border-radius: 2rem;
+        width: 150px;
+        text-align: center;
 
         button {
             display: block;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledFilters } from './style/HeaderStyles';
+import { StyledFilters, StyledFilterContainer } from './style/HeaderStyles';
 import { Filter } from './Filter';
 import { FilterDropdown } from './FilterDropdown';
 
@@ -73,15 +73,9 @@ export class FilterContainer extends React.Component {
 
     render () {
         return (
-            <div style={{
-                position: 'relative', 
-                display: 'flex', 
-                flexWrap: 'wrap',
-                justifyContent: 'center', 
-                fontFamily: "'Karla', sans-serif"
-            }}>
+            <StyledFilterContainer>
                 {this.renderDropdowns()}
-            </div>
+            </StyledFilterContainer>
         )
     } // increase zindex only when opened?
 }
@@ -89,6 +83,7 @@ export class FilterContainer extends React.Component {
 FilterContainer.defaultProps = {
     filterArr: filterArr
 }
+
   
 /* CHANGES
 filterNames should still be all the filters 

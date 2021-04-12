@@ -17,6 +17,18 @@ import styled from 'styled-components';
 //     }
 // `
 
+export const StyledFilterContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: 'Karla', sans-serif;
+    position: sticky;
+    top: 0;
+    padding: 2rem 0 1rem 0;
+    background: #fafafa;
+    z-index: 999;
+`;
+
 export const StyledFilters = styled.div`
     .filter {
         display: block;

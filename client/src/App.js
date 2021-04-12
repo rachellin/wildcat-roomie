@@ -37,17 +37,16 @@ class App extends React.Component {
     return (
       //<Router>
       <StyledContainer>
-
-        <h1>wildcat roomie</h1>
-          <div className="header">
-            <Link to="/">home</Link>
-            <Link>instructions</Link>
-            <Link onClick={() => this.setState({ newEntry: false })} to="/entry">edit profile</Link>
-            <Link onClick={() => this.setState({ newEntry: true })} to="/entry">new profile</Link>
-            <a href="">view dorms</a>
-            <a href="">housing contract</a>
-            <a href="">feedback</a>
-          </div>
+        <div className="header">
+          <h1>wildcat roomie</h1>
+          <Link to="/">home</Link>
+          <Link>instructions</Link>
+          <Link onClick={() => this.setState({ newEntry: false })} to="/entry">edit profile</Link>
+          <Link onClick={() => this.setState({ newEntry: true })} to="/entry">new profile</Link>
+          <a href="">view dorms</a>
+          <a href="">housing contract</a>
+          <a href="">feedback</a>
+        </div>
 
         <Switch>
           <Route path="/" exact component={Container} />

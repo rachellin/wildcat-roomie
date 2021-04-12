@@ -254,7 +254,7 @@ export default class Entry extends React.Component {
         return (
           <EmailEntry>
             <form onSubmit={this.checkEmail}>
-              <label for="email">{this.state.newEntry ? "new entry" : "edit entry"}</label>
+              <label for="email">{this.state.newEntry ? "new profile" : "edit profile"}</label>
               <input 
                 type="email" name="email" value={this.state.email} 
                 onChange={this.handleChange} placeholder="email" required/>
@@ -272,7 +272,7 @@ export default class Entry extends React.Component {
             <button onClick={(e) => this.changeTab("filters", e)}>filters</button>
             <button onClick={(e) => this.changeTab("about", e)}>about</button>
             {!this.state.isPosted ? <button onClick={() => this.handlePost()}>post</button> : null}
-            {this.state.entryMsg}
+            <br/>{this.state.entryMsg}
           </div>
 
           <EntryForm onSubmit={this.handleSubmit}>
