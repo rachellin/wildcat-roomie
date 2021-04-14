@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { EntryForm } from '../style/Style';
+import { TextEditor } from './TextEditor';
 
 export class BioEntry extends React.Component {
     constructor(props) {
@@ -22,6 +23,7 @@ export class BioEntry extends React.Component {
         return (
             <div class="bio">
                 <label for="about"><b>about you</b></label>
+                <TextEditor/>
                 <textarea 
                     style={{marginBottom: "3rem"}}
                     name="about" 

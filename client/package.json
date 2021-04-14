@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
     "bootstrap": "^4.6.0",
+    "draft-js": "^0.11.7",
     "react": "^17.0.1",
     "react-animated-css": "^1.2.1",
     "react-bootstrap": "^1.5.2",
