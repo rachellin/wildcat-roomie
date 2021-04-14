@@ -85,7 +85,7 @@ export default class Entry extends React.Component {
                 social={this.state.social} 
                 firstName={this.state.firstName} lastName={this.state.lastName} roommate={this.state.roommate}
                 updateData={this.updateData} handleImg={(data, deleting) => this.handleImg(data, deleting)}
-                image={this.state.img}/>;
+                image={this.state.img} imageDelete={this.state.imgDelete}/>;
       } else if (i == "filters") {
         return <FilterEntry filters={this.state.filters} updateData={this.updateData}/>;
       } else {

@@ -8,7 +8,8 @@ export class BasicsEntry extends React.Component {
             basics: this.props.basics,
             social: this.props.social,
             image: this.props.image,
-            imageFile: null
+            imageFile: null,
+            newImg: false
         }
     }
 
@@ -23,6 +24,10 @@ export class BasicsEntry extends React.Component {
     }
 
     handleUpload(e) {
+        if (this.state.image != null) {
+            this.setState({ newImg: true });
+        } // ???
+        this.props.updateData("img", e.target.value);
         this.setState({ 
             image: URL.createObjectURL(e.target.files[0]),
             imageFile: e.target.files[0]
@@ -45,6 +50,12 @@ export class BasicsEntry extends React.Component {
 
     uploadImg = (e) => {
         e.preventDefault();
+
+        // if replacing an image, delete image first
+        if (this.state.newImg) {
+            this.imgurDelete(this.props.imageDelete);
+        }
+
         const formData = new FormData();
         formData.append('type', 'file')
 
@@ -59,11 +70,11 @@ export class BasicsEntry extends React.Component {
             })
             .then(formData => {
                 console.log(formData)
-                this.imgur(formData);
+                this.imgurPost(formData);
             })
     }
 
-    imgur(formData) {
+    imgurPost(formData) {
         fetch("https://api.imgur.com/3/image", {
             method: "POST",
             headers: {
@@ -86,6 +97,31 @@ export class BasicsEntry extends React.Component {
                 link: data.data.link,
                 deleteHash: data.data.deletehash
             }, false);
+            return data;
+        })
+        .catch(err => {
+            console.log(err);
+            throw err;
+        });
+    }
+
+    imgurDelete(deleteHash) {
+        fetch(`https://api.imgur.com/3/image/${deleteHash}`, {
+            method: "DELETE",
+            headers: {
+                'Authorization': `Client-ID ${process.env.REACT_APP_CLIENTID}`,
+            },
+        })
+        .then(res => {
+            if (res.status == 200) {
+                return res.json();
+            } else {
+                console.log("error", res.status);
+                return res.json();
+            }
+        })
+        .then(data => {
+            console.log(data);
             return data;
         })
         .catch(err => {
