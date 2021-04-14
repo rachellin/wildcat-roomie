@@ -7,7 +7,7 @@ export class BasicsEntry extends React.Component {
         this.state = {
             basics: this.props.basics,
             social: this.props.social,
-            image: null,
+            image: this.props.image,
             imageFile: null
         }
     }
@@ -80,12 +80,12 @@ export class BasicsEntry extends React.Component {
             }
         })
         .then(data => {
-            // save data.data.link and data.data.deleteHash
+            // save data.data.link and data.data.deletehash
+            // should check that there is no error before calling handleImg
             this.props.handleImg({
                 link: data.data.link,
                 deleteHash: data.data.deletehash
             }, false);
-            console.log(data);
             return data;
         })
         .catch(err => {

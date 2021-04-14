@@ -22,6 +22,8 @@ export default class Entry extends React.Component {
         basics: {},
         social: {},
         filters: [],
+        img: null, // set to default pic?
+        imgDelete: null,
         roommate: false,
         isPosted: false
       }
@@ -82,7 +84,8 @@ export default class Entry extends React.Component {
                 basics={this.state.basics} 
                 social={this.state.social} 
                 firstName={this.state.firstName} lastName={this.state.lastName} roommate={this.state.roommate}
-                updateData={this.updateData} handleImg={(data, deleting) => this.handleImg(data, deleting)}/>;
+                updateData={this.updateData} handleImg={(data, deleting) => this.handleImg(data, deleting)}
+                image={this.state.img}/>;
       } else if (i == "filters") {
         return <FilterEntry filters={this.state.filters} updateData={this.updateData}/>;
       } else {
