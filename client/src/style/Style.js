@@ -113,3 +113,17 @@ export const StyledFilterEntry = styled.div`
     display: flex;
     flex-wrap: wrap;
 `
+
+export const StyledEditor = styled.div`
+    margin: 2rem 1rem 0 0; // TODO: fix 
+    //border: 1px solid #eee;
+
+    .editor {
+        border: 1px solid #eee;
+        outline: none;
+        font-size: 15px;
+        padding: 1rem;
+        border-radius: 2rem;
+        margin: 1rem 0 0 0;
+    }
+`
