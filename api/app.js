@@ -13,6 +13,7 @@ var loginRouter = require('./routes/login');
 var logoutRouter = require('./routes/logout');
 
 var profilesRouter = require('./routes/profiles');
+var firebaseRouter = require('./routes/firestore');
 
 var app = express();
 

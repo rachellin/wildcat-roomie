@@ -82,7 +82,7 @@ export default class Entry extends React.Component {
                 basics={this.state.basics} 
                 social={this.state.social} 
                 firstName={this.state.firstName} lastName={this.state.lastName} roommate={this.state.roommate}
-                updateData={this.updateData}/>;
+                updateData={this.updateData} handleImg={(data, deleting) => this.handleImg(data, deleting)}/>;
       } else if (i == "filters") {
         return <FilterEntry filters={this.state.filters} updateData={this.updateData}/>;
       } else {
@@ -248,6 +248,21 @@ export default class Entry extends React.Component {
         }
       }
       return true;
+    }
+
+    // upload and delete img
+    handleImg(resData, deleting) {
+      if (!deleting) {
+        let data = {
+          userId: this.state.userId,
+          data: {
+            img: resData.link,
+            imgDelete: resData.deleteHash
+          }
+        }
+        this.callUpdate(data, false);
+        console.log("img data in db!")
+      }
     }
     
     render() {

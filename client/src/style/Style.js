@@ -47,6 +47,7 @@ export const EntryForm = styled.form`
 
     .section {
         width: 100%;
+        padding-right: 2rem;
         display: flex;
         flex-direction: row;
 
@@ -60,6 +61,22 @@ export const EntryForm = styled.form`
             width: 100%;
         }
 
+    }
+
+    .img-preview {
+        display: block;
+        text-align: center;
+        width: 300px;
+        margin: auto;
+
+        img {
+            margin: auto;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #eee;
+            object-fit: cover;
+        }
     }
 
     textarea {

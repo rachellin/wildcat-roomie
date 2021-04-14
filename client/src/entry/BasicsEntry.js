@@ -6,7 +6,9 @@ export class BasicsEntry extends React.Component {
         super(props);
         this.state = {
             basics: this.props.basics,
-            social: this.props.social
+            social: this.props.social,
+            image: null,
+            imageFile: null
         }
     }
 
@@ -20,9 +22,87 @@ export class BasicsEntry extends React.Component {
         });
     }
 
+    handleUpload(e) {
+        this.setState({ 
+            image: URL.createObjectURL(e.target.files[0]),
+            imageFile: e.target.files[0]
+        });
+
+    }
+
+    fileToDataUri = (file) => new Promise((resolve, reject) => {
+        // const reader = new FileReader();
+        // reader.onload = (event) => {
+        //   resolve(event.target.result)
+        // };
+        //reader.readAsDataURL(file);
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    })
+
+    uploadImg = (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('type', 'file')
+
+        this.fileToDataUri(this.state.imageFile)
+            .then(result => {
+                //const fix = result.split(',')[1].replace(/\+/g, '/').replace(/_/g, '/').replace(/\-/g, '/'); // wait so i need this?
+                return result.split(',')[1];
+            })
+            .then(blob => {
+                formData.append('image', blob);
+                return formData;
+            })
+            .then(formData => {
+                console.log(formData)
+                this.imgur(formData);
+            })
+    }
+
+    imgur(formData) {
+        fetch("https://api.imgur.com/3/image", {
+            method: "POST",
+            headers: {
+                'Authorization': `Client-ID ${process.env.REACT_APP_CLIENTID}`,
+            },
+            body: formData
+        })
+        .then(res => {
+            if (res.status == 200) {
+                return res.json();
+            } else {
+                console.log("error", res.status);
+                return res.json();
+            }
+        })
+        .then(data => {
+            // save data.data.link and data.data.deleteHash
+            this.props.handleImg({
+                link: data.data.link,
+                deleteHash: data.data.deletehash
+            }, false);
+            console.log(data);
+            return data;
+        })
+        .catch(err => {
+            console.log(err);
+            throw err;
+        });
+    }
+
     render() {
         return (
             <>
+                <div class="section img-preview">
+                    <img className="img-preview" src={this.state.image}/>
+                    <input type="file" onChange={e => this.handleUpload(e)}/>
+                    <button onClick={this.uploadImg}>save image</button>
+                </div>
+
                 <div class="section">
                     <div class="form-group">
                         <label for="first-name" className="required">first name</label>

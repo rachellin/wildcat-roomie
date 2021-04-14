@@ -29,7 +29,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      newEntry: true,
+      newEntry: false,
     }
   }
 
