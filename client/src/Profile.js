@@ -4,8 +4,27 @@ import 'remixicon/fonts/remixicon.css';
 
 import {filters} from './FilterData';
 
+const schoolIcons = {
+    "Weinberg": "ri-test-tube-line",
+    "McCormick": "ri-settings-3-line",
+    "School of Communication": "ri-wechat-2-line",
+    "Medill": "ri-newspaper-line",
+    "Bienen": "ri-music-2-line",
+    "SESP": "ri-government-fil"
+}
+
 export class Profile extends React.Component {
+    matchIcon(school) {
+        let keys = Object.keys(schoolIcons);
+        for (let i = 0; i < keys.length; i++) {
+            if (keys[i] == school) {
+                return schoolIcons[keys[i]];
+            }
+        }
+    }
+
     render () {
+        let schools = this.props.filters.filter(val => filters["school"].includes(val));
         return (
             <Overlay opacity={this.props.overlay}>
                 <StyledProfile ref={this.props.innerRef} opacity={this.props.opacity}>
@@ -16,7 +35,8 @@ export class Profile extends React.Component {
                     <h1>{this.props.name}</h1>
 
                     <div className="basics">
-                        <span><i className="ri-settings-3-line"></i> {this.props.filters.filter(val => filters["school"].includes(val))}</span> 
+                        <span><i className="ri-user-line"></i> {this.props.basics.pronouns}</span>
+                        {schools.map(school => <span><i className={this.matchIcon(school)}></i> {school}</span>)}
                         <span><i className="ri-pencil-line"></i> {this.props.basics.major}</span>
                         <span><i className="ri-star-line"></i> {this.props.filters.filter(val => filters["mbti"].includes(val))}</span>
                         <span><i className="ri-map-pin-line"></i> {this.props.basics.location}</span>

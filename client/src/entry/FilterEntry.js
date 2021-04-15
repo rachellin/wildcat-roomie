@@ -60,10 +60,28 @@ export class FilterEntry extends React.Component {
     // after clicking diff tab and returning, when you select item in any group, the prev gropu clears?
 
     // check if at least one option in checkbox group is checked
-    checkboxRequired(category) {
-        if (this.state[category].length == 0) {
+    required(type, category) {
+        if (type == "radio") {
+            if (category == "sleep") {
+                return false;
+            }
             return true;
         }
+        if (type == "checkbox") {
+            if (category == "other") {
+                return false;
+            }
+            if (this.state[category].length == 0) {
+                return true;
+            } 
+            return false;
+        } 
+    }
+
+    showRequired(type, category) {
+        if (category == "school"|| this.required(type, category)) {
+            return true;
+        };
         return false;
     }
 
@@ -76,7 +94,8 @@ export class FilterEntry extends React.Component {
                     <input 
                         type={type} id={filters[category][i]} name={category} value={filters[category][i]} 
                         onChange={e => this.updateData(type, category, e.target.value)} 
-                        required={type == "radio" ? true : this.checkboxRequired(category)}
+                        //required={type == "radio" ? true : this.checkboxRequired(category)}
+                        required={this.required(type, category)}
                         checked={this.isChecked(filters[category][i])}/>
                     <label for={filters[category][i]}>{filters[category][i]}</label>
                 </div>
@@ -85,7 +104,7 @@ export class FilterEntry extends React.Component {
         }
         return (
             <div className="group">   
-                <b className="required">{category}</b>
+                <b className={this.showRequired(type, category) ? "required" : ""}>{category}</b>
                 {arr}
             </div>
         )
@@ -94,13 +113,14 @@ export class FilterEntry extends React.Component {
     render() {
         return (
             <StyledFilterEntry>
+                {this.renderGroup("identity", "radio")}
                 {this.renderGroup("sleep", "radio")}
-                {this.renderGroup("campus", "radio")}
-                {this.renderGroup("region", "radio")}
                 {this.renderGroup("school", "checkbox")}
+                {this.renderGroup("region", "radio")}
+                {this.renderGroup("campus", "radio")}
+                {this.renderGroup("other", "checkbox")}
                 {this.renderGroup("mbti", "radio")}
                 {this.renderGroup("dorm", "checkbox")}
-                {this.renderGroup("other", "checkbox")}
             </StyledFilterEntry>
         )
     }
