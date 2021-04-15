@@ -111,6 +111,18 @@ const User = {
     } catch (error) {
       return error;
     }
+  },
+  async delete(userId) {
+    try {
+      const readAllQuery = `
+        DELETE user_profile, user_account FROM user_profile 
+        INNER JOIN user_account USING(user_id) WHERE user_id=${userId} 
+        RETURNING *`;
+      const { rows } = await database.select(readAllQuery);
+      return rows;
+    } catch (error) {
+      return error;
+    }
   }
 };
 
