@@ -84,11 +84,6 @@ export const EntryForm = styled.form`
         margin: 1rem;
         height: 200px;
         resize: none;
-        white-space: pre-wrap;
-    }
-
-    .bio {
-        white-space: pre-wrap;
     }
 
     .group{

@@ -105,6 +105,13 @@ router.get("/all", function(req, res, next) {
                 })
                 return newProfile;
             }).filter(profile => profile.isPosted);
+
+            if (data.length == 0) {
+                res.status(200).json({ data: profiles, message: "no profiles found" });
+                console.log("no data found")
+                return data;
+            }
+
             res.status(200).json({data: profiles});
             console.log(profiles)
             console.log("sent all profile data!");

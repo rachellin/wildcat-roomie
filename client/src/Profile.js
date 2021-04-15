@@ -31,7 +31,7 @@ export class Profile extends React.Component {
                 <div onClick={this.props.onClick} className="close"><i className="ri-close-fill"></i></div>
 
                 <div className="side">
-                    <img src={this.props.img ? this.props.img : "/pfp.jpg"} alt="profile img"/>
+                    <img src={this.props.img ? this.props.img : "/willie.jpg"} alt="profile img"/>
                     <h1>{this.props.name}</h1>
 
                     <div className="basics">
@@ -67,7 +67,7 @@ export class Profile extends React.Component {
                         <h1>about</h1>
                         {this.props.about.bio}
                     </div>
-                    <div className="looking-for">
+                    <div className="looking-for" style={{whiteSpace: "pre-wrap"}}>
                         <h1>looking for</h1>
                         {this.props.about.looking}
                     </div>

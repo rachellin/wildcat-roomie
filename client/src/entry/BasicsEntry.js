@@ -93,11 +93,21 @@ export class BasicsEntry extends React.Component {
         .then(data => {
             // save data.data.link and data.data.deletehash
             // should check that there is no error before calling handleImg
-            this.props.handleImg({
-                link: data.data.link,
-                deleteHash: data.data.deletehash
-            }, false);
-            return data;
+            if (data.status == 200) {
+                this.props.handleImg({
+                    link: data.data.link,
+                    deleteHash: data.data.deletehash
+                }, false);
+                //this.props.setEntryMsg("profile picture saved!");
+                return data;
+            } else {
+                //this.props.setEntryMsg(data.data.error);
+                this.props.handleImg({
+                    error: data.data.error
+                })
+                console.log(data.data.error);
+                return data;
+            }
         })
         .catch(err => {
             console.log(err);

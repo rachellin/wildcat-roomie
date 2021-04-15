@@ -84,8 +84,9 @@ export default class Entry extends React.Component {
                 basics={this.state.basics} 
                 social={this.state.social} 
                 firstName={this.state.firstName} lastName={this.state.lastName} roommate={this.state.roommate}
-                updateData={this.updateData} handleImg={(data, deleting) => this.handleImg(data, deleting)}
-                image={this.state.img} imageDelete={this.state.imgDelete}/>;
+                updateData={this.updateData} handleImg={(data) => this.handleImg(data)}
+                image={this.state.img} imageDelete={this.state.imgDelete}
+                setEntryMsg={(msg) => this.setEntryMsg(msg)}/>;
       } else if (i == "filters") {
         return <FilterEntry filters={this.state.filters} updateData={this.updateData}/>;
       } else {
@@ -141,6 +142,15 @@ export default class Entry extends React.Component {
     }
 
     callUpdate(data, posting) {
+      let msg = "";
+      if (data.error) {
+        this.setState({ entryMsg: data.error });
+        return data;
+      } 
+      if (data.data.img) {
+        msg = "image saved!";
+      }
+
       fetch('http://localhost:9000/api/profiles/update', {
           method: 'POST',
           body: JSON.stringify(data),
@@ -149,7 +159,7 @@ export default class Entry extends React.Component {
           }
       })
       .then(res => {
-        console.log(res.status)
+        console.log(res)
         if (res.status === 200) {
           console.log("info added");
           return res.json();
@@ -166,7 +176,7 @@ export default class Entry extends React.Component {
             if (posting) {
               this.setState({ entryMsg: "Your profile has been posted! Head over to the homepage to look :)"});
             } else {
-              this.setState({ entryMsg: data.message });
+              this.setState({ entryMsg: msg ? msg : data.message });
             }
           }, 500);
           this.getData();
@@ -239,7 +249,7 @@ export default class Entry extends React.Component {
 
     // check if all forms are filled out 
     isFilled() {
-      const keyArr = Object.keys(this.state).filter(key => key !== "currentTab" && key !== "newEntry" && key !== "emailMsg" && key !== "entryMsg" && key !== "postMsg" && key !== "userId" && key !== "isPosted" && key !== "emailChecked");
+      const keyArr = Object.keys(this.state).filter(key => key !== "currentTab" && key !== "newEntry" && key !== "emailMsg" && key !== "entryMsg" && key !== "postMsg" && key !== "userId" && key !== "isPosted" && key !== "emailChecked" && key !== "img" && key !== "imgDelete");
       for (let i = 0; i < keyArr.length; i++) {
         let key = keyArr[i];
         if (typeof this.state[key] == "string" && this.state[key].trim().length == 0) {
@@ -253,19 +263,27 @@ export default class Entry extends React.Component {
       return true;
     }
 
-    // upload and delete img
-    handleImg(resData, deleting) {
-      if (!deleting) {
-        let data = {
+    // send img data to db 
+    handleImg(resData) {
+      let data;
+      if (resData.error) {
+        data = {
+          error: resData.error
+        }
+      } else {
+        data = {
           userId: this.state.userId,
           data: {
             img: resData.link,
             imgDelete: resData.deleteHash
           }
         }
-        this.callUpdate(data, false);
-        console.log("img data in db!")
       }
+      this.callUpdate(data, false);
+    }
+
+    setEntryMsg(msg) {
+      this.setState({ entryMsg: msg });
     }
     
     render() {
