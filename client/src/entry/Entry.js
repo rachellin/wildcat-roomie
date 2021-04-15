@@ -147,11 +147,11 @@ export default class Entry extends React.Component {
     callUpdate(data, posting) {
       let msg = "";
       if (data.error) {
-        this.setState({ entryMsg: data.error });
+        this.setState({ entryMsg: "an error occured while saving your image :/" });
         return data;
       } 
       if (data.data.img) {
-        msg = "image saved!";
+        msg = "profile picture saved!";
       }
 
       fetch('http://localhost:9000/api/profiles/update', {
@@ -330,7 +330,7 @@ export default class Entry extends React.Component {
               <input 
                 type="email" name="email" value={this.state.email} 
                 onChange={this.handleChange} placeholder="email" required/>
-              <input type="submit" value="enter" style={{margin: "auto"}}/>
+              <input type="submit" value="enter"/>
               {this.state.emailMsg}
             </form>
           </EmailEntry>

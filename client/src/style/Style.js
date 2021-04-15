@@ -13,6 +13,10 @@ export const EmailEntry = styled.div`
         font-size: 1.3rem;
         font-family: 'Karla', sans-serif;
     }
+    
+    input[type="submit"] {
+        margin: 1rem auto;
+    }
 `
 
 export const EntryContainer = styled.div`
@@ -121,7 +125,7 @@ export const EntryForm = styled.form`
 
     textarea {
         width: 100%;
-        margin: 1rem;
+        margin: 1rem 5rem 1rem 0;
         height: 200px;
         resize: none;
     }

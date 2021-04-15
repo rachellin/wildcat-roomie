@@ -169,7 +169,7 @@ router.post("/update", function(req, res, next) {
     //     })
     User.updateProfile(userId, data)
         .then(data => {
-            res.status(200).json({ message: "info saved!" });
+            res.status(200).json({ message: "profile data saved!" });
             console.log("info added!");
             return data;
         })

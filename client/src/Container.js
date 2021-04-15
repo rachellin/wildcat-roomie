@@ -5,10 +5,9 @@ import { FilterContainer } from './FilterContainer';
 
 function Container (props) {
     return (
-        <StyledContainer>
-            
+        <div>
             <ProfileContainer/>
-        </StyledContainer>
+        </div>
     );
 }
 
