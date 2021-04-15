@@ -1,5 +1,5 @@
 import React from 'react';
-import {Editor, EditorState, RichUtils} from 'draft-js';
+import {Editor, EditorState, ContentState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
 import { StyledEditor } from '../style/Style';
@@ -7,8 +7,36 @@ import { StyledEditor } from '../style/Style';
 export class TextEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {editorState: EditorState.createEmpty()};
-    this.onChange = editorState => this.setState({editorState});
+    this.state = {
+      // editorState: EditorState.createWithContent(ContentState.createFromText(convertFromRaw(this.props.valueRaw))),
+      // rawContent: this.props.valueRaw
+    };
+    //this.onChange = editorState => this.setState({editorState});
+
+    this.onChange = (editorState) => {
+      const contentState = editorState.getCurrentContent();
+      //console.log('content state', convertToRaw(contentState));
+      this.saveContent(contentState);
+      this.setState({ editorState });
+    };
+
+    const rawContent = this.props.valueRaw;
+    if (rawContent) {
+      this.setState({ editorState: EditorState.createWithContent(convertFromRaw(rawContent)) })
+    } else {
+      this.setState({ editorState: EditorState.createEmpty() });
+    }
+  }
+
+  saveContent = (content) => {
+    let raw = JSON.stringify(convertToRaw(content));
+    this.props.valueRaw = raw;
+  }
+
+  renderContentAsRawJs() {
+    const contentState = this.state.editorState.getCurrentContent();
+    const raw = convertToRaw(contentState);
+    return JSON.stringify(raw);
   }
 
   handleKeyCommand = (command) => {

@@ -22,8 +22,14 @@ export class BioEntry extends React.Component {
     render() {
         return (
             <div class="bio">
+
                 <label for="about"><b>about you</b></label>
-                <TextEditor/>
+                {/* <TextEditor 
+                    name="about"
+                    onChange={e => this.updateData("bio", e.target.value)} 
+                    value={this.props.about.bio}
+                    valueRaw={this.props.about.bio}
+                    /> */}
                 <textarea 
                     style={{marginBottom: "3rem"}}
                     name="about" 
@@ -31,6 +37,7 @@ export class BioEntry extends React.Component {
                     onChange={e => this.updateData("bio", e.target.value)} 
                     value={this.props.about.bio}
                     required/>
+
                 <label for="looking-for"><b>what you're looking for in a roommate</b></label>
                 <textarea 
                     name="looking-for" 
@@ -38,6 +45,7 @@ export class BioEntry extends React.Component {
                     onChange={e => this.updateData("looking", e.target.value)} 
                     value={this.props.about.looking}
                     required/> 
+
             </div>
         )
     }
