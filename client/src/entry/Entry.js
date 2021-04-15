@@ -249,7 +249,7 @@ export default class Entry extends React.Component {
 
     // check if all forms are filled out 
     isFilled() {
-      const keyArr = Object.keys(this.state).filter(key => key !== "currentTab" && key !== "newEntry" && key !== "emailMsg" && key !== "entryMsg" && key !== "postMsg" && key !== "userId" && key !== "isPosted" && key !== "emailChecked" && key !== "img" && key !== "imgDelete");
+      const keyArr = Object.keys(this.state).filter(key => key !== "currentTab" && key !== "newEntry" && key !== "emailMsg" && key !== "entryMsg" && key !== "postMsg" && key !== "userId" && key !== "isPosted" && key !== "emailChecked" && key !== "img" && key !== "imgDelete" && key !== "social");
       for (let i = 0; i < keyArr.length; i++) {
         let key = keyArr[i];
         if (typeof this.state[key] == "string" && this.state[key].trim().length == 0) {
@@ -309,7 +309,9 @@ export default class Entry extends React.Component {
             <button onClick={(e) => this.changeTab("basics", e)}>basics</button>
             <button onClick={(e) => this.changeTab("filters", e)}>filters</button>
             <button onClick={(e) => this.changeTab("about", e)}>about</button>
-            {!this.state.isPosted ? <button onClick={() => this.handlePost()}>post</button> : null}
+            {!this.state.isPosted ? 
+              <button onClick={() => this.handlePost()}>post</button> : 
+              <button title="delete profile">delete</button>}
             <br/>{this.state.entryMsg}
           </div>
 
