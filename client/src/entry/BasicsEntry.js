@@ -28,10 +28,18 @@ export class BasicsEntry extends React.Component {
             this.setState({ newImg: true });
         } // ???
         this.props.updateData("img", e.target.value);
-        this.setState({ 
-            image: URL.createObjectURL(e.target.files[0]),
-            imageFile: e.target.files[0]
-        });
+        this.fileToDataUri(e.target.files[0])
+            .then(base64 => {
+                this.setState({
+                    image: base64,
+                    imageFile: e.target.files[0]
+                })
+            })
+        // this.setState({ 
+        //     //image: URL.createObjectURL(e.target.files[0]),
+        //     image: this.fileToDataUri(e.target.files[0]),
+        //     imageFile: e.target.files[0]
+        // });
 
     }
 
