@@ -11,6 +11,7 @@ export class BasicsEntry extends React.Component {
             imageFile: null,
             newImg: false
         }
+        this.hiddenFileInput = React.createRef();
     }
 
     updateData(category, target, value) {
@@ -148,13 +149,29 @@ export class BasicsEntry extends React.Component {
         });
     }
 
+    chooseFile = (e) => {
+        e.preventDefault();
+        this.hiddenFileInput.current.click();
+    }
+
     render() {
         return (
             <>
                 <div class="section img-preview">
-                    <img className="img-preview" src={this.state.image}/>
-                    <input type="file" onChange={e => this.handleUpload(e)}/>
-                    <button onClick={this.uploadImg}>save image</button>
+                    <div>
+                        <img src={this.state.image}/>
+                        <button className="choose-file" onClick={this.chooseFile} title="choose file">
+                            <i className="ri-upload-line"></i>
+                        </button>
+                    </div>
+
+
+                    <input 
+                        type="file" ref={this.hiddenFileInput} 
+                        style={{display: "none"}}
+                        onChange={e => this.handleUpload(e)}/>
+    
+                    <button style={{marginBottom: "1rem"}} onClick={this.uploadImg}>save profile picture</button>
                 </div>
 
                 <div class="section">

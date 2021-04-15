@@ -56,6 +56,10 @@ export const EntryForm = styled.form`
         background: #fff;
         text-align: center;
         border-radius: 2rem;
+
+        button {
+            margin: 0 1rem;
+        }
     }
 
     .section {
@@ -82,14 +86,37 @@ export const EntryForm = styled.form`
         width: 300px;
         margin: auto;
 
-        img {
-            margin: auto;
-            border-radius: 50%;
-            width: 100px;
+        div {
+            position: relative;
+            margin-bottom: 1rem;
             height: 100px;
-            border: 1px solid #eee;
-            object-fit: cover;
+
+            img {
+                position: absolute;
+                border-radius: 50%;
+                width: 100px;
+                height: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 1px solid #eee;
+                object-fit: cover;
+            }
+    
+            button.choose-file {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                margin: 0;
+                opacity: 0;
+            }
+
+            :hover button.choose-file {
+                opacity: 0.8;
+            }
         }
+
     }
 
     textarea {
