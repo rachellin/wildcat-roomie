@@ -211,6 +211,20 @@ router.get("/", function(req, res, next) {
         })
 })
 
+// delete profile
+router.delete("/delete", function(req, res) {
+    const userId = req.query.userId;
+    User.delete(userId)
+        .then(data => {
+            res.status(200).json({ message: "profile deleted" });
+            return data;
+        })
+        .catch(err => {
+            console.log(err);
+            throw err;
+        })
+})
+
 const account = {
     firstName: "",
     lastName: "",

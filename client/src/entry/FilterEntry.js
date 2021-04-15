@@ -68,7 +68,7 @@ export class FilterEntry extends React.Component {
             return true;
         }
         if (type == "checkbox") {
-            if (category == "other") {
+            if (category == "other" || category == "dorm") {
                 return false;
             }
             if (this.state[category].length == 0) {

@@ -51,7 +51,7 @@ class App extends React.Component {
         <Switch>
           <Route path="/" exact component={Container} />
           {/* <Route path="/entry" component={withAuth(Entry)} /> */}
-          <Route path="/entry" key={`${this.state.newEntry}`} exact render={() => <Entry newEntry={this.state.newEntry}/>}/>
+          <Route path="/entry" key={`${this.state.newEntry}`} exact render={() => <Entry newEntry={this.state.newEntry} history={this.props.history}/>}/>
           <Route path="/auth" component={Authenticate} />
         </Switch>
 

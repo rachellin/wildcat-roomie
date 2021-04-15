@@ -33,6 +33,7 @@ export const EntryContainer = styled.div`
             margin: 1rem;
             background: transparent;
         }
+
     }
 `
 
@@ -44,6 +45,18 @@ export const EntryForm = styled.form`
     box-shadow: 1px 1px 30px 3px #eaeaea;
     background: #fff;
     border-radius: 2rem;
+
+    .delete-check {
+        z-index: 99999;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+        background: #fff;
+        text-align: center;
+        border-radius: 2rem;
+    }
 
     .section {
         width: 100%;

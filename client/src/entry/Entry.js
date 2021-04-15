@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch, withRouter } from 'react-router-dom';
 
 import { EmailEntry, EntryForm, EntryContainer } from '../style/Style';
+import { Overlay } from '../style/ProfileStyles';
 import { FilterEntry } from './FilterEntry';
 import { BioEntry } from './BioEntry';
 import { BasicsEntry } from './BasicsEntry';
@@ -25,7 +26,9 @@ export default class Entry extends React.Component {
         img: null, // set to default pic?
         imgDelete: null,
         roommate: false,
-        isPosted: false
+        isPosted: false,
+        deleting: false,
+        deleteMsg: "are you sure you want to delete your profile?"
       }
     }
 
@@ -249,7 +252,7 @@ export default class Entry extends React.Component {
 
     // check if all forms are filled out 
     isFilled() {
-      const keyArr = Object.keys(this.state).filter(key => key !== "currentTab" && key !== "newEntry" && key !== "emailMsg" && key !== "entryMsg" && key !== "postMsg" && key !== "userId" && key !== "isPosted" && key !== "emailChecked" && key !== "img" && key !== "imgDelete" && key !== "social");
+      const keyArr = Object.keys(this.state).filter(key => key !== "currentTab" && key !== "newEntry" && key !== "emailMsg" && key !== "entryMsg" && key !== "postMsg" && key !== "userId" && key !== "isPosted" && key !== "emailChecked" && key !== "img" && key !== "imgDelete" && key !== "social" && key != "deleting" && key !== "deleteMsg");
       for (let i = 0; i < keyArr.length; i++) {
         let key = keyArr[i];
         if (typeof this.state[key] == "string" && this.state[key].trim().length == 0) {
@@ -282,8 +285,39 @@ export default class Entry extends React.Component {
       this.callUpdate(data, false);
     }
 
-    setEntryMsg(msg) {
-      this.setState({ entryMsg: msg });
+    deleteProfile(e) {
+      e.preventDefault();
+
+      fetch(`http://localhost:9000/api/profiles/delete?userId=${this.state.userId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+      })
+      .then(res => {
+        console.log(res)
+        if (res.status === 200) {
+          console.log("deleted");
+          return res.json();
+        } else {
+          console.log("error")
+          return res.json();
+        }
+      })
+      .then(data => {
+        if (data.message) {
+          this.setState({ deleteMsg: "your profile has been deleted :( redirecting to home page..." });
+          setTimeout(() => {
+            this.props.history.push("/");
+          }, 2500);
+        }
+        console.log(data);
+        return data;
+      })
+      .catch(err => {
+        console.error(err);
+        this.setState({ deleteMsg: "an unknown error has occured" });
+      });
     }
     
     render() {
@@ -309,14 +343,27 @@ export default class Entry extends React.Component {
             <button onClick={(e) => this.changeTab("basics", e)}>basics</button>
             <button onClick={(e) => this.changeTab("filters", e)}>filters</button>
             <button onClick={(e) => this.changeTab("about", e)}>about</button>
+
             {!this.state.isPosted ? 
               <button onClick={() => this.handlePost()}>post</button> : 
-              <button title="delete profile">delete</button>}
+              <button title="delete profile" onClick={() => this.setState({ deleting: true })}>delete</button>}
+
             <br/>{this.state.entryMsg}
           </div>
 
           <EntryForm onSubmit={this.handleSubmit}>
             {this.renderTab(this.state.currentTab)}
+
+            {this.state.deleting ?
+              <Overlay opacity={0.5}>
+                <div className="delete-check">
+                  <h1>{this.state.deleteMsg}</h1>
+                  <button onClick={(e) => this.deleteProfile(e)}>yes</button>
+                  <button onClick={() => this.setState({ deleting: false })}>no</button>
+                </div> 
+              </Overlay>
+            : null}
+
             <input type="submit" value="save"/>
           </EntryForm>
 

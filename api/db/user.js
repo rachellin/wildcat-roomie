@@ -114,11 +114,11 @@ const User = {
   },
   async delete(userId) {
     try {
-      const readAllQuery = `
-        DELETE user_profile, user_account FROM user_profile 
-        INNER JOIN user_account USING(user_id) WHERE user_id=${userId} 
-        RETURNING *`;
+      console.log("calling delete method")
+      const readAllQuery = `DELETE FROM user_account WHERE user_id=${userId} RETURNING *`;
+      console.log(readAllQuery)
       const { rows } = await database.select(readAllQuery);
+      console.log(rows);
       return rows;
     } catch (error) {
       return error;
