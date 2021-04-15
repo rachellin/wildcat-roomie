@@ -8,6 +8,11 @@ body {
 
 a {
   text-decoration: none;
+  color: #7863AE;
+}
+
+a:hover {
+  color: #C7BBE3;
 }
 
 * {
@@ -17,7 +22,7 @@ a {
 
 /*-- scrollbar --*/
 ::-webkit-scrollbar-thumb:vertical {
-  background-color: plum; /*slider color*/
+  background-color: #4D3A6F; /*slider color*/
   height: 50px; 
 }
 ::-webkit-scrollbar {

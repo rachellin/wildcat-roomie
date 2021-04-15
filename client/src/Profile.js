@@ -27,6 +27,10 @@ export class Profile extends React.Component {
                         <span><i className="ri-snapchat-line"></i> {this.props.social.snap ? this.props.social.snap : ""}</span>
                         <span><i className="ri-phone-line"></i> {this.props.social.phone ? this.props.social.phone : ""}</span>
                     </div>
+
+                    <div className="roommate-label">
+                        {this.props.roommate ? <><b>looking</b> for roommate</> :<><b>not looking</b> for roommate</>}
+                    </div>
                 </div>
 
                 <div className="bio-filters">
@@ -55,5 +59,3 @@ export class Profile extends React.Component {
 }
 
 
-// school/major icon should depend on their input 
-// take school from filters 

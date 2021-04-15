@@ -34,11 +34,6 @@ export const StyledFilters = styled.div`
         display: block;
         padding: 0.5rem 1rem;
         min-width: 7.5rem;
-
-        :hover {
-            cursor: pointer;
-            background: #b3a2d3;
-        }
     }
 `
 
@@ -48,13 +43,15 @@ export const StyledDropdown = styled.div`
     padding: 0.5rem 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
-    background: #b3a2d3;
+    background: #C7BBE3;
     height: 2rem;
     overflow: ${props => props.overflow};
     text-align: center;
 
     :hover {
         cursor: pointer;
+        background: #7863AE;
+        transition: 0.2s linear;
     }
 
     span {

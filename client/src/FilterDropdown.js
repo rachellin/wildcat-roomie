@@ -34,7 +34,7 @@ export class FilterDropdown extends React.Component {
                 filterIndex={filterIndex}
                 onClick={() => this.props.onClick(i)} 
                 name={filterNames[i]} 
-                color={this.props.filters[filterIndex] ? "#b3a2d3" : "#dad2ea"}/>
+                color={this.props.filters[filterIndex] ? "#7863AE" : "#C7BBE3"}/>
             arr.push(filter);
         }
         return arr;

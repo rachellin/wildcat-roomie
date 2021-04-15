@@ -113,13 +113,22 @@ export const StyledProfile = styled.div`
             border-bottom: 1px solid #eee;
             margin-bottom: 1rem;
         }
+
+        .roommate-label {
+            margin: 1.5rem 0 0 0;
+            font-size: 13px;
+            padding: 0.75rem;
+            background: #BCDAF6;
+            border-radius: 2rem;
+            text-align: center;
+        }
     }
 
     .bio-filters {
         span {
             padding: 0.5rem 1rem;
             border-radius: 1rem;
-            background: #a2d3cb;
+            background: rgb(199, 187, 227, 0.5);
             margin: 0 1rem 1rem 0;
             display: inline-block;
         }
