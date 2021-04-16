@@ -8,7 +8,7 @@ import { BioEntry } from './BioEntry';
 import { BasicsEntry } from './BasicsEntry';
 
 //const url = "http://localhost:9000";
-const url = "https://wildcat-roomie.herokuapp.com/";
+const url = "";
 
 export default class Entry extends React.Component {
     constructor(props) {
