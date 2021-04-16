@@ -40,21 +40,21 @@ class App extends React.Component {
       <StyledContainer>
         <div className="header">
           <h1>wildcat roomie</h1>
-          <Link to="/wildcat-roomie">home</Link>
-          <Link to="/wildcat-roomie/instructions">instructions</Link>
+          <Link to="/">home</Link>
+          <Link to="/instructions">instructions</Link>
           <Link onClick={() => this.setState({ newEntry: false })} to="/entry">edit profile</Link>
           <Link onClick={() => this.setState({ newEntry: true })} to="/entry">new profile</Link>
-          <Link to="/wildcat-roomie/housing">housing info</Link>
-          <Link to="/wildcat-roomie/help">roommate help</Link>
+          <Link to="/housing">housing info</Link>
+          <Link to="/help">roommate help</Link>
           <a href="">feedback</a>
         </div>
 
         <Switch>
-          <Route path="/wildcat-roomie" exact component={Container} />
-          <Route path="/wildcat-roomie/instructions" component={Instructions}/>
-          <Route path="/wildcat-roomie/entry" key={`${this.state.newEntry}`} exact render={() => <Entry newEntry={this.state.newEntry} history={this.props.history}/>}/>
-          <Route path="/wildcat-roomie/housing" component={Housing}/>
-          <Route path="/wildcat-roomie/help" component={RoommateHelp}/>
+          <Route path="/" exact component={Container} />
+          <Route path="/instructions" component={Instructions}/>
+          <Route path="/entry" key={`${this.state.newEntry}`} exact render={() => <Entry newEntry={this.state.newEntry} history={this.props.history}/>}/>
+          <Route path="/housing" component={Housing}/>
+          <Route path="/help" component={RoommateHelp}/>
         </Switch>
 
       </StyledContainer>

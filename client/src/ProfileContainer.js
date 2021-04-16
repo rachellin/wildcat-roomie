@@ -41,7 +41,7 @@ export class ProfileContainer extends React.Component {
     }
 
     callAPI = async () => {
-        const res = await fetch(`http://localhost:9000/api/profiles/all`);
+        const res = await fetch(`https://wildcat-roomie.herokuapp.com/api/profiles/all`);
         const resjson = await res.json();
         const profiles = resjson.data;
         console.log(profiles)
@@ -53,11 +53,11 @@ export class ProfileContainer extends React.Component {
         });
     }
 
-    testAPI = async () => {
-        const res = await fetch(`http://localhost:9000/testAPI/test`);
-        const resjson = await res.json();
-        //console.log(resjson);
-    }
+    // testAPI = async () => {
+    //     const res = await fetch(`http://localhost:9000/testAPI/test`);
+    //     const resjson = await res.json();
+    //     //console.log(resjson);
+    // }
 
     addFilter (f) {
         this.state.onFilters.push(f);
