@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/wildcat-roomie/static/css/main.35a5da45.chunk.css",
-    "main.js": "/wildcat-roomie/static/js/main.6942eac6.chunk.js",
-    "main.js.map": "/wildcat-roomie/static/js/main.6942eac6.chunk.js.map",
-    "runtime-main.js": "/wildcat-roomie/static/js/runtime-main.61d8ccdc.js",
-    "runtime-main.js.map": "/wildcat-roomie/static/js/runtime-main.61d8ccdc.js.map",
+    "main.js": "/wildcat-roomie/static/js/main.ee7b1c38.chunk.js",
+    "main.js.map": "/wildcat-roomie/static/js/main.ee7b1c38.chunk.js.map",
+    "runtime-main.js": "/wildcat-roomie/static/js/runtime-main.ca547f14.js",
+    "runtime-main.js.map": "/wildcat-roomie/static/js/runtime-main.ca547f14.js.map",
     "static/css/2.d16c343c.chunk.css": "/wildcat-roomie/static/css/2.d16c343c.chunk.css",
-    "static/js/2.29e73957.chunk.js": "/wildcat-roomie/static/js/2.29e73957.chunk.js",
-    "static/js/2.29e73957.chunk.js.map": "/wildcat-roomie/static/js/2.29e73957.chunk.js.map",
-    "static/js/3.a36a0c61.chunk.js": "/wildcat-roomie/static/js/3.a36a0c61.chunk.js",
-    "static/js/3.a36a0c61.chunk.js.map": "/wildcat-roomie/static/js/3.a36a0c61.chunk.js.map",
+    "static/js/2.7ab4bd95.chunk.js": "/wildcat-roomie/static/js/2.7ab4bd95.chunk.js",
+    "static/js/2.7ab4bd95.chunk.js.map": "/wildcat-roomie/static/js/2.7ab4bd95.chunk.js.map",
+    "static/js/3.456f3340.chunk.js": "/wildcat-roomie/static/js/3.456f3340.chunk.js",
+    "static/js/3.456f3340.chunk.js.map": "/wildcat-roomie/static/js/3.456f3340.chunk.js.map",
     "index.html": "/wildcat-roomie/index.html",
     "static/css/2.d16c343c.chunk.css.map": "/wildcat-roomie/static/css/2.d16c343c.chunk.css.map",
     "static/css/main.35a5da45.chunk.css.map": "/wildcat-roomie/static/css/main.35a5da45.chunk.css.map",
-    "static/js/2.29e73957.chunk.js.LICENSE.txt": "/wildcat-roomie/static/js/2.29e73957.chunk.js.LICENSE.txt",
+    "static/js/2.7ab4bd95.chunk.js.LICENSE.txt": "/wildcat-roomie/static/js/2.7ab4bd95.chunk.js.LICENSE.txt",
     "static/media/remixicon.css": "/wildcat-roomie/static/media/remixicon.f2616f59.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.61d8ccdc.js",
+    "static/js/runtime-main.ca547f14.js",
     "static/css/2.d16c343c.chunk.css",
-    "static/js/2.29e73957.chunk.js",
+    "static/js/2.7ab4bd95.chunk.js",
     "static/css/main.35a5da45.chunk.css",
-    "static/js/main.6942eac6.chunk.js"
+    "static/js/main.ee7b1c38.chunk.js"
   ]
 }
