@@ -104,7 +104,6 @@ export default class Entry extends React.Component {
       .then(data => {
         if (data.error) this.setState({ emailMsg: data.error });
         else if (data.message) {
-          // TODO: get user id and save in state 
           this.setState({
             userId: data.userId,
             emailMsg: data.message,
@@ -269,7 +268,7 @@ export default class Entry extends React.Component {
       })
       .catch(err => {
         console.error(err);
-        this.setState({ entryMsg: "an unknown error has occured" });
+        this.setState({ entryMsg: "an unknown error has occured", emailMsg: "an unknown error has occured" });
       });
     }
 
