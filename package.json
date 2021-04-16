@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd api && npm install && npm start",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "cd api && npm install && npm start"
   },
   "engines": {
     "node": "15.2.0"
