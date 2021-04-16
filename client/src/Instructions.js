@@ -9,7 +9,7 @@ export class Instructions extends React.Component {
 
                 <p>
                     I'm Rachel Lin, an incoming computer science major, and I worked on this instead of paying attention in class :)
-                    Here's my <a target="_blank" href="https://instagram.com/dklarachel">instagram</a> and you can CTRL/CMD+F "Rachel Lin" to find out more about me!<br/>
+                    Here's my <a target="_blank" href="https://instagram.com/dklarachel">instagram</a>, my email is rachlin232@gmail.com, and you can CTRL/CMD+F "Rachel Lin" to find out more about me!<br/>
                     I created this as a way to more easily view and filter profiles. 
                     Click the filter categories ("sleep", "school", etc.) to see the filters. Click on filter to add filter.
                     Click on filter again to remove filter. 
