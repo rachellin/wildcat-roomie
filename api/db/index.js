@@ -2,7 +2,11 @@ require('dotenv').config()
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL});
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 // general query or select
 function select (text) {
@@ -31,6 +35,8 @@ function insert (text, values) {
         });
     });
 }
+
+pool.on('connect', () => console.log('connected to db'));
 
 module.exports = {
     select, 
