@@ -32,6 +32,12 @@ export default class Entry extends React.Component {
       }
     }
 
+    componentDidUpdate(prevState) {
+      if (!prevState.emailChecked && this.state.emailChecked) {
+        this.updateLastLogin(this.state.userId);
+      }
+    }
+
     checkEmail = (e) => {
       e.preventDefault();
       const data = {};
@@ -42,6 +48,35 @@ export default class Entry extends React.Component {
       } else {
         this.getData();
       }
+    }
+
+    updateLastLogin() {
+      fetch('http://localhost:9000/api/profiles/update/last_login', {
+          method: 'POST',
+          body: JSON.stringify({ userId: this.state.userId }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+      })
+      .then(res => {
+        console.log(res.status)
+        if (res.status === 200) {
+          console.log("success");
+          return res.json();
+        } else {
+          console.log("error")
+          return res.json();
+        }
+      })
+      .then(data => {
+        if (data.error) console.log(data.error);
+        else if (data.message) {
+          console.log(data.message);
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
     }
 
     addUser(data) {

@@ -73,9 +73,10 @@ const User = {
     }
   },
   // update last_login
-  async updateLastLogin(email) {
+  async updateLastLogin(userId) {
     try {
-      const readAllQuery = `UPDATE user_account SET last_login=NOW() WHERE email=${email} RETURNING *`;
+      console.log("call updateLastLogin")
+      const readAllQuery = `UPDATE user_account SET last_login=NOW() WHERE user_id=${userId} RETURNING *`;
       const { rows } = await database.select(readAllQuery);
       console.log("last login updated!");
       return rows[0];
@@ -86,10 +87,8 @@ const User = {
   // update last_update
   async updateLastUpdate(userId) {
     try {
-      console.log("call updateLastUpdate")
       const readAllQuery = `UPDATE user_profile SET last_update=NOW() WHERE user_id=${userId} RETURNING *`;
       const { rows } = await database.select(readAllQuery);
-      console.log("last update updated!");
       return rows[0];
     } catch (error) {
       return error;

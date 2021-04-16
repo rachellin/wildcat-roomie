@@ -189,6 +189,20 @@ router.post("/update", function(req, res, next) {
         })
 })
 
+// update last_login
+router.post("/update/last_login", function(req, res) {
+    const { userId } = req.body;
+    User.updateLastLogin(userId)
+        .then(data => {
+            res.status(200).json({ message: "last_login updated!" });
+            return data;
+        })
+        .catch(err => {
+            console.log(err);
+            throw err;
+        })
+})
+
 // get data for a specified profile
 router.get("/", function(req, res, next) {
     const email = req.query.email; 
