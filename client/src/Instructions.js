@@ -4,9 +4,12 @@ export class Instructions extends React.Component {
     render() {
         return (
             <div>
-                <p>hey there! welcome!!</p>
+                <h3>wtf is this?</h3>
+                <p>Hey there! Welcome!!</p>
 
                 <p>
+                    I'm Rachel Lin, an incoming computer science major, and I worked on this instead of paying attention in class :)
+                    Here's my <a target="_blank" href="https://instagram.com/dklarachel">instagram</a> and you can CTRL/CMD+F "Rachel Lin" to find out more about me!<br/>
                     I created this as a way to more easily view and filter profiles. 
                     Click the filter categories ("sleep", "school", etc.) to see the filters. Click on filter to add filter.
                     Click on filter again to remove filter. 
@@ -33,6 +36,7 @@ export class Instructions extends React.Component {
 
                 <p>
                     There is a singular "save" button for each part of the form, but you must save your profile image with "save profile picture."
+                    <br/>Try to limit your pictures to nothing much bigger than 200px x 200px and preferably JPG as opposed to PNG but it's not a requirement. 
                     <br/>Yes, the "about you" and "what you're looking for in a roommate" sections preserve line breaks you make. 
                 </p>
 

@@ -23,7 +23,7 @@ export default class Entry extends React.Component {
         basics: {},
         social: {},
         filters: [],
-        img: null, // set to default pic?
+        img: "/pfp.jpg", // set to default pic?
         imgDelete: null,
         roommate: false,
         isPosted: false,

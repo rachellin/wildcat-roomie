@@ -25,7 +25,7 @@ export class BasicsEntry extends React.Component {
     }
 
     handleUpload(e) {
-        if (this.state.image != null) {
+        if (this.state.image != "/pfp.jpg") {
             this.setState({ newImg: true });
         } // ???
         this.props.updateData("img", e.target.value);
