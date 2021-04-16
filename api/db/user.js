@@ -72,6 +72,29 @@ const User = {
       return error;
     }
   },
+  // update last_login
+  async updateLastLogin(email) {
+    try {
+      const readAllQuery = `UPDATE user_account SET last_login=NOW() WHERE email=${email} RETURNING *`;
+      const { rows } = await database.select(readAllQuery);
+      console.log("last login updated!");
+      return rows[0];
+    } catch (error) {
+      return error;
+    }
+  }, 
+  // update last_update
+  async updateLastUpdate(userId) {
+    try {
+      console.log("call updateLastUpdate")
+      const readAllQuery = `UPDATE user_profile SET last_update=NOW() WHERE user_id=${userId} RETURNING *`;
+      const { rows } = await database.select(readAllQuery);
+      console.log("last update updated!");
+      return rows[0];
+    } catch (error) {
+      return error;
+    }
+  },
   // get array of all rows from table
   async getAll(table) {
     try {
@@ -86,14 +109,12 @@ const User = {
   async updateProfile (userId, data) {
     try {
       const values = Object.values(data);
-      console.log("values\n", values);
-      //about, basics, filters, social
       const cols = Object.keys(data);
       const colQuery = cols.map((key, index) => `${camelToSnake(key)}=($${index+1})`);
       const readAllQuery = `UPDATE user_profile SET ${colQuery} WHERE user_id=${userId} RETURNING *`;
       console.log(readAllQuery);
-      const { rows } = await database.insert(readAllQuery, values); // need an update one??
-      console.log("insert") // never makes it here for some reason? but then how does it go on to the next part..
+      const { rows } = await database.insert(readAllQuery, values); 
+      console.log("insert") 
       return rows;
     } catch (error) {
       return error;

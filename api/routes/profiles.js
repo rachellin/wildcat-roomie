@@ -161,16 +161,26 @@ router.post("/addUser", function(req, res, next) {
 
 // add or edit data in profile 
 router.post("/update", function(req, res, next) {
-    const { userId, data } = req.body;
-    // User.testUpdate(userid)
+    // const { userId, data } = req.body;
+    // User.updateProfile(userId, data)
     //     .then(data => {
-    //         console.log(data);
+    //         res.status(200).json({ message: "profile data saved!" });
+    //         console.log("info added!");
     //         return data;
     //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //         throw err;
+    //     })
+    const { userId, data } = req.body;
     User.updateProfile(userId, data)
         .then(data => {
-            res.status(200).json({ message: "profile data saved!" });
-            console.log("info added!");
+            User.updateLastUpdate(userId)
+                .then(data => {
+                    res.status(200).json({ message: "profile data saved!" });
+                    console.log("info added!");
+                    return data;
+                })
             return data;
         })
         .catch(err => {
