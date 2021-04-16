@@ -7,8 +7,10 @@ import withAuth from './account/withAuth';
 
 import Container from './Container'; 
 import Entry from './entry/Entry';
-import {Login } from './account/Login';
-import Authenticate from './account/Authenticate';
+import { Instructions } from './Instructions';
+import { Housing } from './Housing';
+import { RoommateHelp } from './RoommateHelp';
+
 import { StyledContainer } from './style/ProfileStyles';
 
 // import React, { Component } from 'react';
@@ -40,19 +42,20 @@ class App extends React.Component {
         <div className="header">
           <h1>wildcat roomie</h1>
           <Link to="/">home</Link>
-          <Link>instructions</Link>
+          <Link to="/instructions">instructions</Link>
           <Link onClick={() => this.setState({ newEntry: false })} to="/entry">edit profile</Link>
           <Link onClick={() => this.setState({ newEntry: true })} to="/entry">new profile</Link>
-          <a href="">view dorms</a>
-          <a href="">housing contract</a>
+          <Link to="/housing">housing info</Link>
+          <Link to="/help">roommate help</Link>
           <a href="">feedback</a>
         </div>
 
         <Switch>
           <Route path="/" exact component={Container} />
-          {/* <Route path="/entry" component={withAuth(Entry)} /> */}
+          <Route path="/instructions" component={Instructions}/>
           <Route path="/entry" key={`${this.state.newEntry}`} exact render={() => <Entry newEntry={this.state.newEntry} history={this.props.history}/>}/>
-          <Route path="/auth" component={Authenticate} />
+          <Route path="/housing" component={Housing}/>
+          <Route path="/help" component={RoommateHelp}/>
         </Switch>
 
       </StyledContainer>

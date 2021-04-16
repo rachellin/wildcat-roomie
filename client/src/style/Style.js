@@ -36,6 +36,10 @@ export const EntryContainer = styled.div`
             padding: 1.5rem;
             margin: 1rem;
             background: transparent;
+
+            :hover {
+                color: #999;
+            }
         }
 
     }
@@ -165,4 +169,8 @@ export const StyledEditor = styled.div`
         border-radius: 2rem;
         margin: 1rem 0 0 0;
     }
+`
+
+export const StyledHousing = styled.div`
+    
 `
