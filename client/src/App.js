@@ -46,7 +46,7 @@ class App extends React.Component {
           <Link onClick={() => this.setState({ newEntry: true })} to="/entry">new profile</Link>
           <Link to="/housing">housing info</Link>
           <Link to="/help">roommate help</Link>
-          <a href="">feedback</a>
+          <a target="_blank" href="https://forms.gle/NfMPxFaHm31YySf66">feedback</a>
         </div>
 
         <Switch>

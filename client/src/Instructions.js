@@ -52,6 +52,10 @@ export class Instructions extends React.Component {
                     If there is a bug, please do your best to detail the steps with which you reached the bug, so I can reproduce the issue.
                 </p>
 
+                <p>
+                    * wow this sounds bad but I'm hosting the API on Heroku and it sometimes randomly crashes? i find that if i refresh the page it'll work.
+                </p>
+
 
             </div>
         )

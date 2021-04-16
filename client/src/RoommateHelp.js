@@ -17,7 +17,7 @@ export class RoommateHelp extends React.Component {
                 </ul>
 
                 <br/>
-                <h3>roommate contract</h3>
+                <h3>roommate agreement/contract</h3>
                 soon...
             </div>
         )
