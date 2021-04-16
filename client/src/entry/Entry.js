@@ -7,6 +7,8 @@ import { FilterEntry } from './FilterEntry';
 import { BioEntry } from './BioEntry';
 import { BasicsEntry } from './BasicsEntry';
 
+const url = "http://localhost:9000";
+
 export default class Entry extends React.Component {
     constructor(props) {
       super(props);
@@ -51,7 +53,7 @@ export default class Entry extends React.Component {
     }
 
     updateLastLogin() {
-      fetch('http://localhost:9000/api/profiles/update/last_login', {
+      fetch(`${url}/api/profiles/update/last_login`, {
           method: 'POST',
           body: JSON.stringify({ userId: this.state.userId }),
           headers: {
@@ -81,7 +83,7 @@ export default class Entry extends React.Component {
 
     addUser(data) {
       console.log("calling addUser")
-      fetch('http://localhost:9000/api/profiles/addUser', {
+      fetch(`${url}/api/profiles/addUser`, {
           method: 'POST',
           body: JSON.stringify(data),
           headers: {
@@ -189,7 +191,7 @@ export default class Entry extends React.Component {
         msg = "profile picture saved!";
       }
 
-      fetch('http://localhost:9000/api/profiles/update', {
+      fetch(`${url}/api/profiles/update`, {
           method: 'POST',
           body: JSON.stringify(data),
           headers: {
@@ -228,7 +230,7 @@ export default class Entry extends React.Component {
 
     getData() {
       console.log("calling getData")
-      fetch(`http://localhost:9000/api/profiles?email=${this.state.email}`, {
+      fetch(`${url}/api/profiles?email=${this.state.email}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -323,7 +325,7 @@ export default class Entry extends React.Component {
     deleteProfile(e) {
       e.preventDefault();
 
-      fetch(`http://localhost:9000/api/profiles/delete?userId=${this.state.userId}`, {
+      fetch(`${url}/api/profiles/delete?userId=${this.state.userId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'

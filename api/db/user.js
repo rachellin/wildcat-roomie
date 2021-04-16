@@ -75,7 +75,6 @@ const User = {
   // update last_login
   async updateLastLogin(userId) {
     try {
-      console.log("call updateLastLogin")
       const readAllQuery = `UPDATE user_account SET last_login=NOW() WHERE user_id=${userId} RETURNING *`;
       const { rows } = await database.select(readAllQuery);
       console.log("last login updated!");
