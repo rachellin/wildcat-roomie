@@ -12,19 +12,7 @@ import { RoommateHelp } from './RoommateHelp';
 
 import { StyledContainer } from './style/ProfileStyles';
 
-// import React, { Component } from 'react';
-// import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import Footer from './Components/Layout/Footer';
-// import Home from './Components/Layout/Home';
-// import Social from './Components/social/Social';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <Container/>
-//     </div>
-//   );
-// }
+function noop() {}
 
 class App extends React.Component {
   constructor() {
@@ -35,6 +23,12 @@ class App extends React.Component {
   }
 
   render () {
+    if (process.env.NODE_ENV !== 'development') {
+      console.log = noop;
+      console.warn = noop;
+      console.error = noop;
+    }
+    
     return (
       //<Router>
       <StyledContainer>
