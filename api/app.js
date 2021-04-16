@@ -6,6 +6,7 @@ var logger = require('morgan');
 var session = require('express-session');
 var cors = require('cors');
 
+var indexRouter = require('./routes/index');
 var profilesRouter = require('./routes/profiles');
 
 var app = express();
@@ -20,6 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
 app.use('/api/profiles', profilesRouter);
 
 // TEST DB CONNECTION
