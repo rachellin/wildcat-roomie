@@ -3,7 +3,6 @@ import './css/animations.css';
 
 import { BrowserRouter as Router, Link, Route, Switch, withRouter } from 'react-router-dom';
 import React from 'react';
-import withAuth from './account/withAuth';
 
 import Container from './Container'; 
 import Entry from './entry/Entry';
