@@ -1,0 +1,25 @@
+{
+  "name": "wildcat-roomie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd api && npm install && npm start",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "engines": {
+    "node": "15.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rachellin/wildcat-roomie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rachellin/wildcat-roomie/issues"
+  },
+  "homepage": "https://github.com/rachellin/wildcat-roomie#readme"
+}
