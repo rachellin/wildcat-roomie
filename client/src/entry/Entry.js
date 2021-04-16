@@ -26,7 +26,7 @@ export default class Entry extends React.Component {
         basics: {},
         social: {},
         filters: [],
-        img: "/pfp.jpg", // set to default pic?
+        img: "/wildcat-roomie/pfp.jpg", 
         imgDelete: null,
         roommate: false,
         isPosted: false,
