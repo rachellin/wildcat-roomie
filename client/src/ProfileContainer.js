@@ -178,7 +178,7 @@ export class ProfileContainer extends React.Component {
                 filters={this.state.filters} 
                 colors={this.state.filterColors}
             /> 
-            <h1>loading...</h1>
+            <h1>currently under maintenance</h1>
             </>
         );
 
