@@ -18,26 +18,17 @@ export class ProfileContainer extends React.Component {
             showCard: new Array(1).fill(true), 
             cardInfo: [],
             loading: true,
+            loadingMsg: "loading..."
         }
     }
 
     componentDidMount () {
         this.callAPI();
-        // let copy = this.state.cardInfo.slice();
-        // for (let i = 0; i < copy.length; i++) {
-        //     if (copy[i].roommate) {
-        //         copy[i].filters.push("roommate");
-        //     }
-        // }
-        // this.setState({ cardInfo: copy });
-        //this.testAPI();
-        //this.state.filters.fill(false);
-        //console.log(this.state.filters);
-        //this.state.showCard.fill(true);
-    }
-
-    componentDidUpdate () {
-        //console.log(this.state.filters);
+        setInterval(() => {
+            if (this.loading) {
+                this.setState({ loadingMsg: "timed out: the API most likely crashed (thanks Heroku). try again later or contact me"});
+            }
+        }, 10*1000)
     }
 
     callAPI = async () => {
@@ -178,7 +169,7 @@ export class ProfileContainer extends React.Component {
                 filters={this.state.filters} 
                 colors={this.state.filterColors}
             /> 
-            <h1>currently under maintenance</h1>
+            <h1>{this.state.loadingMsg}</h1>
             </>
         );
 
