@@ -7,9 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd api && npm install && npm start"
   },
-  "engines": {
-    "node": "15.2.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rachellin/wildcat-roomie.git"
