@@ -9,6 +9,7 @@ import Entry from './entry/Entry';
 import { Instructions } from './Instructions';
 import { Housing } from './Housing';
 import { RoommateHelp } from './RoommateHelp';
+import { Feedback } from './Feedback';
 
 import { StyledContainer } from './style/ProfileStyles';
 
@@ -40,7 +41,7 @@ class App extends React.Component {
           <Link onClick={() => this.setState({ newEntry: true })} to="/entry">new profile</Link>
           <Link to="/housing">housing info</Link>
           <Link to="/help">roommate help</Link>
-          <a target="_blank" href="https://forms.gle/NfMPxFaHm31YySf66">feedback</a>
+          <Link to="/feedback">feedback</Link>
         </div>
 
         <Switch>
@@ -49,6 +50,7 @@ class App extends React.Component {
           <Route path="/entry" key={`${this.state.newEntry}`} exact render={() => <Entry newEntry={this.state.newEntry} history={this.props.history}/>}/>
           <Route path="/housing" component={Housing}/>
           <Route path="/help" component={RoommateHelp}/>
+          <Route path="/feedback" component={Feedback}/>
         </Switch>
 
       </StyledContainer>
