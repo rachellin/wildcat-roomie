@@ -4,9 +4,13 @@ export class Feedback extends React.Component {
     render() {
         return (
             <div>
-                <h3><a target="_blank" href="https://forms.gle/NfMPxFaHm31YySf66">feedback form</a></h3>
-                <h3>pending changes</h3>
-                <ul>
+                <h3 style={{ marginBottom: "0.5rem" }}><a target="_blank" href="https://forms.gle/NfMPxFaHm31YySf66">feedback form</a></h3>
+                Use the form linked above to provide feedback! changes/bugs that I've taken into account and will
+                address ASAP are listed below. <br/>
+                Striked through points = fixed/implemented
+
+                <h3 style={{ margin: "2rem 0 0.5rem 0" }}>pending changes</h3>
+                <ul style={{ marginTop: "0.5rem" }}>
                     <li>fix for long names</li>
 
                     <li>word count limit or scrollbars in profiles</li>
@@ -24,7 +28,7 @@ export class Feedback extends React.Component {
                         </ul>
                     </li>
 
-                    <li>text input for "about you" and "looking for" to allow editing in previous lines</li>
+                    <li><del>fix for text input for "about you" and "looking for" making cursor jump to last line</del></li>
                 </ul>
             </div>
         )
