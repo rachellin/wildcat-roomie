@@ -7,16 +7,27 @@ export class BioEntry extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            bio: this.props.about.bio,
-            looking: this.props.about.looking,
-            quote: this.props.about.quote
+            // bio: this.props.about.bio,
+            // looking: this.props.about.looking,
+            // quote: this.props.about.quote
+            about: this.props.about
         }
     }
 
-    updateData(target, value) {
-        this.setState({ [target]: value }, () => {
-            let data = this.state;
-            this.props.updateData("about", data);
+    // updateData(target, value) {
+    //     this.setState({ [target]: value }, () => {
+    //         let data = this.state;
+    //         this.props.updateData("about", data);
+    //     });
+    // }
+
+    updateData(category, target, value) {
+        let copy = this.state[category];
+        copy[target] = value;
+        this.setState({ [category]: copy }, () => {
+          let data = this.state[category];
+          //console.log(data)
+          this.props.updateData(category, data);
         });
     }
 
@@ -30,7 +41,7 @@ export class BioEntry extends React.Component {
                     maxLength="50"
                     style={{marginBottom: "3rem", height: "50px", overflow: "hidden"}}
                     name="quote" 
-                    onChange={e => this.updateData("quote", e.target.value)} 
+                    onChange={e => this.updateData("about", "quote", e.target.value)} 
                     value={this.props.about.quote}/>
 
                 <label className="required" for="about"><b>about you</b></label>
@@ -43,14 +54,14 @@ export class BioEntry extends React.Component {
                 <textarea
                     style={{marginBottom: "3rem"}}
                     name="about" 
-                    onChange={e => this.updateData("bio", e.target.value)} 
+                    onChange={e => this.updateData("about", "bio", e.target.value)} 
                     value={this.props.about.bio}
                     required/>
 
                 <label className="required" for="looking-for"><b>what you're looking for in a roommate</b></label>
                 <textarea 
                     name="looking-for" 
-                    onChange={e => this.updateData("looking", e.target.value)} 
+                    onChange={e => this.updateData("about", "looking", e.target.value)} 
                     value={this.props.about.looking}
                     required/> 
 
