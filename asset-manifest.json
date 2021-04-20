@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/wildcat-roomie/static/css/main.35a5da45.chunk.css",
-    "main.js": "/wildcat-roomie/static/js/main.f0d62c0a.chunk.js",
-    "main.js.map": "/wildcat-roomie/static/js/main.f0d62c0a.chunk.js.map",
+    "main.js": "/wildcat-roomie/static/js/main.ab47fc10.chunk.js",
+    "main.js.map": "/wildcat-roomie/static/js/main.ab47fc10.chunk.js.map",
     "runtime-main.js": "/wildcat-roomie/static/js/runtime-main.ca547f14.js",
     "runtime-main.js.map": "/wildcat-roomie/static/js/runtime-main.ca547f14.js.map",
     "static/css/2.d16c343c.chunk.css": "/wildcat-roomie/static/css/2.d16c343c.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.d16c343c.chunk.css",
     "static/js/2.1be898c0.chunk.js",
     "static/css/main.35a5da45.chunk.css",
-    "static/js/main.f0d62c0a.chunk.js"
+    "static/js/main.ab47fc10.chunk.js"
   ]
 }
