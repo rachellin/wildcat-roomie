@@ -171,6 +171,12 @@ export const StyledEditor = styled.div`
     }
 `
 
-export const StyledHousing = styled.div`
-    
+export const StyledFeedback = styled.div`
+    ol, ul {
+        margin-top: 0.5rem;
+    }
+
+    h3 {
+        margin: 2rem 0 0.5rem 0;
+    }
 `

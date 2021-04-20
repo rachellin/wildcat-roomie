@@ -1,11 +1,9 @@
 import React from 'react';
 
-import { StyledHousing } from "./style/Style";
-
 export class Housing extends React.Component {
     render() {
         return (
-            <StyledHousing>
+            <div>
                 <ul>
                     <li><a target="_blank" href="https://www.northwestern.edu/living/housing-options/undergrad-housing/index.html">housing website</a></li>
                     <li><a target="_blank" href="https://bit.ly/32kRcLU">housing portal</a></li>
@@ -21,7 +19,7 @@ export class Housing extends React.Component {
                         </ul>
                     </li>
                 </ul>
-            </StyledHousing>
+            </div>
         )
     }
 }
