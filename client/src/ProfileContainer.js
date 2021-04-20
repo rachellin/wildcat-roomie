@@ -18,7 +18,7 @@ export class ProfileContainer extends React.Component {
             showCard: new Array(1).fill(true), 
             cardInfo: [],
             loading: true,
-            loadingMsg: "loading..."
+            loadingMsg: "loading... this might take a few seconds if this site has been unvisited for a while (see 'feedback' tab)"
         }
     }
 
