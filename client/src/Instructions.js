@@ -9,9 +9,16 @@ export class Instructions extends React.Component {
 
                 <p>
                     I'm Rachel Lin, an incoming computer science and MMSS double major, and I worked on this instead of paying attention in class :)
-                    Here's my <a target="_blank" href="https://instagram.com/dklarachel">instagram</a>, my email is rachlin232@gmail.com, and you can CTRL/CMD+F "Rachel Lin" to find out more about me!<br/>
+                    Here's my <a target="_blank" href="https://instagram.com/dklarachel">instagram</a>, my email is rachlin232@gmail.com, and you can CTRL/CMD+F "Rachel Lin" to find out more about me!
+                </p>
+
+                <p>
                     I created this as a way to more easily view and filter profiles to find roommates!
                     However, this also doubles as a friend-finder sort of thing - you can easily find people with similar interests. 
+                    You can indicate whether or not you're looking for a roommate; you can un/check "show only those looking for roommate."
+                </p>
+
+                <p>
                     Click the filter categories ("sleep", "school", etc.) to see the filters. Click on filter to add filter.
                     Click on filter again to remove filter. <br/>
                     *This is a <b>web</b> app, so please view on web.
@@ -20,11 +27,6 @@ export class Instructions extends React.Component {
                 <p>
                     Click on a card to see more about the person!
                     Their profile displays their tags, basic info about them, contact info, a bio, and what they're looking for in a roommate.
-                </p>
-
-                <p>
-                    This is not only for those looking for roommates! Also if you're looking for friends / people with similar interests.
-                    You can indicate whether or not you're looking for a roommate; you can un/check "show only those looking for roommate."
                 </p>
 
                 <br/>
@@ -44,7 +46,7 @@ export class Instructions extends React.Component {
 
                 <p>
                     Click on "edit profile" to edit your profile. You'll be prompted to enter the email you used to create the profile.
-                    <i>What kind of authentication is that?</i> you say. It's not authentication. 
+                    &nbps;<i>What kind of authentication is that?</i>&nbsp; you say. It's not authentication. 
                     I mean, you can edit anyone's info on the roommate doc and none of the info you input is private; just be nice and don't try to edit someone else's profile thank you xx.
                 </p>
 
@@ -53,11 +55,6 @@ export class Instructions extends React.Component {
                     Let me know about any bugs, comments, concerns, anything you'd liked added, etc.
                     If there is a bug, please do your best to detail the steps with which you reached the bug, so I can reproduce the issue.
                 </p>
-
-                <p>
-                    * wow this sounds bad but I'm hosting the API on Heroku and it sometimes randomly crashes? i find that if i refresh the page it'll work.
-                </p>
-
 
             </div>
         )

@@ -7,7 +7,7 @@ import styled from 'styled-components';
 // should this be moved to headerstyles
 export const StyledContainer = styled.div`
     width: 65vw;
-    margin: auto;
+    margin: 0 auto 5rem auto;
     //text-align: center;
 
     .header {
