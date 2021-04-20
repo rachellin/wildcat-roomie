@@ -18,7 +18,7 @@ export class ProfileContainer extends React.Component {
             showCard: new Array(1).fill(true), 
             cardInfo: [],
             loading: true,
-            loadingMsg: "loading... this might take a few seconds if this site has been unvisited for a while (see 'feedback' tab)"
+            loadingMsg: "loading..."
         }
     }
 
@@ -26,9 +26,14 @@ export class ProfileContainer extends React.Component {
         this.callAPI();
         setInterval(() => {
             if (this.loading) {
+                this.setState({ loadingMsg: "loading... this might take a few seconds if this site has been unvisited for a while (see 'feedback' tab)"});
+            }
+        }, 2*1000);
+        setInterval(() => {
+            if (this.loading) {
                 this.setState({ loadingMsg: "timed out: the API most likely crashed (thanks Heroku). try again later or contact me"});
             }
-        }, 10*1000)
+        }, 10*1000);
     }
 
     callAPI = async () => {
