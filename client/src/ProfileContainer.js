@@ -188,6 +188,19 @@ export class ProfileContainer extends React.Component {
                 colors={this.state.filterColors}
             /> 
 
+            <div style={{ marginBottom: "1rem" }}>
+                <b>current filters: </b>
+                {this.state.onFilters.length == 0 ? "none" : 
+                    this.state.onFilters.map((filter, index) => {
+                        if (index == this.state.onFilters.length-1) {
+                            return filter;
+                        } else {
+                            return filter + ", ";
+                        }
+                    })}
+
+            </div>
+
             <div style={{display: "flex"}}>
                 <input 
                     type="checkbox" id="roommate"
