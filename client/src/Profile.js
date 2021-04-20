@@ -67,10 +67,14 @@ export class Profile extends React.Component {
                         <h1>about</h1>
                         {this.props.about.bio}
                     </div>
-                    <div className="looking-for" style={{whiteSpace: "pre-wrap"}}>
-                        <h1>looking for</h1>
-                        {this.props.about.looking}
-                    </div>
+                    
+                    {this.props.about.looking && this.props.about.looking.trim().length > 0 ? 
+                        <div className="looking-for" style={{whiteSpace: "pre-wrap"}}>
+                            <h1>looking for</h1>
+                            {this.props.about.looking}
+                        </div> :
+                    null}
+
                 </div>
                 </StyledProfile>
             </Overlay>

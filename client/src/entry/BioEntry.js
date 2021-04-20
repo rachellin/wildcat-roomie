@@ -58,12 +58,12 @@ export class BioEntry extends React.Component {
                     value={this.props.about.bio}
                     required/>
 
-                <label className="required" for="looking-for"><b>what you're looking for in a roommate</b></label>
+                <label for="looking-for"><b>what you're looking for in a roommate</b></label>
+                <small style={{display: "block", marginLeft: "2rem"}}>not required, but highly recommended if you're looking for a roommate</small>
                 <textarea 
                     name="looking-for" 
                     onChange={e => this.updateData("about", "looking", e.target.value)} 
-                    value={this.props.about.looking}
-                    required/> 
+                    value={this.props.about.looking}/> 
 
             </div>
         )

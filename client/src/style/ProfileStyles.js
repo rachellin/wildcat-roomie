@@ -142,9 +142,13 @@ export const StyledProfile = styled.div`
     .bio {
         display: flex;
 
-        .looking-for, .about {
-            width: 50%;
+        > div {
+            flex: 50%;
         }
+
+        // .looking-for, .about {
+        //     width: 50%;
+        // }
 
         .about {
             padding: 0 1.5rem 0 0;
