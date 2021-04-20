@@ -189,7 +189,7 @@ export class ProfileContainer extends React.Component {
             /> 
 
             <div style={{ marginBottom: "1rem" }}>
-                <b>current filters: </b>
+                <b>applied filters: </b>
                 {this.state.onFilters.length == 0 ? "none" : 
                     this.state.onFilters.map((filter, index) => {
                         if (index == this.state.onFilters.length-1) {
