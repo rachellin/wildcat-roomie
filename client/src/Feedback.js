@@ -5,8 +5,8 @@ export class Feedback extends React.Component {
         return (
             <div>
                 <h3 style={{ marginBottom: "0.5rem" }}><a target="_blank" href="https://forms.gle/NfMPxFaHm31YySf66">feedback form</a></h3>
-                Use the form linked above to provide feedback! changes/bugs that I've taken into account and will
-                address ASAP are listed below. <br/>
+                Use the form linked above to provide feedback! Changes/bugs (including those that are not from feedback)
+                that I've taken into account and will address ASAP are listed below. <br/>
                 Striked through points = fixed/implemented
 
                 <h3 style={{ margin: "2rem 0 0.5rem 0" }}>pending changes</h3>
@@ -30,6 +30,8 @@ export class Feedback extends React.Component {
 
                     <li><del>fix for text input for "about you" and "looking for" making cursor jump to last line</del>
                     <i>&nbsp;fixed 4/20/21</i></li>
+
+                    <li><del>make "looking for" section optional</del> <i>updated 4/20/21</i></li> 
                 </ul>
             </div>
         )

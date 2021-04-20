@@ -35,6 +35,8 @@ class App extends React.Component {
       <StyledContainer>
         <div className="header">
           <h1>wildcat roomie</h1>
+          <i>the purr-fect roommate and fur-end finder</i><br/>
+          
           <Link to="/">home</Link>
           <Link to="/instructions">instructions</Link>
           <Link onClick={() => this.setState({ newEntry: false })} to="/entry">edit profile</Link>

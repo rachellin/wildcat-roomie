@@ -211,7 +211,7 @@ export class BasicsEntry extends React.Component {
                             required/>
                     </div>
                     <div class="form-group">
-                        <label for="major" className="required">major</label>
+                        <label for="major" className="required">major(s)</label>
                         <input 
                             type="text" name="major" placeholder="computer science"
                             onChange={e => this.updateData("basics", "major", e.target.value)}

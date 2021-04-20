@@ -21,6 +21,16 @@ export const StyledContainer = styled.div`
             margin-right: 1.5rem;
             background: transparent;
         }
+
+        i {
+            display: inline-block;
+            margin: 0 0 1rem 1rem;
+        }
+
+        h1 {
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
     }
 
     .authenticate {
