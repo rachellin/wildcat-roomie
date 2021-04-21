@@ -27,6 +27,15 @@ export const StyledFilterContainer = styled.div`
     padding: 2rem 0 1rem 0;
     background: #fafafa;
     z-index: 999;
+
+    @media (max-width : 600px) {
+        display: none;
+    }
+
+    @media (max-width : 800px) 
+    and (min-width: 601px) {
+        position: relative;
+    }
 `;
 
 export const StyledFilters = styled.div`

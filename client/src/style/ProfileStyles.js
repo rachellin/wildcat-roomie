@@ -10,12 +10,20 @@ export const StyledContainer = styled.div`
     margin: 0 auto 5rem auto;
     //text-align: center;
 
+    @media (max-width: 1200px) {
+        width: 80vw;
+    }
+
     .header {
         position: relative;
         top: 0;
         display: block;
         padding: 1rem 0 2rem 0;
         background: #fafafa;
+
+        @media (max-width: 600px) {
+            text-align: center;
+        }
 
         a {
             margin-right: 1.5rem;
