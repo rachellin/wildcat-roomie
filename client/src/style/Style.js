@@ -17,6 +17,12 @@ export const EmailEntry = styled.div`
     input[type="submit"] {
         margin: 1rem auto;
     }
+
+    @media (min-width: 999px) {
+        .mobile-msg {
+            display: none;
+        }
+    }
 `
 
 export const EntryContainer = styled.div`

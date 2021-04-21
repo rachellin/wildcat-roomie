@@ -368,7 +368,8 @@ export default class Entry extends React.Component {
                 type="email" name="email" value={this.state.email} 
                 onChange={this.handleChange} placeholder="email" required/>
               <input type="submit" value="enter"/>
-              {this.state.emailMsg}
+              <div style={{marginBottom: "1rem"}}>{this.state.emailMsg}</div>
+              <div className="mobile-msg">please make/edit profile on web (or a bigger screen); the forms are not made viewable on mobile</div>
             </form>
           </EmailEntry>
         )
