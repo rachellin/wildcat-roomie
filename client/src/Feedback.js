@@ -36,6 +36,9 @@ export class Feedback extends React.Component {
                     <li>
                         <i>4/20/21:</i> &nbsp;"looking for" section is now optional, show applied filters
                     </li>
+                    <li>
+                        <i>4/21/21:</i> &nbsp;home page made a bit more mobile-friendly/responsive, mobile warning message added
+                    </li>
                 </ul>
             </StyledFeedback>
         )
