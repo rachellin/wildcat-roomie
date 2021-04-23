@@ -17,10 +17,11 @@ export class Feedback extends React.Component {
                     <li><del>fix for text input for "about you" and "looking for" making cursor jump to last line</del></li>
                 </ol>
 
-                <h3>other changes</h3>
+                <h3>other pending changes</h3>
                 <ol>
                     <li>fix for long names</li>
                     <li>word count limit or scrollbars in profiles</li>
+                    <li>move "international" to "regions"</li>
                 </ol>
 
                 <h3>updates</h3>

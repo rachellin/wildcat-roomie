@@ -97,6 +97,10 @@ export const StyledProfile = styled.div`
     animation: ${props => props.opacity == 1 ? "fadeIn" : "fadeOut"} 1s;
     z-index: 99999;
 
+    @media (max-width: 1200px) {
+        width: 80vw;
+    }
+
     .close {
         i {
             float: right;
@@ -162,6 +166,11 @@ export const StyledProfile = styled.div`
 
         > div {
             flex: 50%;
+        }  
+
+        p {
+            overflow-y: scroll;
+            max-height: 50vh;
         }
 
         // .looking-for, .about {

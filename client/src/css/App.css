@@ -28,7 +28,7 @@ a:hover {
 ::-webkit-scrollbar {
   height: 0px;
   width: 4px; 
-  background-color: #fafafa; /*scrollbar bg color*/
+  background-color: transparent; /*scrollbar bg color*/
 }
 
 button {

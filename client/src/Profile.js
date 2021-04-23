@@ -65,13 +65,13 @@ export class Profile extends React.Component {
                 <div className="bio">
                     <div className="about" style={{whiteSpace: "pre-wrap"}}>
                         <h1>about</h1>
-                        {this.props.about.bio}
+                        <p>{this.props.about.bio}</p>
                     </div>
                     
                     {this.props.about.looking && this.props.about.looking.trim().length > 0 ? 
                         <div className="looking-for" style={{whiteSpace: "pre-wrap"}}>
                             <h1>looking for</h1>
-                            {this.props.about.looking}
+                            <p>{this.props.about.looking}</p>
                         </div> :
                     null}
 
