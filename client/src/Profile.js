@@ -43,9 +43,17 @@ export class Profile extends React.Component {
                     </div>
 
                     <div className="social-media">
-                        <span><i className="ri-instagram-line"></i> <a target={this.props.social.ig ? "_blank" : null} href={this.props.social.ig ? `https://instagram.com/${this.props.social.ig}` : ""}> {this.props.social.ig ? this.props.social.ig : ""}</a></span>
-                        <span><i className="ri-snapchat-line"></i> {this.props.social.snap ? this.props.social.snap : ""}</span>
-                        <span><i className="ri-phone-line"></i> {this.props.social.phone ? this.props.social.phone : ""}</span>
+
+                        {this.props.social.ig ? 
+                            <span><i className="ri-instagram-line"></i> <a target="_blank" href={`https://instagram.com/${this.props.social.ig}`}> {this.props.social.ig}</a></span>
+                        :   ""}
+                        {this.props.social.snap ?
+                            <span><i className="ri-snapchat-line"></i> {this.props.social.snap}</span> 
+                        :   ""}
+                        {this.props.social.phone ?
+                            <span><i className="ri-phone-line"></i> {this.props.social.phone}</span>
+                        :   ""}
+
                     </div>
 
                     <div className="roommate-label">
