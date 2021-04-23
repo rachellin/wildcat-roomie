@@ -62,7 +62,7 @@ export class FilterEntry extends React.Component {
     // check if at least one option in checkbox group is checked
     required(type, category) {
         if (type == "radio") {
-            if (category == "sleep") {
+            if (category == "sleep" || category == "mbti") {
                 return false;
             }
             return true;

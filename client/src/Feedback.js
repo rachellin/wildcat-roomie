@@ -19,7 +19,7 @@ export class Feedback extends React.Component {
 
                 <h3>other pending changes</h3>
                 <ol>
-                    <li>fix for long names</li>
+                    <li><del>fix for long names</del></li>
                     <li><del>word count limit or scrollbars in profiles</del></li>
                     <li>move "international" to "regions"</li>
                 </ol>
@@ -41,7 +41,7 @@ export class Feedback extends React.Component {
                         <i>4/21/21:</i> &nbsp;home page made a bit more mobile-friendly/responsive, mobile warning message added
                     </li>
                     <li>
-                        <i>4/23/21:</i> &nbsp;scrollbar in about/looking for sections
+                        <i>4/23/21:</i> &nbsp;scrollbar in about/looking for sections, truncate long names
                     </li>
                 </ul>
             </StyledFeedback>
