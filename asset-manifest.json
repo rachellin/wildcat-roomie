@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/wildcat-roomie/static/css/main.35a5da45.chunk.css",
-    "main.js": "/wildcat-roomie/static/js/main.a4139adb.chunk.js",
-    "main.js.map": "/wildcat-roomie/static/js/main.a4139adb.chunk.js.map",
+    "main.css": "/wildcat-roomie/static/css/main.61a7b5e3.chunk.css",
+    "main.js": "/wildcat-roomie/static/js/main.220edf32.chunk.js",
+    "main.js.map": "/wildcat-roomie/static/js/main.220edf32.chunk.js.map",
     "runtime-main.js": "/wildcat-roomie/static/js/runtime-main.ca547f14.js",
     "runtime-main.js.map": "/wildcat-roomie/static/js/runtime-main.ca547f14.js.map",
     "static/css/2.d16c343c.chunk.css": "/wildcat-roomie/static/css/2.d16c343c.chunk.css",
@@ -12,7 +12,7 @@
     "static/js/3.456f3340.chunk.js.map": "/wildcat-roomie/static/js/3.456f3340.chunk.js.map",
     "index.html": "/wildcat-roomie/index.html",
     "static/css/2.d16c343c.chunk.css.map": "/wildcat-roomie/static/css/2.d16c343c.chunk.css.map",
-    "static/css/main.35a5da45.chunk.css.map": "/wildcat-roomie/static/css/main.35a5da45.chunk.css.map",
+    "static/css/main.61a7b5e3.chunk.css.map": "/wildcat-roomie/static/css/main.61a7b5e3.chunk.css.map",
     "static/js/2.1be898c0.chunk.js.LICENSE.txt": "/wildcat-roomie/static/js/2.1be898c0.chunk.js.LICENSE.txt",
     "static/media/remixicon.css": "/wildcat-roomie/static/media/remixicon.f2616f59.ttf"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.ca547f14.js",
     "static/css/2.d16c343c.chunk.css",
     "static/js/2.1be898c0.chunk.js",
-    "static/css/main.35a5da45.chunk.css",
-    "static/js/main.a4139adb.chunk.js"
+    "static/css/main.61a7b5e3.chunk.css",
+    "static/js/main.220edf32.chunk.js"
   ]
 }
