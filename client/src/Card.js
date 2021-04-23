@@ -66,7 +66,13 @@ export class Card extends React.Component {
             {this.props.display ? 
                 <StyledCard onClick={() => this.openProfile()}>
                     <img src={this.props.img ? this.props.img : "/wildcat-roomie/pfp.jpg"} alt="profile image"></img>
-                    <h1 style={{marginBottom: 0}}>{this.props.name}</h1>
+                    <h1 style={{
+                        marginBottom: 0, 
+                        fontSize: "1.8rem",
+                        whiteSpace: "nowrap",
+                        overflowX: "hidden",
+                        textOverflow: "ellipsis"
+                    }}>{this.props.name}</h1>
                     <i style={{wordWrap: "break-word", fontSize: "0.9rem"}}>{this.props.about.quote}</i>
                 </StyledCard>
                 : null
