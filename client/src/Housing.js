@@ -6,7 +6,7 @@ export class Housing extends React.Component {
             <div>
                 <ul>
                     <li><a target="_blank" href="https://www.northwestern.edu/living/housing-options/undergrad-housing/index.html">housing website</a></li>
-                    <li><a target="_blank" href="https://bit.ly/32kRcLU">housing portal</a></li>
+                    <li><a target="_blank" href="https://my.housing.northwestern.edu/dashboard/">housing portal</a></li>
                     <li>dorm info: 
                         &nbsp;<a target="_blank" href="https://docs.google.com/spreadsheets/d/1KYVTUGvwdzCUUJZw17_ds5qrw-pEHBwT07KdhiZ9aS0/edit">spreadsheet</a>
                         &nbsp;/ <a target="_blank" href="https://www.northwestern.edu/living/housing-options/undergrad-housing/assets/f19_unit-profiles-compare-tables.pdf">PDF</a>
