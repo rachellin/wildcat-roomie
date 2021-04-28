@@ -18,11 +18,16 @@ export class ProfileContainer extends React.Component {
             showCard: new Array(1).fill(true), 
             cardInfo: [],
             loading: true,
-            loadingMsg: "loading..."
+            loadingMsg: "loading...",
+            maintenance: true
         }
     }
 
     componentDidMount () {
+        if (this.state.maintenance) {
+            this.setState({ loadingMsg: "website currently under maintenance. please check back later."});
+            return;
+        }
         this.callAPI();
         setTimeout(() => {
             if (this.state.loading) {

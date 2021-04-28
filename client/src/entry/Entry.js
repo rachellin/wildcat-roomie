@@ -421,7 +421,6 @@ export default class Entry extends React.Component {
     padding: "2rem"
   }
 
-  // when save is clicked, the values are saved in the state. when the submit button is clicked, db is updated 
 
 
 
