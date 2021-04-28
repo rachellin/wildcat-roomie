@@ -48,7 +48,6 @@ export class FilterDropdown extends React.Component {
             this.setState({ overflow: "hidden" });
         }
     }
-    // changing overflow not the ideal way bc it moves all the other elements up/down.. i mean it's fine..
 
     render () {
         return (
@@ -61,7 +60,3 @@ export class FilterDropdown extends React.Component {
         )
     }
 }
-
-// TODO: change color when opened
-// each section has its own arr and the arrs are .concat() together 
-// how does the filter arr (true, true, false, etc.) work then - maybe i can combine the arrays in FilterContainer ?

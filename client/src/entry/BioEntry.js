@@ -1,32 +1,18 @@
 import React from 'react';
 
-import { EntryForm } from '../style/Style';
-import { TextEditor } from './TextEditor';
-
 export class BioEntry extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // bio: this.props.about.bio,
-            // looking: this.props.about.looking,
-            // quote: this.props.about.quote
             about: this.props.about
         }
     }
-
-    // updateData(target, value) {
-    //     this.setState({ [target]: value }, () => {
-    //         let data = this.state;
-    //         this.props.updateData("about", data);
-    //     });
-    // }
 
     updateData(category, target, value) {
         let copy = this.state[category];
         copy[target] = value;
         this.setState({ [category]: copy }, () => {
           let data = this.state[category];
-          //console.log(data)
           this.props.updateData(category, data);
         });
     }
@@ -45,12 +31,6 @@ export class BioEntry extends React.Component {
                     value={this.props.about.quote}/>
 
                 <label className="required" for="about"><b>about you</b></label>
-                {/* <TextEditor 
-                    name="about"
-                    onChange={e => this.updateData("bio", e.target.value)} 
-                    value={this.props.about.bio}
-                    valueRaw={this.props.about.bio}
-                    /> */}
                 <textarea
                     style={{marginBottom: "3rem"}}
                     name="about" 
@@ -70,23 +50,3 @@ export class BioEntry extends React.Component {
     }
 }
 
-/*
-    render() {
-        return (
-            <div class="bio">
-                <textarea 
-                    name="about" 
-                    placeholder="write about yourself..." 
-                    onChange={e => this.props.updateData("bio", e.target.value)} 
-                    required/>
-                <textarea 
-                    name="looking-for" 
-                    placeholder="what are you looking for in a roommate?" 
-                    onChange={e => this.props.updateData("looking", e.target.value)} 
-                    required/> 
-            </div>
-        )
-    }
-    */
-
-// must redesign user object

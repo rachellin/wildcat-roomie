@@ -27,7 +27,7 @@ export class BasicsEntry extends React.Component {
     handleUpload(e) {
         if (this.state.image != "/wildcat-roomie/pfp.jpg") {
             this.setState({ newImg: true });
-        } // ???
+        } 
         this.props.updateData("img", e.target.value);
         this.fileToDataUri(e.target.files[0])
             .then(base64 => {
@@ -36,21 +36,9 @@ export class BasicsEntry extends React.Component {
                     imageFile: e.target.files[0]
                 })
             })
-        // this.setState({ 
-        //     //image: URL.createObjectURL(e.target.files[0]),
-        //     image: this.fileToDataUri(e.target.files[0]),
-        //     imageFile: e.target.files[0]
-        // });
-
     }
 
     fileToDataUri = (file) => new Promise((resolve, reject) => {
-        // const reader = new FileReader();
-        // reader.onload = (event) => {
-        //   resolve(event.target.result)
-        // };
-        //reader.readAsDataURL(file);
-
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
@@ -60,7 +48,7 @@ export class BasicsEntry extends React.Component {
     uploadImg = (e) => {
         e.preventDefault();
 
-        // if replacing an image, delete image first
+        // if replacing an image, delete previous image first
         if (this.state.newImg) {
             this.imgurDelete(this.props.imageDelete);
         }
@@ -70,7 +58,6 @@ export class BasicsEntry extends React.Component {
 
         this.fileToDataUri(this.state.imageFile)
             .then(result => {
-                //const fix = result.split(',')[1].replace(/\+/g, '/').replace(/_/g, '/').replace(/\-/g, '/'); // wait so i need this?
                 return result.split(',')[1];
             })
             .then(blob => {
@@ -100,17 +87,14 @@ export class BasicsEntry extends React.Component {
             }
         })
         .then(data => {
-            // save data.data.link and data.data.deletehash
-            // should check that there is no error before calling handleImg
+            // save image link and delete hash 
             if (data.status == 200) {
                 this.props.handleImg({
                     link: data.data.link,
                     deleteHash: data.data.deletehash
                 }, false);
-                //this.props.setEntryMsg("profile picture saved!");
                 return data;
             } else {
-                //this.props.setEntryMsg(data.data.error);
                 this.props.handleImg({
                     error: data.data.error
                 })

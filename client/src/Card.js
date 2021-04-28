@@ -1,5 +1,4 @@
 import React from 'react';
-//import FlipMove from 'react-flip-move';
 import { StyledCard } from './style/ProfileStyles';
 import { Profile } from './Profile';
 
@@ -82,4 +81,3 @@ export class Card extends React.Component {
     }
 }
 
-// animation works when showing it but not hidnig it

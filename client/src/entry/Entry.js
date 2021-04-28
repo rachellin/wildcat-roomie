@@ -16,7 +16,7 @@ export default class Entry extends React.Component {
       this.state = {
         currentTab: "basics",
         newEntry: this.props.newEntry,
-        emailChecked: false, // for entering email to check but also creating new 
+        emailChecked: false, // for creating a new profile and editing profile
         emailMsg: "",
         entryMsg: "",
         postMsg: "",
@@ -172,8 +172,6 @@ export default class Entry extends React.Component {
       const data = {
         userId: this.state.userId,
         data: info
-        // but on basics page i have data that goe in multiple sections... 
-        // data should be a parameter that is an object of what data im sending 
       }
       console.log("data\n", data);
 
@@ -273,18 +271,16 @@ export default class Entry extends React.Component {
     }
 
     handlePost() {
-      // set is_posted to true 
-      // can only post when info is filled out 
       const data = {
         userId: this.state.userId,
         data: { isPosted: true }
       }
+      // can only post when every form is filled out 
       if (!this.isFilled()) {
         this.setState({ entryMsg: "You must fill out all the parts to post your profile." });
       } else {
         this.callUpdate(data, true);
       }
-      // how do i check if all the forms are filled out?? none of them are empty strings?
     }
 
     // check if all forms are filled out 

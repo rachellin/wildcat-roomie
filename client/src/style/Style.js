@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-// export const StyledProfile = styled.div`
-// `
-
 export const EmailEntry = styled.div`
     margin: 2rem auto;
     width: 200px;
