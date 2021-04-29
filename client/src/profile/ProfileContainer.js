@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card } from './Card';
-import { StyledProfileCont } from './style/ProfileStyles';
-import { FilterContainer } from './FilterContainer';
+import { StyledProfileCont } from '../style/ProfileStyles';
+import { FilterContainer } from '../filters/FilterContainer';
 
-import { filters, filterArr } from './FilterData';
+import { filters, filterArr } from '../filters/FilterData';
 
 export class ProfileContainer extends React.Component {
     constructor (props) {

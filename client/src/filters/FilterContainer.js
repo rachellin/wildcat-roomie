@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledFilterContainer } from './style/HeaderStyles';
+import { StyledFilterContainer } from '../style/HeaderStyles';
 import { FilterDropdown } from './FilterDropdown';
 
 import { filters, filterArr } from './FilterData';

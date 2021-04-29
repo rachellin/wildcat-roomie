@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyledFeedback } from './style/Style';
+import { StyledFeedback } from '../style/Style';
 
 export class Feedback extends React.Component {
     render() {

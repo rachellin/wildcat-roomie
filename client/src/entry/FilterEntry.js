@@ -1,7 +1,6 @@
 import React from 'react';
-import Form from 'react-bootstrap/Form';
 
-import { filters } from '../FilterData';
+import { filters } from '../filters/FilterData';
 import { StyledFilterEntry } from '../style/Style';
 
 export class FilterEntry extends React.Component {

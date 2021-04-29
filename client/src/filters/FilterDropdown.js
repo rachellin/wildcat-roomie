@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Filter } from './Filter';
-import { StyledDropdown, StyledFilters } from './style/HeaderStyles';
+import { StyledDropdown, StyledFilters } from '../style/HeaderStyles';
 import { filterArr } from './FilterData';
 
 export class FilterDropdown extends React.Component {

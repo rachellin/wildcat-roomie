@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyledProfile, Overlay } from './style/ProfileStyles';
+import { StyledProfile, Overlay } from '../style/ProfileStyles';
 import 'remixicon/fonts/remixicon.css';
 
-import {filters} from './FilterData';
+import {filters} from '../filters/FilterData';
 
 const schoolIcons = {
     "Weinberg": "ri-test-tube-line",

@@ -1,17 +1,17 @@
-import './css/App.css';
-import './css/animations.css';
+import '../css/App.css';
+import '../css/animations.css';
 
 import { BrowserRouter as Router, Link, Route, Switch, withRouter } from 'react-router-dom';
 import React from 'react';
 
 import Container from './Container'; 
-import Entry from './entry/Entry';
-import { Instructions } from './Instructions';
-import { Housing } from './Housing';
-import { RoommateHelp } from './RoommateHelp';
-import { Feedback } from './Feedback';
+import Entry from '../entry/Entry';
+import { Instructions } from '../information/Instructions';
+import { Housing } from '../information/Housing';
+import { RoommateHelp } from '../information/RoommateHelp';
+import { Feedback } from '../information/Feedback';
 
-import { StyledContainer } from './style/ProfileStyles';
+import { StyledContainer } from '../style/ProfileStyles';
 
 function noop() {}
 
