@@ -29,7 +29,7 @@ export class BasicsEntry extends React.Component {
             this.setState({ newImg: true });
         } 
         this.props.updateData("img", e.target.value);
-        this.fileToDataUri(e.target.files[0])
+        this.fileToDataUrl(e.target.files[0])
             .then(base64 => {
                 this.setState({
                     image: base64,
@@ -38,7 +38,7 @@ export class BasicsEntry extends React.Component {
             })
     }
 
-    fileToDataUri = (file) => new Promise((resolve, reject) => {
+    fileToDataUrl = (file) => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
@@ -56,12 +56,12 @@ export class BasicsEntry extends React.Component {
         const formData = new FormData();
         formData.append('type', 'file')
 
-        this.fileToDataUri(this.state.imageFile)
+        this.fileToDataUrl(this.state.imageFile)
             .then(result => {
                 return result.split(',')[1];
             })
-            .then(blob => {
-                formData.append('image', blob);
+            .then(base64 => {
+                formData.append('image', base64);
                 return formData;
             })
             .then(formData => {
