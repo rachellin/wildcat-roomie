@@ -38,7 +38,11 @@ export function Profile(props) {
                     <span><i className="ri-user-line"></i> {props.basics.pronouns}</span>
                     {schools.map(school => <span><i className={matchIcon(school)}></i> {school}</span>)}
                     <span><i className="ri-pencil-line"></i> {props.basics.major}</span>
-                    <span><i className="ri-star-line"></i> {props.filters.filter(val => filters["mbti"].includes(val))}</span>
+
+                    {props.basics.mbti ? 
+                        <span><i className="ri-star-line"></i> {props.filters.filter(val => filters["mbti"].includes(val))}</span>
+                    : null}
+
                     <span><i className="ri-map-pin-line"></i> {props.basics.location}</span>
                 </div>
 
