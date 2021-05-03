@@ -1,16 +1,14 @@
 import React from 'react';
 
-export class Filter extends React.Component {
-    render () {
-        return (
-            <div 
-                className="filter"
-                onClick={this.props.onClick}
-                style={{background: this.props.color}}
-                >
-                {this.props.name}
-            </div>
-        )
-    }
+export function Filter(props) {
+    return (
+        <div 
+            className="filter"
+            onClick={props.onClick}
+            style={{background: props.color}}
+            >
+            {props.name}
+        </div>
+    )
 }
 
