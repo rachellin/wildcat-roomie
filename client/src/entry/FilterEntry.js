@@ -6,6 +6,11 @@ import { StyledFilterEntry } from '../style/Style';
 export class FilterEntry extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            school: this.props.filters.filter(val => filters.school.includes(val)),
+            dorm: this.props.filters.filter(val => filters.dorm.includes(val)),
+            other: this.props.filters.filter(val => filters.other.includes(val))
+        }
     }
 
     componentDidMount() {
