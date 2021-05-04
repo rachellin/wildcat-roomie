@@ -26,8 +26,8 @@ app.use('/', indexRouter);
 app.use('/api/profiles', profilesRouter);
 
 // TEST DB CONNECTION
-const User = require('./db/user');  
-app.get('/psql', User.exists);
+// const User = require('./db/user');  
+// app.get('/psql', User.exists);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
