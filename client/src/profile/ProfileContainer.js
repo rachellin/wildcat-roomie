@@ -12,6 +12,7 @@ export class ProfileContainer extends React.Component {
             filterNames: filterArr, 
             filters: new Array(filterArr.length).fill(false), 
             roommateOnly: false,
+            class: 2026,
             onFilters: [], 
             showCard: new Array(1).fill(true), 
             cardInfo: [],
@@ -43,12 +44,14 @@ export class ProfileContainer extends React.Component {
         const res = await fetch(`https://wildcat-roomie.herokuapp.com/api/profiles/all`);
         const resjson = await res.json();
         const profiles = resjson.data;
-        console.log(profiles)
         this.setState({ 
             cardInfo: [...profiles],
             loading: false,
             showCard: new Array(profiles.length).fill(true),
         });
+        // show only the class in the state
+        this.toggleClass(this.state.class);
+        console.log(this.state.class)
     }
 
     addFilter (f) {
@@ -151,6 +154,20 @@ export class ProfileContainer extends React.Component {
         this.setState({ showCard: showCardCopy, roommateOnly: !this.state.roommateOnly });
     }
 
+    toggleClass(year) {
+        let showCardCopy = this.state.showCard.slice();
+        let cards = this.state.cardInfo.slice();
+        for (let i = 0; i < cards.length; i++) {
+            if (cards[i].year != year) {
+                showCardCopy[i] = false;
+            }
+            if (cards[i].year == year) {
+                showCardCopy[i] = true;
+            }
+        }
+        this.setState({ showCard: showCardCopy, class: year })
+    }
+
     render () {
         if (this.state.loading) return (
             <>
@@ -191,12 +208,17 @@ export class ProfileContainer extends React.Component {
                     type="checkbox" id="roommate"
                     onChange={() => this.toggleRoommate()}/>
                 <label for="roommate">show only those looking for roommate</label>
+
+                <button onClick={() => this.toggleClass(2026)}>2026</button>
+                <button onClick={() => this.toggleClass(2025)}>2025</button>
             </div>
             
             <StyledProfileCont>
                 {this.renderCards(this.state.cardInfo)}
+                {/* {this.renderCards(this.state.cardInfo, this.state.class)} or
+                {this.renderCards(this.state.cardInfo, this.props.class)} */}
             </StyledProfileCont>
-            </>
+            </> 
         )
     }
 }

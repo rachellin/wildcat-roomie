@@ -255,7 +255,7 @@ export default class Entry extends React.Component {
         else {
           // display data in the form(s) 
           const snakeToCamel = snakeCaseString => snakeCaseString.replace(/([-_]\w)/g, g => g[1].toUpperCase());
-          console.log(data);
+          // console.log(data);
           this.setState({ firstName: "", lastName: "", about: {}, basics: {}, social: {}, filters: [] });
           let keys = Object.keys(data);
           for (let i = 0; i < keys.length; i++) {

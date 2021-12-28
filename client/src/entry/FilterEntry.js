@@ -99,6 +99,7 @@ export class FilterEntry extends React.Component {
     render() {
         return (
             <StyledFilterEntry>
+                {this.renderGroup("year", "radio")}
                 {this.renderGroup("identity", "radio")}
                 {this.renderGroup("sleep", "radio")}
                 {this.renderGroup("school", "checkbox")}

@@ -14,6 +14,8 @@ Working on creating tabs for different classes (year in school)
 
 - tabs/sections for different classes
 
+- move "international" to "region" filter category
+
 - search keywords within profiles
 
 - text editor in profile editing section
