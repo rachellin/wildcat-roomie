@@ -2,8 +2,9 @@ import React from 'react';
 import { Card } from './Card';
 import { StyledProfileCont } from '../style/ProfileStyles';
 import { FilterContainer } from '../filters/FilterContainer';
+import { StyledTabs } from '../style/Style';
 
-import { filters, filterArr } from '../filters/FilterData';
+import { filters, filterArr, possibleYears } from '../filters/FilterData';
 
 export class ProfileContainer extends React.Component {
     constructor (props) {
@@ -48,10 +49,10 @@ export class ProfileContainer extends React.Component {
             cardInfo: [...profiles],
             loading: false,
             showCard: new Array(profiles.length).fill(true),
+            //onFilters: [this.state.class]
         });
         // show only the class in the state
         this.toggleClass(this.state.class);
-        console.log(this.state.class)
     }
 
     addFilter (f) {
@@ -165,6 +166,14 @@ export class ProfileContainer extends React.Component {
                 showCardCopy[i] = true;
             }
         }
+        // only add filter if not already in onFilters
+        if (!this.state.onFilters.includes(year)) {
+            this.addFilter(year);
+        }
+        // remove all other years 
+        possibleYears.forEach(y => {
+            if (y != year) this.removeFilter(y)
+        })
         this.setState({ showCard: showCardCopy, class: year })
     }
 
@@ -208,10 +217,13 @@ export class ProfileContainer extends React.Component {
                     type="checkbox" id="roommate"
                     onChange={() => this.toggleRoommate()}/>
                 <label for="roommate">show only those looking for roommate</label>
-
-                <button onClick={() => this.toggleClass(2026)}>2026</button>
-                <button onClick={() => this.toggleClass(2025)}>2025</button>
             </div>
+
+            <StyledTabs>
+                    <button onClick={() => this.toggleClass(2026)}
+                            >2026</button>
+                    <button onClick={() => this.toggleClass(2025)}>2025</button>
+            </StyledTabs>
             
             <StyledProfileCont>
                 {this.renderCards(this.state.cardInfo)}

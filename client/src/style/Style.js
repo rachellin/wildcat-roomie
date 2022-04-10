@@ -48,6 +48,35 @@ export const EntryContainer = styled.div`
     }
 `
 
+export const StyledTabs = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 150px;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+
+    button {
+        display: block;
+        font-size: 1.5rem;
+        padding: 1.5rem;
+        background: ${props => props.color};
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+
+        :hover {
+            color: #999;
+            background: lightblue;
+        }
+    }
+`
+
 export const EntryForm = styled.form`
     border: 1px solid #eee;
     width: 50vw;

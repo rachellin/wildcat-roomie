@@ -12,3 +12,5 @@ export const filters = {
 
 // combine filters into one array 
 export const filterArr = [].concat.apply([], Object.values(filters));
+
+export const possibleYears = [2025, 2026];
