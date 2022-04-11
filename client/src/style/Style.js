@@ -28,7 +28,7 @@ export const EntryContainer = styled.div`
         position: fixed;
         top: 50%;
         left: 8rem;
-        transform: translateY(-50%);
+        transform: translateY(-40%);
         border-radius: 2rem;
         width: 150px;
         text-align: center;
