@@ -13,7 +13,7 @@ export class ProfileContainer extends React.Component {
             filterNames: filterArr, 
             filters: new Array(filterArr.length).fill(false), 
             roommateOnly: false,
-            class: 2026,
+            class: "2026",
             onFilters: [], 
             showCard: new Array(1).fill(true), 
             cardInfo: [],
@@ -49,10 +49,10 @@ export class ProfileContainer extends React.Component {
             cardInfo: [...profiles],
             loading: false,
             showCard: new Array(profiles.length).fill(true),
-            //onFilters: [this.state.class]
         });
-        // show only the class in the state
-        this.toggleClass(this.state.class);
+
+        this.handleClick(this.state.filters[0], "2026", 0, this.state.cardInfo);
+
     }
 
     addFilter (f) {
@@ -219,11 +219,11 @@ export class ProfileContainer extends React.Component {
                 <label for="roommate">show only those looking for roommate</label>
             </div>
 
-            <StyledTabs>
+            {/* <StyledTabs>
                     <button onClick={() => this.toggleClass(2026)}
                             >2026</button>
                     <button onClick={() => this.toggleClass(2025)}>2025</button>
-            </StyledTabs>
+            </StyledTabs> */}
             
             <StyledProfileCont>
                 {this.renderCards(this.state.cardInfo)}
