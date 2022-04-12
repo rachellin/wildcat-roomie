@@ -51,7 +51,7 @@ export class ProfileContainer extends React.Component {
             showCard: new Array(profiles.length).fill(true),
         });
 
-        this.handleClick(this.state.filters[0], "2026", 0, this.state.cardInfo);
+       this.handleClick(this.state.filters[0], "2026", 0, this.state.cardInfo);
 
     }
 
@@ -79,15 +79,21 @@ export class ProfileContainer extends React.Component {
         console.log(this.state.onFilters);
         console.log("\n");
         let show = this.state.showCard.slice();
+
+        if (this.state.onFilters.length == 0) show.fill(true);
+        
         for (let i = 0; i < this.state.cardInfo.length; i++) {
             if (!this.includesFilter(this.state.onFilters, this.state.cardInfo[i].filters)) {
                 show[i] = false;
             } else {
                 show[i] = true;
             }
+            if (this.state.roommateOnly && show[i] && !this.state.cardInfo[i].roommate) {
+                show[i] = false;
+                console.log("check roommate")
+            }
         }
         console.log("showCard: "+show);
-        if (this.state.onFilters.length == 0) show.fill(true);
         this.setState({ showCard: [...show] });
         setTimeout(() => {
             console.log("state.showCard: "+this.state.showCard);
