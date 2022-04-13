@@ -42,7 +42,7 @@ class App extends React.Component {
           <Link onClick={() => this.setState({ newEntry: false })} to="/entry">edit profile</Link>
           <Link onClick={() => this.setState({ newEntry: true })} to="/entry">new profile</Link>
           <Link to="/housing">housing info</Link>
-          <Link to="/help">roommate help</Link>
+          {/* <Link to="/help">roommate help</Link> */}
           <Link to="/feedback">feedback</Link>
         </div>
 
@@ -51,7 +51,7 @@ class App extends React.Component {
           <Route path="/instructions" component={Instructions}/>
           <Route path="/entry" key={`${this.state.newEntry}`} exact render={() => <Entry newEntry={this.state.newEntry} history={this.props.history}/>}/>
           <Route path="/housing" component={Housing}/>
-          <Route path="/help" component={RoommateHelp}/>
+          {/* <Route path="/help" component={RoommateHelp}/> */}
           <Route path="/feedback" component={Feedback}/>
         </Switch>
 

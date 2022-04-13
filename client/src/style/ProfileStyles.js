@@ -85,8 +85,9 @@ export const StyledCard = styled.div`
 
 export const StyledProfile = styled.div`
     position: fixed;
-    width: 65vw;
+    width: 70vw;
     //height: 62vh;
+    max-height: 95vh;
     transform: translateX(-50%) translateY(-50%);
     top: 50%;
     left: 50%;
@@ -170,7 +171,7 @@ export const StyledProfile = styled.div`
 
         p {
             overflow-y: scroll;
-            max-height: 50vh;
+            max-height: 35vh;
         }
 
         // .looking-for, .about {
