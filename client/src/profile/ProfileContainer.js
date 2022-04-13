@@ -51,7 +51,7 @@ export class ProfileContainer extends React.Component {
             showCard: new Array(profiles.length).fill(true),
         });
 
-       //this.handleClick(this.state.filters[0], "2026", 0);
+       this.handleClick(this.state.filters[0], "2026", 0);
 
     }
 
