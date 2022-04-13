@@ -51,7 +51,7 @@ export class ProfileContainer extends React.Component {
             showCard: new Array(profiles.length).fill(true),
         });
 
-       this.handleClick(this.state.filters[0], "2026", 0, this.state.cardInfo);
+       //this.handleClick(this.state.filters[0], "2026", 0);
 
     }
 
@@ -67,7 +67,10 @@ export class ProfileContainer extends React.Component {
         }
     }
 
-    handleClick (on, f, index, cardInfo) {
+    // on = filter clicked (from state filter array)
+    // f = filter name
+    // index = index of filter in filter array
+    handleClick (on, f, index) {
         if (on) {
             this.state.filters[index] = false;
             this.removeFilter(f);
@@ -90,7 +93,6 @@ export class ProfileContainer extends React.Component {
             }
             if (this.state.roommateOnly && show[i] && !this.state.cardInfo[i].roommate) {
                 show[i] = false;
-                console.log("check roommate")
             }
         }
         console.log("showCard: "+show);
@@ -146,18 +148,29 @@ export class ProfileContainer extends React.Component {
 
     filterClick (filterIndex, dropdownIndex) {
         let i = this.getFilterIndex(filterIndex, dropdownIndex);
-        this.handleClick(this.state.filters[i], this.state.filterNames[i], i, this.state.cardInfo);
+        this.handleClick(this.state.filters[i], this.state.filterNames[i], i);
     }
 
     toggleRoommate() {
         let showCardCopy = this.state.showCard.slice();
         let cards = this.state.cardInfo.slice();
         // loop through filters array and set to false if that profile roommate property is false
+        // roommateOnly state is the opposite of the intention when it's used in the loop
         for (let i = 0; i < cards.length; i++) {
             if (!cards[i].roommate) {
                 showCardCopy[i] = this.state.roommateOnly; 
             }
         }
+        
+        // make sure profiles still shown according to applied filters
+        for (let i = 0; i < this.state.cardInfo.length; i++) {
+            if (!this.includesFilter(this.state.onFilters, this.state.cardInfo[i].filters)) {
+                showCardCopy[i] = false;
+            } else {
+                showCardCopy[i] = true;
+            }
+        }
+
         this.setState({ showCard: showCardCopy, roommateOnly: !this.state.roommateOnly });
     }
 
