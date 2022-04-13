@@ -171,7 +171,7 @@ export const StyledProfile = styled.div`
 
         p {
             overflow-y: scroll;
-            max-height: 35vh;
+            max-height: 40vh;
         }
 
         // .looking-for, .about {
