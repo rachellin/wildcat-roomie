@@ -1,10 +1,10 @@
 {
     "version": 2,
-    "name": "music-album",
+    "name": "wildcat-roomie",
     "builds": [
-       { "src": "app.js", "use": "@vercel/node" }
+       { "src": "/api/app.js", "use": "@vercel/node" }
     ],
     "routes": [
-       { "src": "/(.*)", "dest": "/app.js" }
+       { "src": "/api/(.*)", "dest": "/api/app.js" }
     ]
  }
