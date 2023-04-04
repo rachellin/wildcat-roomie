@@ -42,7 +42,7 @@ export class ProfileContainer extends React.Component {
     }
 
     callAPI = async () => {
-        const res = await fetch(`https://wildcat-roomie.herokuapp.com/api/profiles/all`);
+        const res = await fetch(`https://wildcat-roomie-production.up.railway.app/api/profiles/all`);
         const resjson = await res.json();
         const profiles = resjson.data;
         this.setState({ 
