@@ -19,18 +19,5 @@ Working through adding the features listed below
 
 - text editor in profile editing section
 
-## Installation
 
-Clone this repository. You will need `node` and `npm` installed globally on your machine. Run React and Node app in separate command windows. 
 
-*For now, this code is connected to the database hosted on Heroku, so there’s no need to run the Node app.*
-
-run React App
-
-`cd client && npm i && npm start`
-
-run Node App
-
-`npm start`
-
-view app: [http://localhost:3000](http://localhost:3000)
