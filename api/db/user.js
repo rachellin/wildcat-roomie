@@ -98,6 +98,8 @@ const User = {
     try {
       const readAllQuery = `SELECT * FROM ${table}`;
       const { rows } = await database.select(readAllQuery);
+      console.log("hi")
+      console.log(typeof(rows))
       return rows;
     } catch (error) {
       return error;

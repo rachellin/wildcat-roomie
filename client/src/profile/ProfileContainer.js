@@ -19,13 +19,15 @@ export class ProfileContainer extends React.Component {
             cardInfo: [],
             loading: true,
             loadingMsg: "loading...",
-            maintenance: false
+            maintenance: true
         }
     }
 
     componentDidMount () {
         if (this.state.maintenance) {
-            this.setState({ loadingMsg: "website currently under maintenance. please check back later."});
+            //this.setState({ loadingMsg: "website currently under maintenance. please check back later."});
+            this.setState({ loadingMsg: <a href="https://rachellin.github.io/wildcat-roomie-static/#/">
+                database was previously hosted on Heroku, which no longer has free PostgreSQL hosting, click here to redirect to temporary static app</a> })
             return;
         }
         this.callAPI();
@@ -174,6 +176,7 @@ export class ProfileContainer extends React.Component {
         this.setState({ showCard: showCardCopy, roommateOnly: !this.state.roommateOnly });
     }
 
+    // function currently not in use
     toggleClass(year) {
         let showCardCopy = this.state.showCard.slice();
         let cards = this.state.cardInfo.slice();
