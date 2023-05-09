@@ -19,7 +19,7 @@ const User = {
   async add (data) {
     try {
         const values = Object.values(data);
-        console.log(values);
+        //console.log(values);
         const readAllQuery = 
         `INSERT INTO user_account (email, last_login) VALUES ($1, NOW()) RETURNING *`;
         const { rows } = await database.insert(readAllQuery, values);
@@ -97,9 +97,8 @@ const User = {
   async getAll(table) {
     try {
       const readAllQuery = `SELECT * FROM ${table}`;
+      console.log(readAllQuery)
       const { rows } = await database.select(readAllQuery);
-      console.log("hi")
-      console.log(typeof(rows))
       return rows;
     } catch (error) {
       return error;
@@ -112,9 +111,9 @@ const User = {
       const cols = Object.keys(data);
       const colQuery = cols.map((key, index) => `${camelToSnake(key)}=($${index+1})`);
       const readAllQuery = `UPDATE user_profile SET ${colQuery} WHERE user_id=${userId} RETURNING *`;
-      console.log(readAllQuery);
+      //console.log(readAllQuery);
       const { rows } = await database.insert(readAllQuery, values); 
-      console.log("insert") 
+      //console.log("insert") 
       return rows;
     } catch (error) {
       return error;
@@ -122,12 +121,12 @@ const User = {
   },
   async testUpdate(userId) {
     try {
-      console.log("hello??")
+      //console.log("hello??")
       const values = ["first", "last"];
       const readAllQuery = `UPDATE user_profile SET firstName='first', lastName='last' WHERE user_id=${userId} RETURNING *`;
-      console.log("query made")
+      //console.log("query made")
       const { rows } = await database.select(readAllQuery);
-      console.log("yay")
+      //console.log("yay")
       return rows;
     } catch (error) {
       return error;
@@ -135,11 +134,11 @@ const User = {
   },
   async delete(userId) {
     try {
-      console.log("calling delete method")
+      //console.log("calling delete method")
       const readAllQuery = `DELETE FROM user_account WHERE user_id=${userId} RETURNING *`;
-      console.log(readAllQuery)
+      //console.log(readAllQuery)
       const { rows } = await database.select(readAllQuery);
-      console.log(rows);
+      //console.log(rows);
       return rows;
     } catch (error) {
       return error;

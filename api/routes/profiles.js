@@ -4,11 +4,10 @@ var router = express.Router();
 const User = require('../db/user');
 
 // get data for all profiles and filter profiles where is_posted is false 
-router.get("/all", function(res) {
+router.get("/all", function(req, res, next) {
     const snakeToCamel = snakeCaseString => snakeCaseString.replace(/([-_]\w)/g, g => g[1].toUpperCase());
     User.getAll("user_profile")
         .then(data => {
-            //console.log(typeof(data))
             let profiles = data.map(profile => {
                 let newProfile = {};
                 Object.keys(profile).map(key => {
@@ -29,6 +28,8 @@ router.get("/all", function(res) {
                 console.log("no data found")
                 return data;
             }
+
+            console.log(data.length)
 
             res.status(200).json({data: profiles});
             console.log(profiles)

@@ -19,7 +19,7 @@ export class ProfileContainer extends React.Component {
             cardInfo: [],
             loading: true,
             loadingMsg: "loading...",
-            maintenance: true
+            maintenance: false // TODO: CHANGE THIS BEFORE DEPLOYING 
         }
     }
 
@@ -44,7 +44,7 @@ export class ProfileContainer extends React.Component {
     }
 
     callAPI = async () => {
-        const res = await fetch(`https://wildcat-roomie-production.up.railway.app/api/profiles/all`);
+        const res = await fetch(`http://localhost:9000/api/profiles/all`);
         const resjson = await res.json();
         const profiles = resjson.data;
         this.setState({ 
