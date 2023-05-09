@@ -6,8 +6,7 @@ Finding a roommate on a Google Doc or on an Instagram is difficult/t
 Working through adding the features listed below
 
 **Bugs/Etc:**
-- ~looking for free hosting for database and API~ **(finished 5/9/23)**
-
+- looking for free hosting for database and API
 - make more mobile-friendly/responsive
 
 **Upcoming Features:**
