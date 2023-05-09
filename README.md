@@ -6,6 +6,7 @@ Finding a roommate on a Google Doc or on an Instagram is difficult/t
 Working through adding the features listed below
 
 **Bugs/Etc:**
+- looking for free hosting for database and API
 
 - make more mobile-friendly/responsive
 
@@ -19,18 +20,5 @@ Working through adding the features listed below
 
 - text editor in profile editing section
 
-## Installation
 
-Clone this repository. You will need `node` and `npm` installed globally on your machine. Run React and Node app in separate command windows. 
 
-*For now, this code is connected to the database hosted on Heroku, so there’s no need to run the Node app.*
-
-run React App
-
-`cd client && npm i && npm start`
-
-run Node App
-
-`npm start`
-
-view app: [http://localhost:3000](http://localhost:3000)
