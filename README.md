@@ -7,7 +7,6 @@ Working through adding the features listed below
 
 **Bugs/Etc:**
 - looking for free hosting for database and API
-
 - make more mobile-friendly/responsive
 
 **Upcoming Features:**
