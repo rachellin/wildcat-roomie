@@ -2,7 +2,7 @@ require('dotenv').config()
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || process.env.LOCAL_DATABASE_URL,
+  connectionString: process.env.DATABASE_URL, //|| process.env.LOCAL_DATABASE_URL,
 //   user: process.env.PGUSER,
 //   host: process.env.PGHOST,
 //   database: process.env.PGDATABASE,
@@ -12,7 +12,8 @@ const pool = new Pool({
   //   rejectUnauthorized: false
   // }
   //ssl: false // false if local since i guess localhost server doesn't support ssl
-  ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false
+  //ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false
+  ssl: { rejectUnauthorized: false }
 });
 
 // general query or select
