@@ -8,7 +8,7 @@ export function Instructions() {
 
             <p>
                 I'm Rachel Lin, an incoming computer science and MMSS double major, and I worked on this instead of paying attention in class :)
-                Here's my <a target="_blank" href="https://instagram.com/dklarachel">instagram</a>, my email is rachlin232@gmail.com, and you can CTRL/CMD+F "Rachel Lin" to find out more about me!
+                m, and you can CTRL/CMD+F "Rachel Lin" to find out more about me!
             </p>
 
             <p>

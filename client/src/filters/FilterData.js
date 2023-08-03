@@ -1,5 +1,5 @@
 export const filters = {
-    year: ["2026", "2025"],
+    year: ["2027", "2026", "2025"],
     identity: ["female-identifying", "male-identifying", "neither female nor male"],
     sleep: ["early bird", "night owl"],
     school: ["Weinberg", "McCormick", "School of Communication", "Medill", "Bienen", "SESP"],
@@ -13,4 +13,4 @@ export const filters = {
 // combine filters into one array 
 export const filterArr = [].concat.apply([], Object.values(filters));
 
-export const possibleYears = ["2025", "2026"];
+export const possibleYears = ["2025", "2026", "2027"];

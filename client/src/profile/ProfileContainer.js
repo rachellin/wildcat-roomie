@@ -6,6 +6,9 @@ import { StyledTabs } from '../style/Style';
 
 import { filters, filterArr, possibleYears } from '../filters/FilterData';
 
+//const url = "http://localhost:9000";
+const url = "https://wildcat-roomie.fly.dev";
+
 export class ProfileContainer extends React.Component {
     constructor (props) {
         super(props);
@@ -19,7 +22,7 @@ export class ProfileContainer extends React.Component {
             cardInfo: [],
             loading: true,
             loadingMsg: "loading...",
-            maintenance: true// TODO: CHANGE THIS BEFORE DEPLOYING 
+            maintenance: false
         }
     }
 
@@ -27,7 +30,7 @@ export class ProfileContainer extends React.Component {
         if (this.state.maintenance) {
             //this.setState({ loadingMsg: "website currently under maintenance. please check back later."});
             this.setState({ loadingMsg: <a href="https://rachellin.github.io/wildcat-roomie-static/#/">
-                database was previously hosted on Heroku, which no longer has free PostgreSQL hosting, click here to redirect to temporary static app</a> })
+                currently under maintenance, click here to redirect to static version of this app</a> })
             return;
         }
         this.callAPI();
@@ -44,7 +47,7 @@ export class ProfileContainer extends React.Component {
     }
 
     callAPI = async () => {
-        const res = await fetch(`https://wildcat-roomie.fly.dev/api/profiles/all`);
+        const res = await fetch(`${url}/api/profiles/all`);
         const resjson = await res.json();
         const profiles = resjson.data;
         this.setState({ 
@@ -53,7 +56,7 @@ export class ProfileContainer extends React.Component {
             showCard: new Array(profiles.length).fill(true),
         });
 
-       this.handleClick(this.state.filters[0], "2026", 0);
+       this.handleClick(this.state.filters[0], this.state.filterNames[0], 0); // set default selected filter to 2026
 
     }
 

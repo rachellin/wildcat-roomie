@@ -35,7 +35,7 @@ class App extends React.Component {
       <StyledContainer>
         <div className="header">
           <h1>wildcat roomie</h1>
-          <i>the purr-fect roommate and fur-end finder</i><br/>
+          <i>the purr-fect roommate finder</i><br/>
           
           <Link to="/">home</Link>
           <Link to="/instructions">instructions</Link>
